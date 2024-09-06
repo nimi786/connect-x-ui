@@ -1,13 +1,16 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ScrollService } from './services/common/scroll-service.service';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.sass'
+  styleUrl: './app.component.sass',
 })
 export class AppComponent {
-  title = 'connect-x-ui';
+  title = 'remax-customer-ui';
+  constructor(private scrollService: ScrollService) {}
+
+  ngOnInit() {
+    this.scrollService.scrollToTopOnNavigation();
+  }
 }

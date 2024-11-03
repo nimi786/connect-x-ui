@@ -1,0 +1,23 @@
+@import '../mixin'
+@import  '../variable'
+
+.ant-checkbox
+    .ant-checkbox-inner
+        border: 1px solid #4A545D !important
+        background: #FFFFFF
+        &::after
+            border-top: 0 !important
+            border-left: 0 !important
+            border-right: 2px solid #4A545D !important
+            border-bottom: 2px solid #4A545D !important
+
+.ant-checkbox-checked
+    &::after
+        border-color: unset !important
+
+.ant-checkbox-wrapper
+    span
+        color: var(--Dark-Gray, #1F1F1F)
+        font-family: $font-inter
+        @include media_query_all_im(10,null,null,null,null,12,"font-size")
+        font-weight: 400

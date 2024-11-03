@@ -1,0 +1,89 @@
+@import '../../../../assets/sass/index'
+.footer
+    background: $primary-color
+    @include media_query_all(20,null,null,40,null,80,"padding-top")
+    @include media_query_all(20,null,null,40,null,80,"padding-bottom")
+    @include media_query_all(15,30,80,150,null,240,"padding-left")
+    @include media_query_all(15,30,30,150,null,240,"padding-right")
+    display: flex
+    @include media_query_all(20,30,null,null,null,80,"gap")
+    @include media_query_all(30,30,40,null,null,80,"column-gap")
+    flex-wrap: wrap
+    // @include media_query_all('space-between','space-evenly',null,null,null,null,"justify-content")
+    .about_remax
+        @include media_query_all("100%",null,400,600,null,600,"width")
+        @include media_query_all(16,null,null,null,null,16,"gap")
+        .logo
+            display: flex
+            align-items: center
+            @include media_query_all(16,null,null,null,null,16,"gap")
+            img
+                @include media_query_all(150,null,null,null,null,150,"width")
+            span
+                color: #FFF
+                font-family: $font-montserrat
+                @include media_query_all(24,null,null,null,null,38,"font-size")
+                font-style: normal
+                font-weight: 600
+                line-height: normal
+        span
+            color: #E0E0E0
+            font-family: $font-hind
+            @include media_query_all(12,null,null,null,null,12,"font-size")
+            font-style: normal
+            font-weight: 400
+            line-height: normal
+    .services
+        display: flex
+        flex-direction: column
+        @include media_query_all(10,null,null,null,null,10,"gap")
+
+        span
+            color: #E0E0E0
+            font-family: $font-hind
+            @include media_query_all(12,null,null,null,null,16,"font-size")
+            font-style: normal
+            font-weight: 400
+            text-transform: capitalize
+            line-height: unset
+            margin: 0
+            padding: 0
+            cursor: pointer
+            position: relative
+            width: max-content
+            &:first-child
+                color: #FFF
+                @include media_query_all(15,null,null,null,null,20,"font-size")
+                font-style: normal
+                font-weight: 500
+                line-height: normal
+                &::after
+                    display: none
+
+            &:hover
+
+                &::after
+                    width: 100%
+            &::after
+                content: ""
+                position: absolute
+                background-color: #fff
+                height: 2px
+                width: 0
+                left: 0
+                bottom: -0.1rem
+                transition: 0.3s
+    .social
+        color: #FFF
+        font-family: $font-hind
+        @include media_query_all(15,null,null,null,null,20,"font-size")
+        font-style: normal
+        font-weight: 500
+        line-height: normal
+        @include media_query_all(10,null,null,null,null,16,"gap")
+
+        .icons
+            display: flex
+            @include media_query_all(10,null,null,null,null,16,"gap")
+            img
+                @include media_query_all(25,null,null,null,null,32,"width")

@@ -1,0 +1,23 @@
+@import '../mixin'
+@import  '../variable'
+
+.input-fields
+    @include media_query_all(0,null,null,null,null,4,"padding-top")
+    @include media_query_all(8,null,null,null,null,8,"padding-left")
+    @include media_query_all(8,null,null,null,null,8,"padding-right")
+    @include media_query_all(0,null,null,null,null,4,"padding-bottom")
+    @include media_query_all(14,null,null,null,null,14,"font-size")
+    @include media_query_all(32,null,null,null,null,32,"height")
+    font-weight: 400
+    border-radius: 2px
+    background: #E5E4EC
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.04)
+    border: none
+
+.label-name
+    padding: 0
+    label
+        color: $black-text
+        @include media_query_all_im(14,null,null,null,null,14,"font-size")
+        font-weight: 500
+        font-family: $font-hind

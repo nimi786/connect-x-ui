@@ -1,0 +1,68 @@
+@import '../mixin'
+@import '../variable'
+
+.button
+    display: flex
+    align-items: center
+    justify-content: center
+    @include media_query_all(20,null,null,null,null,20,"padding-left")
+    @include media_query_all(20,null,null,null,null,20,"padding-right")
+    @include media_query_all(8,null,null,null,null,8,"padding-top")
+    @include media_query_all(8,null,null,null,null,8,"padding-bottom")
+    @include media_query_all(16,null,null,null,null,16,"font-size")
+    @include media_query_all(8,null,null,null,null,8,"border-radius")
+    font-weight: 500
+    text-transform: uppercase
+    background: $primary-color
+    color: $color-white
+    border: 1px solid $primary-color
+    transition: 0.3s
+    outline: none
+    &:hover
+        background: $color-white
+        color: $primary-color
+        border: 1px solid $primary-color
+
+.red-button-primary
+    display: flex
+    align-items: center
+    justify-content: center
+    @include media_query_all(21,null,null,null,null,21,"padding-left")
+    @include media_query_all(21,null,null,null,null,21,"padding-right")
+    @include media_query_all(7,null,null,null,null,7,"padding-top")
+    @include media_query_all(7,null,null,null,null,7,"padding-bottom")
+    @include media_query_all(12,null,null,null,null,12,"font-size")
+    @include media_query_all(8,null,null,null,null,8,"border-radius")
+    font-weight: 500
+    text-transform: uppercase
+    background: $secondary-color
+    color: $color-white
+    border: 1px solid $secondary-color
+    transition: 0.3s
+    outline: none
+    &:hover
+        background: $color-white
+        color: $primary-color
+        border: 1px solid $primary-color
+.red-button-sendmessage
+    display: flex
+    align-items: center
+    justify-content: center
+    @include media_query_all(65,null,null,null,73,73,"padding-left")
+    @include media_query_all(65,null,null,null,73,73,"padding-right")
+    @include media_query_all(11,null,null,null,11,11,"padding-top")
+    @include media_query_all(11,null,null,null,11,11,"padding-bottom")
+    @include media_query_all(14,null,null,null,null,12,"font-size")
+    @include media_query_all(8,null,null,null,null,8,"border-radius")
+   
+    font-weight: 500
+    text-transform: uppercase
+    background: $secondary-color
+    color: $color-white
+    border: 1px solid $secondary-color
+    transition: 0.3s
+    outline: none
+    &:hover
+        background: $color-white
+        color: $primary-color
+        border: 1px solid $primary-color

@@ -1,0 +1,72 @@
+@import '../mixin'
+@import  '../variable'
+
+.ant-pagination
+    @include media_query_all_im(10,null,null,null,null,13,"font-size")
+
+.ant-pagination.mini .anticon
+    color: $primary-color !important
+    font-size: 8px
+
+.ant-pagination-item-active
+    background: $primary-color
+    border-radius: 5px
+    @include media_query_all_im(10,null,null,null,null,13,"font-size")
+    border-color: none
+    border: 1px solid $primary-color
+:host::ng-deep.ant-select
+    @include media_query_all_im(10,null,null,null,null,13,"font-size")
+.pagination-row
+    display: flex
+    align-items: center
+    justify-content: end
+    @include media_query_all_im(column,column,column,column,row,row,"flex-direction")
+    flex-wrap: wrap
+    @include media_query_all_im(10,null,null,null,null,13,"font-size")
+    @include media_query_all_im(8,null,null,null,null,8," gap")
+    @include media_query_all_im(8,null,null,null,null,10," margin-top")
+    @include media_query_all_im(8,null,null,null,null,10," margin-bottom")
+
+.ant-pagination-item a
+    color: $primary-color
+.ant-pagination-options-quick-jumper input
+    border: 1px solid $primary-color
+    background-color: transparent
+
+.ant-pagination-next .ant-pagination-item-link, .ant-pagination-prev .ant-pagination-item-link
+    background: none !important
+    border: 1px solid $primary-color
+
+.ant-pagination-item
+    @include media_query_all_im(12,null,null,null,null,23,"width")
+    border: 1px solid $primary-color !important
+    color: $primary-color !important
+    background-color: transparent
+    border-radius: 5px !important
+    &:hover
+        background-color: $primary-color
+        color: $color-white !important
+        border: 1px solid $primary-color
+        a
+            color: $color-white !important
+
+.ant-pagination-item-active
+    background: $primary-color
+.ant-pagination-item-active a
+    color: $color-white !important
+    background-color: $primary-color
+:host::ng-deep.selete-field .ant-select-selector
+    background-color: $primary-color !important
+    @include media_query_all(25,null,null,null,null,65,'width')
+:host::ng-deep.selete-field
+    .anticon
+        color: $color-white !important
+:host::ng-deep.selete-field.ant-select
+    color: $color-white !important
+
+.spans
+    @include media_query_all(13,null,null,null,null,15,"margin-right")
+
+:host::ng-deep .ant-pagination-disabled .ant-pagination-item-link
+    background: none !important
+    border: 1px solid #043268

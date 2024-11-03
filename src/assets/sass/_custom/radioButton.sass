@@ -1,0 +1,19 @@
+@import '../mixin'
+@import '../variable'
+
+.ant-radio-inner
+    @include media_query_all(20,null,null,null,null,20,"height")
+    @include media_query_all(20,null,null,null,null,20,"width")
+    border-color: #4A545D
+    border-width: 2px
+    box-shadow: unset !important
+    &::after
+        background-color: #4A545D !important
+
+.ant-radio
+    &:hover
+        .ant-radio-inner
+            border-color: #4A545D !important
+.ant-radio-checked
+    .ant-radio-inner
+        border-color: #4A545D !important

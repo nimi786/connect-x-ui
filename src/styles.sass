@@ -1,1 +1,188 @@
 /* You can add global styles to this file, and also import other style files */
+@import './assets/sass/index'
+
+// @import '~swiper/swiper.scss'
+
+*
+    margin: 0
+    padding: 0
+    box-sizing: border-box
+    font-family: "Inter", sans-serif
+
+html
+    scroll-behavior: smooth
+body
+    width: 100%
+    height: 100%
+    overflow-x: hidden
+.navbar
+    @include media_query_all(12,null,null,null,null,12,"padding-top")
+    @include media_query_all(12,null,null,null,null,12,"padding-bottom")
+    @include media_query_all(90,null,null,null,null,90,"height")
+    position: fixed
+    width: 100%
+    top: 0
+    background: $primary-color
+    z-index: 1000
+    .header
+        @include media_query_all(16,null,null,null,null,32,"padding-left")
+        @include media_query_all(16,null,null,null,null,32,"padding-right")
+        @include media_query_all(16,null,null,unset,null,null,"padding-bottom")
+        background: $primary-color
+    .navbar-brand
+        @include media_query_all(48,null,null,null,null,48,"margin-right")
+    .nav-item
+        display: flex
+        @include media_query_all(center,null,null,unset,null,null," justify-content")
+    .nav-link
+        @include media_query_all_im(8,null,null,null,null,8,"padding-left")
+        @include media_query_all_im(8,null,null,null,null,8,"padding-right")
+        @include media_query_all_im(2,null,null,null,null,2,"padding-top")
+        @include media_query_all_im(2,null,null,null,null,2,"padding-bottom")
+        @include media_query_all_im(16,null,null,null,null,16,"margin-left")
+        @include media_query_all_im(16,null,null,null,null,16,"margin-right")
+        @include media_query_all_im(16,null,null,null,null,16,"font-size")
+        border-radius: 4px
+        font-family: $font-hind
+        font-weight: 300
+        color: #fff
+        width: max-content
+
+    .nav-link.active
+        background: $secondary-color
+        color: $black-text
+        font-weight: 400
+    .main-right-header
+        display: flex
+        align-items: center
+        @include media_query_all(center,null,null,unset,null,null,"justify-content")
+        // @include media_query_all(column,unset,null,unset,null,null,"flex-direction")
+        @include media_query_all(10,null,null,null,null,32,"gap")
+    .header-btn
+        display: flex
+        align-items: center
+        @include media_query_all(10,null,null,null,null,32,"gap")
+        button
+            display: flex
+            align-items: center
+            justify-content: center
+        button.active
+            background: $secondary-color
+            border: 1px solid $secondary-color
+            color: $color-white
+    .header-profile
+        display: flex
+        align-items: center
+        @include media_query_all(10,null,null,null,null,32,"gap")
+    .navbar-toggler
+        border: none
+        &:focus
+            box-shadow: unset
+
+.ant-dropdown-menu.header-dropdown
+    background-color: #F2F1FA !important
+    padding: 5px
+    .ant-dropdown-menu-item
+        background: $color-white
+        margin: 2px 0px
+        border-radius: 5px
+        &:hover
+            background: $primary-color
+            color: $color-white
+            transition: all 0.1s
+    .ant-dropdown-menu-item-selected
+        color: $black-text
+.map-container
+    height: 100% !important
+    width: 100% !important
+.advanced-filter-modal
+    @include media_query_all_im(780,null,null,null,null,780,"width")
+    .ant-modal-body
+        @include media_query_all(20,null,null,null,null,5,"padding-left")
+        @include media_query_all(20,null,null,null,null,7,"padding-right")
+        @include media_query_all(60,null,null,null,null,60,"padding-top")
+        padding-bottom: 0
+        background-color: #F2F1FA
+.document-section
+    background: $color-white
+    @include media_query_all(16,null,null,32,null,32,"padding")
+    @include media_query_all(10,null,null,null,null,10,"margin-top")
+    @include media_query_all(550,null,null,null,null,550,"height")
+    .sub-document
+        background: #F2F1FA
+        @include media_query_all(16,null,null,null,null,32,"padding-top")
+        @include media_query_all(16,null,null,null,null,32,"padding-bottom")
+        @include media_query_all(16,null,null,null,null,70,"padding-left")
+        @include media_query_all(16,null,null,null,null,70,"padding-right")
+        height: 100%
+        overflow: auto
+        .title
+            @include media_query_all(20,null,null,null,null,20,"margin-bottom")
+            span
+                color: $black-text
+                font-family: $font-montserrat
+                @include media_query_all(20,null,null,null,null,20,"font-size")
+                font-weight: 600
+        .box
+            height: 100%
+
+.gm-style .gm-style-iw-d::-webkit-scrollbar-track, .gm-style .gm-style-iw-d::-webkit-scrollbar-track-piece
+    background: var(--Primary-Color, #043268) !important
+
+.floor-plan-modal
+    @include media_query_all_im(1195,null,null,null,null,1195,"width")
+    padding: 0 !important
+    .ant-modal-body
+        @include media_query_all(50,null,null,null,null,50,"padding-top")
+        @include media_query_all(50,null,null,null,null,50,"padding-bottom")
+        @include media_query_all(10,null,null,null,null,10,"padding-left")
+        @include media_query_all(10,null,null,null,null,10,"padding-right")
+        background: #F2F1FA !important
+.share-modal
+    @include media_query_all_im(305,null,null,null,null,305,"width")
+    padding: 0 !important
+
+    .ant-modal-body
+        background: #CCE3FF !important
+        border-radius: 4px
+
+.property-carousel
+    @include media_query_all(16,null,null,null,null,185,"Padding-left")
+    @include media_query_all(16,null,null,null,null,185,"Padding-right")
+    @include media_query_all(65,null,null,null,null,65,"margin-bottom")
+    position: relative
+    .owl-carousel
+        position: unset
+        .owl-item
+            @include media_query_all(16,null,null,null,null,25,"Padding-left")
+            @include media_query_all(16,null,null,null,null,25,"Padding-right")
+        .owl-nav
+            background: unset
+            i
+                color: $black-text
+                @include media_query_all(20,null,null,null,null,36,"font-size")
+            .owl-prev
+                display: flex
+                align-items: center
+                position: absolute
+                left: 0
+                top: 0
+                margin: auto 0
+                bottom: 0
+                height: max-content
+                background: unset
+            .owl-next
+                display: flex
+                align-items: center
+                position: absolute
+                right: 0
+                top: 0
+                margin: auto 0
+                bottom: 0
+                height: max-content
+                background: unset
+    .property-card-main
+        box-shadow: unset !important
+    .property
+        @include media_query_all_im(305,null,null,null,null,469,"width")
+        // @include media_query_all_im(305,null,null,null,null,471,"height")

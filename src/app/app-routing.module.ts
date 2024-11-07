@@ -15,7 +15,20 @@ const routes: Routes = [
             (m) => m.HomeModule
           ),
       },
- 
+      {
+        path: 'sign-up',
+        loadChildren: () =>
+          import('./layout/pages/sign-up/sign-up.module').then(
+            (m) => m.SignUpModule
+          ),
+      },
+      {
+        path: 'login',
+        loadChildren: () =>
+          import('./layout/pages/login/login.module').then(
+            (m) => m.LoginModule
+          ),
+      },
     ],
   },
 ];
@@ -26,4 +39,3 @@ const routes: Routes = [
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
-

@@ -1,80 +1,143 @@
 <nav class="navbar navbar-expand-lg">
-    <div class="container-fluid header">
-      <a class="navbar-brand" routerLink="" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }"><span class="connectx">Connect-X</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item">
-            <a class="nav-link" routerLink="" routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }">Home</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="electronics" routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }">Electronics</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="vehicle" routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }">Vehicle</a>
-          </li>
-  
-          <li class="nav-item">
-            <a class="nav-link" routerLink="property" routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }">Property</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="pets" routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }">Pets</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="toys" routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }">Toys</a>
-          </li>
-  
-          <li class="nav-item">
-            <a class="nav-link" routerLink="others" routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }">Other</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="about-us" routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }">About Us</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink="contact-us" routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }">Contact Us</a>
-          </li>
-        </ul>
-  
-        <div class="main-right-header">
-          <div class="header-btn">
-            <button class="button" routerLink="sell-with-us" routerLinkActive="active"
-              [routerLinkActiveOptions]="{ exact: true }">
-              POST YOUR ADD
-            </button>
-  
-          </div>
-  
-          <div class="header-profile">
-  
-            <div class="profile">
-              <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="profileMenu">
-                <nz-avatar nzIcon="user" nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"></nz-avatar>
-              </a>
-              <div class="logout">
-                <nz-dropdown-menu #profileMenu="nzDropdownMenu">
-                  <ul nz-menu nzSelectable class="header-dropdown">
-                    <li nz-menu-item [routerLink]="['account-settings']">
-                      <span class="content">My Account</span>
-                    </li>
-                    <li nz-menu-item><span class="content">Log Out</span></li>
-                  </ul>
-                </nz-dropdown-menu>
-              </div>
+  <div class="container-fluid header">
+    <a
+      class="navbar-brand"
+      routerLink=""
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      ><span class="connectx">Connect-X</span></a
+    >
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink=""
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="electronics"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Electronics</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="vehicle"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Vehicle</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="property"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Property</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="pets"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Pets</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="toys"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Toys</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="others"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Other</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="about-us"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >About Us</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            routerLink="contact-us"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Contact Us</a
+          >
+        </li>
+      </ul>
+
+      <div class="main-right-header">
+        <div class="header-btn">
+          <button
+            class="button"
+            routerLink="sell-with-us"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            POST YOUR ADD
+          </button>
+        </div>
+
+        <div class="header-profile">
+          <div class="profile">
+            <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="profileMenu">
+              <nz-avatar
+                nzIcon="user"
+                nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+              ></nz-avatar>
+            </a>
+            <div class="logout">
+              <nz-dropdown-menu #profileMenu="nzDropdownMenu">
+                <ul nz-menu nzSelectable class="header-dropdown">
+                  <li nz-menu-item [routerLink]="['account-settings']">
+                    <span class="content">My Account</span>
+                  </li>
+                  <li nz-menu-item><span class="content">Log Out</span></li>
+                </ul>
+              </nz-dropdown-menu>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </nav>
+  </div>
+</nav>

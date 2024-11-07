@@ -1,0 +1,61 @@
+<div class="search-filter">
+
+    <div class="btns">
+        <nz-radio-group ngModel="sales" nzButtonStyle="solid">
+            <label nz-radio-button nzValue="sales">SELL</label>
+            <label nz-radio-button nzValue="rent">RENT</label>
+        </nz-radio-group>
+    </div>
+    <div class="filter">
+        <form action="" nz-form nzLayout="vertical">
+
+            <div nz-row nzGutter="8" class="filter-mobile-view">
+                <div nz-col nzMd="5" nzXs="24" nzSm="24">
+                    <nz-form-item>
+                        <nz-form-label class="label-name">District</nz-form-label>
+                        <nz-form-control>
+                            <nz-select nzSuffixIcon="caret-down" nzPlaceHolder="Not Selected" class="selete-fields">
+                                <nz-option nzValue="Not Selected" nzLabel="Not Selected"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzMd="5" nzXs="24" nzSm="24">
+                    <nz-form-item>
+                        <nz-form-label class="label-name">Property Type</nz-form-label>
+                        <nz-form-control>
+                            <nz-select nzSuffixIcon="caret-down" nzPlaceHolder="Not Selected" class="selete-fields">
+                                <nz-option nzValue="Not Selected" nzLabel="Not Selected"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzMd="5" nzXs="24" nzSm="24">
+                    <nz-form-item>
+                        <nz-form-label class="label-name">Bedrooms</nz-form-label>
+                        <nz-form-control>
+                            <nz-select nzSuffixIcon="caret-down" nzPlaceHolder="Not Selected" class="selete-fields">
+                                <nz-option nzValue="Not Selected" nzLabel="Not Selected"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzMd="5" nzXs="24" nzSm="24">
+                    <nz-form-item>
+                        <nz-form-label class="label-name">Bathrooms</nz-form-label>
+                        <nz-form-control>
+                            <nz-select nzSuffixIcon="caret-down" nzPlaceHolder="Not Selected" class="selete-fields">
+                                <nz-option nzValue="Not Selected" nzLabel="Not Selected"></nz-option>
+                            </nz-select>
+                        </nz-form-control>
+                    </nz-form-item>
+                </div>
+                <div nz-col nzMd="4">
+                    <div class="connect-button">
+                        <button class="button">LET'S CONNECT</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

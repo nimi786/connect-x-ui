@@ -1,0 +1,59 @@
+@import '../../../../../assets/sass/index'
+
+.home-banner
+    @include media_query_all_im(16,null,null,null,null,32,"padding-left")
+    @include media_query_all_im(16,null,null,null,null,32,"padding-right")
+    @include media_query_all(30,null,null,null,172,172,"margin-bottom")
+    position: relative
+    .banner-img
+        height: 600px
+        @include media_query_all(200,null,null,null,null,600,"height")
+        img
+            width: 100%
+            height: 100%
+            @include media_query_all_im(16,null,null,null,null,16,"border-radius")
+            object-fit: cover
+            overflow-clip-margin: unset
+            @include media_query_all(null,null,null,null,null,15,"margin-top")
+.search-feilds
+    display: flex
+    justify-content: center
+    position: absolute
+    @include media_query_all(unset,null,null,null,absolute,null,"position")
+    left: 0
+    right: 0
+    margin: 0 auto
+    @include media_query_all(unset,null,null,null,-111,null,"bottom")
+    @include media_query_all(20,null,null,null,0,null,"margin-top")
+.carousel-content
+    @include media_query_all("2%",null,null,null,null,"12%","padding-left")
+    @include media_query_all("2%",null,null,null,null,"12%","padding-right")
+    @include media_query_all(20,null,null,null,null,20,"margin-bottom")
+    .carousel-title
+        color: #000
+        font-family: $font-montserrat
+        @include media_query_all(38,null,null,null,null,38,"font-size")
+        // @include media_query_all(20,null,null,null,null,20,"margin")
+        font-style: normal
+        font-weight: 600
+        line-height: normal
+        text-align: center
+        text-transform: uppercase
+
+    .carousel-box
+        @include media_query_all(20,30,null,null,null,65,"padding-left")
+        @include media_query_all(20,30,null,null,null,65,"padding-right")
+        position: relative
+        .carousel
+            position: unset
+        .carousel-item
+            @include media_query_all(250,350,500,600,650,680,"height")
+        .carousel-img
+            width: 100%
+            height: 100%
+        .carousel-control-prev,
+        .carousel-control-next
+            width: unset
+            i
+                color: $black-text
+                @include media_query_all(20,30,null,null,null,30,"font-size")

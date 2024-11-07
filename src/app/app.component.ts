@@ -7,7 +7,7 @@ import { ScrollService } from './services/common/scroll-service.service';
   styleUrl: './app.component.sass',
 })
 export class AppComponent {
-  title = 'remax-customer-ui';
+  title = 'Conect-x-ui';
   constructor(private scrollService: ScrollService) {}
 
   ngOnInit() {

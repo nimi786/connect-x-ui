@@ -1,0 +1,54 @@
+@import '../../../../assets/sass/index'
+
+.search-filter
+    .ant-radio-group
+        display: flex
+        label
+            display: flex
+            align-items: center
+            justify-content: center
+            @include media_query_all(102,null,null,null,null,102,"width")
+            @include media_query_all(36,null,null,null,null,36,"height")
+            @include media_query_all(16,null,null,null,null,16,"font-size")
+            text-align: center
+            color: $primary-color
+            font-family: $font-hind
+            border: none !important
+            transition: unset
+            background: #F2F2F2
+            &:focus-within
+                box-shadow: none !important
+            &::before
+                background-color: unset !important
+            &:first-child
+                @include media_query_all(8,null,null,null,null,8," border-top-right-radius")
+            &:last-child
+                @include media_query_all(8,null,null,null,null,8," border-top-right-radius")
+    .filter
+        background: #E5E4EC
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.08)
+        @include media_query_all(20,null,null,null,null,20,"padding-left")
+        @include media_query_all(20,null,null,null,null,20,"padding-right")
+        @include media_query_all(24,null,null,null,null,24,"padding-top")
+        // @include media_query_all(24,null,null,null,null,24,"padding-bottom")
+        @include media_query_all("100%",null,null,null,null,1072,"width")
+        @include media_query_all(8,null,null,null,null,8,"border-radius")
+        // border-top-left-radius: 0 !important
+        .search
+            .button
+                width: 100%
+
+:host ::ng-deep .search-filter .btns .ant-radio-group-solid .ant-radio-button-wrapper-checked:not(.ant-radio-button-wrapper-disabled)
+    background: $primary-color
+    color: $color-white
+
+:host ::ng-deep .search-select .ant-select-selector
+    @include media_query_all_im(42,null,null,null,null,42,"height")
+
+:host ::ng-deep .search-select .ant-select-selection-search-input
+    @include media_query_all_im(42,null,null,null,null,42,"height")
+
+:host::ng-deep.ant-input-affix-wrapper
+    @include media_query_all_im(42,null,null,null,null,42,"height")
+    width: 100%
+    border-radius: 4px

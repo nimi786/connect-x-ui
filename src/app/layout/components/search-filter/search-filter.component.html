@@ -1,0 +1,26 @@
+<div class="search-filter">
+  <div class="filter">
+    <div class="search">
+      <form action="" nz-form nzLayout="vertical">
+        <div nz-row nzGutter="8">
+          <div nz-col nzMd="20" nzXs="18">
+            <nz-form-item>
+              <nz-form-control>
+                <nz-input-group [nzSuffix]="suffixIconSearch">
+                  <input type="text" nz-input placeholder="Search" />
+                </nz-input-group>
+                <ng-template #suffixIconSearch>
+                  <span nz-icon nzType="search"></span>
+                </ng-template>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+
+          <div nz-col nzMd="4" nzXs="6">
+            <button class="button">search</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

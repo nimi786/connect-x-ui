@@ -1,0 +1,40 @@
+@import '../../../../../assets/sass/index'
+
+.property-category-main
+    @include media_query_all(48,null,null,null,null,48,"margin-bottom")
+    @include media_query_all("5%",null,null,null,null,"19%","padding-left")
+    @include media_query_all("5%",null,null,null,null,"19%","padding-right")
+
+    .main-title
+        color: #000
+        font-family: $font-montserrat
+        @include media_query_all(38,null,null,null,null,38,"font-size")
+        @include media_query_all(40,null,null,null,null,40,"margin-bottom")
+        font-style: normal
+        font-weight: 600
+        line-height: normal
+        text-align: center
+        text-transform: uppercase
+    .property-main
+        display: flex
+        
+        @include media_query_all(15,null,null,null,null,35,"gap")
+        @include media_query_all('center',null,null,null,null,'flex-start',"justify-content")
+        flex-wrap: wrap
+
+        .properties
+            @include media_query_all('100%',null,null,null,null,268,"width")
+
+    .see-more
+        display: flex
+        justify-content: flex-end
+        @include media_query_all(15,null,null,null,null,25,"padding-top")
+        // @include media_query_all(15,null,null,null,null,135,"padding-right")
+        color: $primary-color
+        font-family: $font-hind
+        @include media_query_all(10,null,null,null,null,16,"font-size")
+        font-style: normal
+        font-weight: 400
+        line-height: normal
+        text-decoration-line: underline
+        cursor: pointer

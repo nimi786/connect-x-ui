@@ -1,0 +1,64 @@
+@import '../../../../assets/sass/index'
+.main
+    background: $secondary-color
+    width: 100%
+    display: flex
+    flex-wrap: wrap
+    align-items: center
+    justify-content: center
+    // @include media_query_all(100,150,null,null,null,240,"padding-left")
+    // @include media_query_all(100,150,null,null,null,240,"padding-right")
+    @include media_query_all(32,null,null,null,null,32,"padding-top")
+    @include media_query_all(32,null,null,null,null,32,"padding-bottom")
+    @include media_query_all(200,null,200,270,440,442,"column-gap")
+    @include media_query_all(10,10,20,unset,null,null,"row-gap")
+    .text_container
+        display: flex
+        flex-direction: column
+
+        // flex-wrap: wrap
+        span
+            color:$black-text
+            font-family: $font-hind
+            @include media_query_all(20,20,null,null,null,20,"font-size")
+            @include media_query_all('center',unset,null,null,null,null,"text-align")
+            font-style: normal
+            font-weight: 400
+            line-height: normal
+            &:first-child
+                color: $black-text
+                @include media_query_all(40,40,null,null,null,51,"font-size")
+                font-family: $font-montserrat
+                font-weight: 600
+                font-style: normal
+                line-height: normal
+
+.button-primary
+    display: flex
+    align-items: center
+    justify-content: center
+    background: $primary-color
+    color: #fff
+    border-radius: 5px
+    border: 1px solid $primary-color
+    cursor: pointer
+    padding: 17px 87px
+    @include media_query_all(12,null,null,null,null,16,"font-size")
+    @include media_query_all(12,null,null,null,null,17,"padding-top")
+    @include media_query_all(12,null,null,null,null,17,"padding-bottom")
+    @include media_query_all(50,null,null,null,null,87,"padding-left")
+    @include media_query_all(50,null,null,null,null,87,"padding-right")
+
+    text-align: center
+    font-family: $font-hind
+    height: unset
+    font-style: normal
+    font-weight: 500
+
+    text-transform: uppercase
+
+    transition: 0.3s
+    &:hover
+        background: #fff
+        color: $primary-color
+        border: 1px solid $primary-color

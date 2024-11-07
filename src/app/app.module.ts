@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
-
+import {
+  BrowserModule,
+  provideClientHydration,
+} from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './_shared/shared.module';
@@ -26,10 +29,9 @@ import { FooterMainComponent } from './layout/pages/footer-main/footer-main.comp
     SharedModule,
     ComponentsModule,
     NzGridModule,
+    FormsModule,
   ],
-  providers: [
-    provideClientHydration()
-  ],
-  bootstrap: [AppComponent]
+  providers: [provideClientHydration()],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

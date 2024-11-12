@@ -1,1 +1,97 @@
-login works
+<div class="login-main">
+    <img class="bg-im" src="./assets/images/sign-up.png" />
+    <div class="overlay2"></div>
+    <div class="body-main">
+      <div class="login-form">
+        <div class="icon">
+            <!-- <img src="./assets/images/remax.png"> -->
+             <span>Connect-X</span>
+        </div>
+        <div class="title">Login</div>
+        <div class="form-detail">
+            <form>
+                <div class="input-feild">
+                    
+                    
+                    <div nz-row>
+                        <div nz-col [nzSpan]="24" >
+                          <nz-form-item>
+                            <nz-form-control>
+                              <nz-input-group>
+                                <label class="form_name">Email Address*</label>
+                                <input
+                                placeholder="user@connect-x.com"
+                                  nz-input
+                                  type="email"
+                                  class="modal-input"
+                                />
+                              </nz-input-group>
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                      </div>
+                    <div nz-row>
+                      <div nz-col [nzSpan]="24" >
+                        <span class="form_name">Password*</span>
+                        <nz-form-item>
+                          <nz-form-control>
+                            <nz-input-group [nzSuffix]="suffixTemplate" class="modal-input">
+                              <input
+                                type="password"
+                                nz-input
+                                placeholder="********"
+                                formControlName="password"
+                              />
+                            </nz-input-group>
+                            <ng-template #suffixTemplate>
+                                <span nz-icon nzType="eye" nzTheme="fill"></span>
+                            </ng-template>
+                          </nz-form-control>
+                        </nz-form-item>
+                      </div>
+                    </div>
+                    
+                    <div nz-col [nzSpan]="24">
+                      <nz-form-control>
+                        <nz-form-item>
+                          <label nz-checkbox >
+                            <span class="remember-me">Remember me</span>
+                          </label>
+                        </nz-form-item>
+                      </nz-form-control>
+                    </div>
+                  </div>
+                  <div class="signUp-btn">
+                  <button type="submit" class="button sign">Log In</button>
+                </div>
+            </form>
+        </div>
+        <span class="remember1">Don’t Have an account?<a href=" " class="condition"> Sign Up</a></span>
+        <div class="pattern">
+            <div><hr></div>
+            <div class="ptext">Or</div>
+            <div><hr></div>
+        
+        </div>
+        <nz-input-group [nzSuffix]="suffixIcon1">
+            <input type="text" nz-input placeholder="Continue With Google" />
+          </nz-input-group>
+          <ng-template #suffixIcon1>
+            <span class="sicon" ><img src="./assets/icons/google.png"></span>
+          </ng-template>
+
+          <!-- <nz-input-group [nzSuffix]="suffixIcon3">
+            <input type="text" nz-input placeholder="Continue With Facebook" />
+          </nz-input-group>
+          <ng-template #suffixIcon3>
+            <span class="sicon"><img src="./assets/icons/facebook.png"></span>
+          </ng-template> -->
+          <a class="remember2">Forgot Password?</a>
+      </div> 
+      <!-- <div class="rights">
+        <app-copy-right></app-copy-right>
+      </div> -->
+    </div>
+  
+   
+</div>

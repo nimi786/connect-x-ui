@@ -1,0 +1,132 @@
+<div class="signup-main">
+    <img class="bg-img" src="./assets/images/sign-up.png" />
+    <div class="overlay"></div>
+    <div class="main-body">
+      <div class="signup-form">
+        <div class="icon">
+            <img src="./assets/images/remax.png">
+        </div>
+        <div class="title">Sign Up to your account</div>
+        <div class="form-detail">
+            <form>
+                <div class="input-feild">
+                    <div nz-row>
+                      <div nz-col nzLg="24"nzXs="24">
+                        <nz-form-item>
+                          <nz-form-control>
+                            <nz-input-group>
+                              <label class="form_name">Your Name*</label>
+                              <input
+                              placeholder="Enter your Name"
+                                nz-input
+                                type="text"
+                                class="modal-input"
+                              />
+                            </nz-input-group>
+                          </nz-form-control>
+                        </nz-form-item>
+                      </div>
+                    </div>
+                    <div nz-row>
+                        <div nz-col nzLg="24"nzXs="24" >
+                          <nz-form-item>
+                            <nz-form-control>
+                              <nz-input-group>
+                                <label class="form_name">Email Address*</label>
+                                <input
+                                placeholder="leaonardocc@gmail.com"
+                                  nz-input
+                                  type="email"
+                                  class="modal-input"
+                                />
+                              </nz-input-group>
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                      </div>
+                    <div nz-row>
+                      <div nz-col nzLg="24"nzXs="24">
+                        <span class="form_name">Password*</span>
+                        <nz-form-item>
+                          <nz-form-control>
+                            <nz-input-group [nzSuffix]="suffixTemplate" class="modal-input">
+                              <input
+                                type="password"
+                                nz-input
+                                formControlName="password"
+                              />
+                            </nz-input-group>
+                            <ng-template #suffixTemplate>
+                                <span nz-icon nzType="eye" nzTheme="fill"></span>
+                            </ng-template>
+                          </nz-form-control>
+                        </nz-form-item>
+                      </div>
+                    </div>
+                    <div nz-row>
+                        <div nz-col nzLg="24"nzXs="24" >
+                          <span class="form_name">Confirm Password*</span>
+                          <nz-form-item>
+                            <nz-form-control>
+                              <nz-input-group [nzSuffix]="suffixTemplate" class="modal-input">
+                                <input
+                                  type="password"
+                                  nz-input
+                                  formControlName="password"
+                                />
+                              </nz-input-group>
+                              <ng-template #suffixTemplate>
+                                <span nz-icon nzType="eye" nzTheme="fill"></span>
+                              </ng-template>
+                            </nz-form-control>
+                          </nz-form-item>
+                        </div>
+                      </div>
+                    <div nz-col nzLg="24"nzXs="24">
+                      <nz-form-control>
+                        <nz-form-item>
+                          <label nz-checkbox >
+                            <span class="understood">I have read and understood <a href=" " class="condition">Terms And Conditions</a></span>
+                          </label>
+                        </nz-form-item>
+                      </nz-form-control>
+                    </div>
+                  </div>
+                  <div class="signUp-btn">
+                  <button type="submit" class="button sign">Sign Up</button>
+                </div>
+            </form>
+        </div>
+        <div class="pattern">
+            <div><hr></div>
+            <div class="ptext">Or</div>
+            <div><hr></div>
+        
+        </div>
+        <nz-input-group [nzSuffix]="suffixIcon1">
+            <input type="text" nz-input placeholder="Continue With Google" />
+          </nz-input-group>
+          <ng-template #suffixIcon1>
+            <span class="sicon" ><img src="./assets/icons/google.png"></span>
+          </ng-template>
+          <nz-input-group [nzSuffix]="suffixIcon2">
+            <input type="text" nz-input placeholder="Continue With Apple" />
+          </nz-input-group>
+          <ng-template #suffixIcon2>
+            <span class="sicon"><img src="./assets/icons/apple.png"></span>
+          </ng-template>
+          <nz-input-group [nzSuffix]="suffixIcon3">
+            <input type="text" nz-input placeholder="Continue With Facebook" />
+          </nz-input-group>
+          <ng-template #suffixIcon3>
+            <span class="sicon"><img src="./assets/icons/facebook.png"></span>
+          </ng-template>
+          <span class="understood">Already Registered? <a href=" " class="condition"> Log In</a></span>
+      </div> 
+      <div class="rights">
+        <app-copy-right></app-copy-right>
+      </div>
+    </div>
+  
+   
+</div>

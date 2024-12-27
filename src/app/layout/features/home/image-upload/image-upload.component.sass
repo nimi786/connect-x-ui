@@ -7,6 +7,10 @@
     position: relative
     border-radius: 0px 0px 8px 8px
     background: #FFF
+    @include media_query_all('16px',null,null,null,null,26,"padding-top")
+    @include media_query_all('16px',null,null,null,null,26,"padding-bottom")
+    @include media_query_all('16px',null,null,null,null,26,"padding-right")
+    @include media_query_all('16px',null,null,null,null,26,"padding-left")
 
     @include media_query_all('column-reverse',null,'row',null,null,'row',"flex-direction")
     .close-icon
@@ -25,7 +29,7 @@
         flex-direction: column
         align-items: center
         border-radius: var(--space-4, 16px)
-        border: 2px dashed #5F9EA0
+        border: 2px dashed $primary-color
         background: #FFF
         box-shadow: 0px 0px 100px 12px rgba(0, 0, 0, 0.04)
         .upload-section
@@ -52,7 +56,7 @@
                 align-items: center
                 gap: 8px
                 span
-                    color: #444849
+                    color: $primary-color
                     text-align: center
                     font-family: Coolvetica
                     @include media_query_all_im(20,null,null,null,null,20,"font-size")
@@ -64,18 +68,18 @@
     width: 100%
 .btn
     border-radius: 8px
-    background: #5F9EA0
+    background: $primary-color
     display: flex
     justify-content: center
     align-items: center
-    color: white
+    color: #FFF
     text-align: center
     @include media_query_all('20px',null,null,null,null,20,"font-size")
     @include media_query_all(30,null,null,null,null,48,"height")
     font-weight: 600
     width: 100%
     @include media_query_all(10,null,null,null,null,10,"gap")
-    border: 1px solid #5F9EA0
+    border: 1px solid $primary-color
     cursor: pointer
     @include media_query_all(15,null,null,null,null,15,"margin-bottom")
     @include media_query_all(20,null,null,null,null,16,"padding-top")
@@ -97,7 +101,7 @@
 ::ng-deep.progress-bar
     width: 100%
     .ant-progress-bg
-        background-color: #5F9EA0
+        background-color: $primary-color
 .single-progress
     display: flex
     justify-content: space-between
@@ -112,7 +116,7 @@
     .img-name
         // word-break: break-all
         span
-            color: #444646
+            color: #000
             font-weight: 500
             @include media_query_all_im('16px',null,null,null,null,16,"font-size")
 .progress-function
@@ -168,7 +172,7 @@
     @include media_query_all_im(10,null,null,null,null,24,"padding-bottom")
 .btn_photo
     background: #ffff
-    color: #6CB3B5
+    color: $primary-color
 .upload_image
     @include media_query_all('38px',null,null,null,null,38,"height")
     @include media_query_all('44px',null,null,null,null,44,"width")

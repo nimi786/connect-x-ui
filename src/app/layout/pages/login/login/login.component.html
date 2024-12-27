@@ -78,12 +78,11 @@
         <div class="ptext">Or</div>
         <div><hr /></div>
       </div>
-      <nz-input-group [nzSuffix]="suffixIcon1">
-        <button (click)="loginWithGoogle()">Continue With Google</button>
-      </nz-input-group>
-      <ng-template #suffixIcon1>
-        <span class="sicon"><img src="./assets/icons/google.png" /></span>
-      </ng-template>
+
+      <button nz-button (click)="loginWithGoogle()">
+        <span> Continue With google </span>
+        <img src="./assets/icons/google.png" />
+      </button>
 
       <!-- <nz-input-group [nzSuffix]="suffixIcon3">
             <input type="text" nz-input placeholder="Continue With Facebook" />

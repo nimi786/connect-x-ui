@@ -2,11 +2,17 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MyValidators } from '../../../../_validators/custom-validator';
-import { AuthenticationService } from '../../../../services/auth/authentication.service';
 
-import { AngularFireAuth } from '@angular/fire/compat/auth'; // Use AngularFireAuth from compat module
-import firebase from 'firebase/compat/app'; // Import Firebase app for compatibility
-import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
+import {
+  Auth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  signOut,
+  authState,
+  UserCredential,
+} from '@angular/fire/auth';
+import { Observable } from 'rxjs';
+import { AuthenticationService } from '../../../../services/auth/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -14,12 +20,15 @@ import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
   styleUrl: './login.component.sass',
 })
 export class LoginComponent {
+  user$!: Observable<any | null>;
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    public auth: AngularFireAuth,
-    private authService: AuthenticationService
-  ) {}
+    private auth: Auth
+  ) {
+    this.user$ = authState(this.auth);
+  }
   loginForm!: FormGroup;
 
   autoTips: Record<string, Record<string, string>> = {
@@ -29,6 +38,9 @@ export class LoginComponent {
 
   ngOnInit() {
     this.inInItForm();
+    this.user$.subscribe((res) => {
+      console.log('res', res);
+    });
   }
 
   inInItForm() {
@@ -86,27 +98,21 @@ export class LoginComponent {
     }
   }
 
-  // async loginWithGoogle() {
-  //   // this.authService
-  //   //   .signInWithGoogle()
-  //   //   .then((res: any) => {
-  //   //     this.router.navigateByUrl('/');
-  //   //   })
-  //   //   .catch((error: any) => {
-  //   //     console.log(error);
-  //   //   });
+  loginWithGoogle() {
+    // this.authService
+    //   .signInWithGoogle()
+    //   .then((res: any) => {
+    //     this.router.navigateByUrl('/');
+    //   })
+    //   .catch((error: any) => {
+    //     console.log(error);
+    //   });
 
-  //   this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  // }
-
-  async loginWithGoogle() {
-    const authInstance = getAuth(); // Get the Auth instance
-    const provider = new GoogleAuthProvider(); // Create the provider instance
-    try {
-      const result = await signInWithPopup(authInstance, provider); // Use modular SDK
-      console.log('Login successful:', result.user);
-    } catch (error) {
-      console.error('Login error:', error);
-    }
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(this.auth, provider)
+      .then((res: UserCredential) => {
+        this.router.navigateByUrl('/');
+      })
+      .catch((error) => console.error('Sign-in error:', error));
   }
 }

@@ -15,8 +15,9 @@ import { FooterComponent } from './layout/pages/footer/footer.component';
 import { FooterMainComponent } from './layout/pages/footer-main/footer-main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environment/environment';
-import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
+import { provideAuth, getAuth } from '@angular/fire/auth';
+import { LoginComponent } from './layout/pages/login/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     HeaderComponent,
     FooterComponent,
     FooterMainComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,10 +37,11 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     NzGridModule,
     FormsModule,
     BrowserAnimationsModule,
-    AngularFireModule.initializeApp(environment.firebase), // Initialize Firebase
-    AngularFireAuthModule,
   ],
-  providers: [provideClientHydration()],
+  providers: [
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

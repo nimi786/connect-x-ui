@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './layout/pages/main/main.component';
 import { ScrollService } from './services/common/scroll-service.service';
+import { LoginComponent } from './layout/pages/login/login/login.component';
 
 const routes: Routes = [
   {
@@ -31,10 +32,7 @@ const routes: Routes = [
       },
       {
         path: 'login',
-        loadChildren: () =>
-          import('./layout/pages/login/login.module').then(
-            (m) => m.LoginModule
-          ),
+        component: LoginComponent,
       },
     ],
   },

@@ -8,6 +8,7 @@ import { HammerModule } from '@angular/platform-browser';
 import { ItemCardComponent } from './item-card/item-card.component';
 import { ReadyToWorkComponent } from './ready-to-work/ready-to-work.component';
 import { PostYourAddComponent } from './post-your-add/post-your-add.component';
+import { ViewDetailsCardComponent } from './view-details-card/view-details-card.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { PostYourAddComponent } from './post-your-add/post-your-add.component';
     ItemCardComponent,
     SkeletonLoaderComponent,
     PostYourAddComponent,
+    ViewDetailsCardComponent,
   ],
   imports: [
     CommonModule,

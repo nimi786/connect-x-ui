@@ -13,6 +13,10 @@ import { MainComponent } from './layout/pages/main/main.component';
 import { HeaderComponent } from './layout/pages/header/header.component';
 import { FooterComponent } from './layout/pages/footer/footer.component';
 import { FooterMainComponent } from './layout/pages/footer-main/footer-main.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { environment } from '../environment/environment';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
 @NgModule({
   declarations: [
@@ -30,6 +34,9 @@ import { FooterMainComponent } from './layout/pages/footer-main/footer-main.comp
     ComponentsModule,
     NzGridModule,
     FormsModule,
+    BrowserAnimationsModule,
+    AngularFireModule.initializeApp(environment.firebase), // Initialize Firebase
+    AngularFireAuthModule,
   ],
   providers: [provideClientHydration()],
   bootstrap: [AppComponent],

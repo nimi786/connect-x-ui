@@ -42,6 +42,7 @@ import { NzRateModule } from 'ng-zorro-antd/rate';
 import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzFlexModule } from 'ng-zorro-antd/flex';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
@@ -91,6 +92,7 @@ import { NzFlexModule } from 'ng-zorro-antd/flex';
     NzTagModule,
     NzCarouselModule,
     NzFlexModule,
+    HttpClientModule,
   ],
   providers: [],
 })

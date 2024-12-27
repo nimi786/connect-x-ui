@@ -129,15 +129,6 @@ body
 .gm-style .gm-style-iw-d::-webkit-scrollbar-track, .gm-style .gm-style-iw-d::-webkit-scrollbar-track-piece
     background: var(--Primary-Color, #043268) !important
 
-.floor-plan-modal
-    @include media_query_all_im(1195,null,null,null,null,1195,"width")
-    padding: 0 !important
-    .ant-modal-body
-        @include media_query_all(50,null,null,null,null,50,"padding-top")
-        @include media_query_all(50,null,null,null,null,50,"padding-bottom")
-        @include media_query_all(10,null,null,null,null,10,"padding-left")
-        @include media_query_all(10,null,null,null,null,10,"padding-right")
-        background: #F2F1FA !important
 .share-modal
     @include media_query_all_im(305,null,null,null,null,305,"width")
     padding: 0 !important
@@ -146,43 +137,112 @@ body
         background: #CCE3FF !important
         border-radius: 4px
 
-.property-carousel
-    @include media_query_all(16,null,null,null,null,185,"Padding-left")
-    @include media_query_all(16,null,null,null,null,185,"Padding-right")
-    @include media_query_all(65,null,null,null,null,65,"margin-bottom")
-    position: relative
-    .owl-carousel
-        position: unset
-        .owl-item
-            @include media_query_all(16,null,null,null,null,25,"Padding-left")
-            @include media_query_all(16,null,null,null,null,25,"Padding-right")
-        .owl-nav
-            background: unset
-            i
-                color: $black-text
-                @include media_query_all(20,null,null,null,null,36,"font-size")
-            .owl-prev
-                display: flex
-                align-items: center
-                position: absolute
-                left: 0
-                top: 0
-                margin: auto 0
-                bottom: 0
-                height: max-content
-                background: unset
-            .owl-next
-                display: flex
-                align-items: center
-                position: absolute
-                right: 0
-                top: 0
-                margin: auto 0
-                bottom: 0
-                height: max-content
-                background: unset
-    .property-card-main
-        box-shadow: unset !important
-    .property
-        @include media_query_all_im(305,null,null,null,null,469,"width")
-        // @include media_query_all_im(305,null,null,null,null,471,"height")
+.common-modal-heading
+    position: absolute
+    width: 100%
+    @include media_query_all('64px',null,null,null,null,64,"height")
+    background: #CFE2E3
+    top: 0
+    left: 0
+    right: 0
+    z-index: 1
+    padding: 0px 25px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    @include media_query_all(16,null,null,null,null,16,"border-top-left-radius")
+    @include media_query_all(16,null,null,null,null,16,"border-top-right-radius")
+    .head
+        span
+            color: #444646
+            @include media_query_all('18px',null,null,null,null,20,"font-size")
+            font-weight: 600
+
+.view-card-modal
+    @include media_query_all_im(null,null,null,null,null,1000,"width")
+    .ant-modal-body
+        @include media_query_all("67dvh",null,null,null,null,"64dvh","height")
+        background: #F0F6F7
+        @include media_query_all(0,null,null,null,null,24,"padding-left")
+        @include media_query_all(0,null,null,null,null,24,"padding-right")
+        @include media_query_all(0,null,null,0,null,24,"padding-top")
+        @include media_query_all(0,null,null,0,null,24,"padding-bottom")
+        @include media_query_all_im('16px',null,null,null,null,16,"border-bottom-left-radius")
+        @include media_query_all_im('16px',null,null,null,null,16,"border-bottom-right-radius")
+        &::-webkit-scrollbar
+            @include media_query_all_im('1px',null,null,null,null,9,"width")
+        &::-webkit-scrollbar-thumb
+            background: #989898
+            border-radius: 5px
+
+    .ant-modal-header
+        background: #131212
+        @include media_query_all_im('64px',null,null,null,null,64,"height")
+        display: flex
+        align-items: center
+        @include media_query_all_im('16px',null,null,null,null,16,"border-top-left-radius")
+        @include media_query_all_im('16px',null,null,null,null,16,"border-top-right-radius")
+    .ant-modal-title
+        @include media_query_all_im('18px',null,null,null,null,24,"font-size")
+        color: #FFF
+        font-weight: 600
+
+    .ant-modal-content
+        @include media_query_all_im('16px',null,null,null,null,16,"border-top-left-radius")
+        @include media_query_all_im('16px',null,null,null,null,16,"border-top-right-radius")
+        @include media_query_all_im('16px',null,null,null,null,16,"border-bottom-left-radius")
+        @include media_query_all_im('16px',null,null,null,null,16,"border-bottom-right-radius")
+
+    .anticon
+        color: #FFF
+
+.supporting-img-model
+    @include media_query_all_im(805,null,null,null,null,900,"width")
+    .ant-modal-content
+        @include media_query_all_im(null,null,null,null,null,80,"margin-top")
+        @include media_query_all_im(0,null,null,null,null,16,"border-top-left-radius")
+        @include media_query_all_im(0,null,null,null,null,16,"border-top-right-radius")
+        @include media_query_all_im(0,null,null,null,null,16,"border-bottom-left-radius")
+        @include media_query_all_im(0,null,null,null,null,16,"border-bottom-right-radius")
+    .ant-modal-body
+        background: #FFF
+        @include media_query_all(16,null,null,null,null,16,"border-radius")
+        // @include media_query_all_im(0,null,null,null,null,16,"border-bottom-left-radius")
+        // @include media_query_all_im(0,null,null,null,null,16,"border-bottom-right-radius")
+
+    .ant-modal-title
+        @include media_query_all_im('18px','18px','18px',null,null,20,"font-size")
+        color: #444646
+        font-weight: 600
+    .ant-modal-header
+        background: #CFE2E3
+        @include media_query_all_im(null,null,null,null,null,64,"height")
+        @include media_query_all_im(0,null,null,null,null,16,"border-top-left-radius")
+        @include media_query_all_im(0,null,null,null,null,16,"border-top-right-radius")
+        display: flex
+        align-items: center
+    .anticon
+        color: #000000
+
+@media screen and ( max-width:768px  )
+
+    .supporting-img-model
+        margin: 0
+        max-width: 100vw !important
+        height: 100vh
+        position: relative
+        padding: 0
+        top: 0
+        .ant-modal-content
+            border-bottom-left-radius: 0
+            border-bottom-right-radius: 0
+            position: absolute
+            transform: translateY(100%)
+            right: 0
+            left: 0
+            bottom: 0
+            margin: 0
+            animation: bottomToUp 0.3s ease-out forwards
+        .ant-modal-body
+            padding: 24px 24px 12px 24px
+            @include media_query_all_im(28,null,'24px',null,null,'24px',"padding-top")

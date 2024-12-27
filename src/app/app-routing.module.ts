@@ -16,6 +16,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: 'post-ad',
+        loadChildren: () =>
+          import('./layout/pages/post-ad/post-ad.module').then(
+            (m) => m.PostAdModule
+          ),
+      },
+      {
         path: 'sign-up',
         loadChildren: () =>
           import('./layout/pages/sign-up/sign-up.module').then(

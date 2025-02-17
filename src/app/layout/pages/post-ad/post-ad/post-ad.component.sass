@@ -54,6 +54,16 @@
     display: flex
     flex-direction: column
     gap: 8px
+    @include media_query_all(17,null,null,null,null,21,"padding-right")
+    //@include media_query_all(16,null,null,null,null,20,"padding-left")
+    @include media_query_all(25,null,null,null,null,18,"padding-top")
+
+:host ::ng-deep.radiogrp
+    .ant-radio-group
+        @include media_query_all(null,null,null,'7px',null,'7px',"margin-left")
+        @include media_query_all_im(flex,flex,block,block,block,block,'display')
+        flex-direction: row
+
 :host ::ng-deep .ant-picker
     margin-right: 6px
 :host::ng-deep.ant-form-item-label > label::after

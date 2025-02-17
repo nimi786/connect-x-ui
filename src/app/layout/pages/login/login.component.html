@@ -9,7 +9,7 @@
       </div>
       <div class="title">Login</div>
       <div class="form-detail">
-        <form [formGroup]="loginForm">
+        <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
           <div class="input-feild">
             <div nz-row>
               <div nz-col [nzSpan]="24">
@@ -39,14 +39,21 @@
                       class="modal-input"
                     >
                       <input
-                        type="password"
+                        [type]="passwordVisible ? 'text' : 'password'"
                         nz-input
-                        placeholder="********"
+                        placeholder="Password"
+                        autocomplete="new-password"
                         formControlName="password"
                       />
                     </nz-input-group>
                     <ng-template #suffixTemplate>
-                      <span nz-icon nzType="eye" nzTheme="fill"></span>
+                      <span
+                        class="cursor-pointer"
+                        nz-icon
+                        nzTheme="outline"
+                        [nzType]="passwordVisible ? 'eye' : 'eye-invisible'"
+                        (click)="passwordVisible = !passwordVisible"
+                      ></span>
                     </ng-template>
                   </nz-form-control>
                 </nz-form-item>
@@ -64,7 +71,12 @@
             </div>
           </div>
           <div class="signUp-btn">
-            <button (click)="submit()" type="submit" class="button sign">
+            <button
+              type="submit"
+              nz-button
+              [nzLoading]="isButtonLoading"
+              class="button sign"
+            >
               Log In
             </button>
           </div>

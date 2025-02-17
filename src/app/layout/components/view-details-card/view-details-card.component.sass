@@ -1,0 +1,355 @@
+@import '../../../../assets/sass/index'
+.supplier-main
+    display: flex
+    flex-direction: column
+    @include media_query_all(16,null,null,null,null,24,"padding-top")
+    @include media_query_all(16,null,null,null,null,16,"padding-bottom")
+    @include media_query_all(16,null,null,null,null,25,"padding-left")
+    @include media_query_all(16,null,null,null,null,25,"padding-right")
+
+    @include media_query_all_im(10,null,null,null,null,10,"gap")
+    @include media_query_all_im(null,null,null,null,null,700,"height")
+    border-bottom-right-radius: 16px
+    border-bottom-left-radius: 16px
+    background: #fff
+    overflow-y: auto
+    &::-webkit-scrollbar
+        width: 9px
+    &::-webkit-scrollbar-thumb
+        background: #989898
+        border-radius: 5px
+    .category-details
+        display: flex
+        justify-content: space-between
+        .category-inner
+            @include media_query_all(16,null,null,null,null,16,"padding-top")
+            @include media_query_all(16,null,null,null,null,16,"padding-bottom")
+            @include media_query_all(16,null,null,null,null,32,"padding-left")
+            @include media_query_all(16,null,null,null,null,32,"padding-right")
+    .row
+        display: flex
+        gap: 8px
+.mobile-only
+    @include media_query_all(block,block,none,none,none,none,'display')
+    :host ::ng-deep
+        .ant-form-item
+
+            margin: 0px
+
+.header
+    display: flex
+    padding: var(--space-1, 4px) 10px
+    align-items: center
+    border-radius: 8px 8px 0px 0px
+    background: #DFECED
+    @include media_query_all_im(40,null,null,null,null,44,"height")
+
+    // span
+    //     color: #444646
+    //     @include media_query_all_im(20,null,null,null,null,14,"font-size")
+    //     font-weight: 400
+.checklist
+    display: flex
+    flex-direction: column
+    gap: 8px
+:host ::ng-deep .ant-picker
+    margin-right: 6px
+:host::ng-deep.ant-form-item-label > label::after
+    content: none !important
+:host::ng-deep.ant-form-item-label
+    font-weight: 500
+    @include media_query_all_im(14,null,null,null,null,14,"font-size")
+
+.title
+
+.box
+    display: flex
+    @include media_query_all(20,null,null,null,null,18,"padding")
+    padding-bottom: 0 !important
+    flex-direction: column
+    border-radius: 8px
+    border: 1px dashed #131212
+    .tille
+        border-bottom: 1px solid rgba(74, 84, 93, 0.25)
+        display: flex
+        justify-content: space-between
+        // @include media_query_all_im(20,null,null,null,null,16,"font-size")
+        font-weight: 600
+
+.btns
+    @include media_query_all(block,block,flex,flex,flex,flex,'display')
+    gap: 6px
+    @include media_query_all(10,null,null,null,null,0,"padding-right")
+    @include media_query_all(8,null,null,null,null,0,"padding-left")
+    @include media_query_all(10,null,null,null,null,16,"margin-bottom")
+    @include media_query_all(10,null,null,null,null,15,"margin-top")
+
+    .previous
+        border-radius: 8px
+        background: white
+        display: flex
+        @include media_query_all(10,null,null,null,null,16,"padding-top")
+        @include media_query_all(10,null,null,null,null,16,"padding-bottom")
+        @include media_query_all(10,null,null,null,null,16,"padding-right")
+        @include media_query_all(8,null,null,null,null,8,"padding-left")
+        @include media_query_all(10,null,null,null,null,0,"margin-bottom")
+        width: 100%
+        @include media_query_all(48,null,null,null,null,48,"height")
+        border: 1px solid #131212
+        justify-content: center
+        align-items: center
+        gap: var(--space-1, 4px)
+        color: #131212
+        text-align: center
+        @include media_query_all(20,null,null,null,null,16,"font-size")
+        cursor: pointer
+        font-weight: 600
+
+    .next
+        border-radius: 8px
+        background: #131212
+        display: flex
+        @include media_query_all(10,null,null,null,null,16,"padding-top")
+        @include media_query_all(10,null,null,null,null,16,"padding-bottom")
+        @include media_query_all(10,null,null,null,null,16,"padding-right")
+        @include media_query_all(8,null,null,null,null,8,"padding-left")
+        width: 100%
+        cursor: pointer
+        @include media_query_all(48,null,null,null,null,48,"height")
+        border: 1px solid #131212
+        justify-content: center
+        align-items: center
+        gap: var(--space-1, 4px)
+        color: #FFF
+        text-align: center
+        @include media_query_all(20,null,null,null,null,16,"font-size")
+        font-weight: 600
+.editbtn
+    display: flex
+    justify-content: end
+    align-items: center
+    gap: 12.5px
+.parts
+    display: flex
+    align-items: center
+    justify-content: center
+.uploadimg
+    border-radius: 8px
+    align-items: center
+    display: flex
+    .imggrp
+        display: flex
+        flex-direction: column
+        justify-content: center
+        align-items: center
+        margin-top: 10px
+        @include media_query_all(152,null,null,null,null,152,"height")
+        @include media_query_all(493,null,null,null,null,154,"width")
+        border: 1px dashed #131212
+        border-width: 1px
+        border-radius: 8px
+        img
+            @include media_query_all(47,null,null,null,null,47,"height")
+            @include media_query_all(48,null,null,null,null,48,"width")
+            .drag
+                display: flex
+                justify-content: center
+                align-items: center
+                span
+                    color: #444849
+                    text-align: center
+                    font-family: Coolvetica
+                    @include media_query_all(16,null,null,null,null,20,"font-size")
+                    font-weight: 400
+    .btn
+        @include media_query_all(26,null,null,null,null,25,"padding-left")
+        @include media_query_all(26,null,null,null,null,24,"padding-right")
+        @include media_query_all(10,null,null,null,null,8,"padding-top")
+        @include media_query_all(10,null,null,null,null,8,"padding-bottom")
+        border: 1px solid #5F9EA0
+        border-radius: var(--space-1, 4px)
+.btn_row
+    @include media_query_all(16,null,null,null,null,16,"padding-left")
+    @include media_query_all(16,null,null,null,null,16,"padding-right")
+    padding-top: 4px
+    .add_new
+        border-radius: 8px
+        background: white
+        display: flex
+        border: 1px solid #5F9EA0
+        justify-content: center
+        align-items: center
+        gap: var(--space-1, 4px)
+        color: #5F9EA0
+        text-align: center
+        @include media_query_all(16,null,null,null,null,16,"font-size")
+        font-weight: 600
+        width: 100%
+::ng-deep.add_new_modal
+    .ant-modal-body
+        background: #F0F6F7
+        padding: 0 !important
+    .ant-form-item
+        margin-bottom: 0px !important
+    .ant-modal-footer
+        display: none
+    .btns
+        padding-left: 0 !important
+        padding-right: 0 !important
+::ng-deep.ant-modal-body
+    padding: 0 !important
+::ng-deep.modal_input
+    background: #ffff
+    padding: 4px 0
+    @include media_query_all_im(16,null,null,null,null,16,"padding-left")
+    @include media_query_all_im(16,null,null,null,null,16,"padding-right")
+    // .ant-form-item
+    //     margin-bottom: 0 !important
+    //     @include media_query_all(16,null,null,null,null,14,"font-size")
+    //     font-weight: 400
+        .ant-form-item-label > label
+            &::after
+                content: none
+
+.btn-devider
+    margin: 4px 0
+.add-new-category
+    width: 100% !important
+    @include media_query_all_im(48,null,null,null,null,48,"height")
+::ng-deep.test
+    .cdk-virtual-scrollable
+        overflow: visible
+    .ant-select-item-option
+        border-bottom: 1px solid
+::ng-deep.ant-select-item-empty
+    display: none !important
+
+.btn-layout
+    width: auto
+    height: auto
+    background: #FFF
+    @include media_query_all(0,null,null,null,null,8,"padding-top")
+    // @include media_query_all(16,null,null,null,null,16,"padding-right")
+    // @include media_query_all(8,null,null,null,null,8,"padding-bottom")
+    // @include media_query_all(16,null,null,null,null,16,"padding-left")
+    display: flex
+    flex-direction: column
+    @include media_query_all(8,null,null,null,null,8,"gap")
+    .add-category-btn
+        border-radius: 8px
+        border: 1px solid #5F9EA0
+        width: auto
+        @include media_query_all(36,null,null,null,null,36,"height")
+        background: #FFF
+        @include media_query_all(16,null,null,null,null,14,"font-size")
+        font-weight: 600
+        color: #5F9EA0
+        cursor: pointer
+
+::ng-deep .category-dropdown-select
+    .ant-select-dropdown
+        padding-top: 0 !important
+        @include media_query_all(16,null,null,null,null,12,"padding-right")
+        @include media_query_all(8,null,null,null,null,8,"padding-bottom")
+        @include media_query_all(16,null,null,null,null,12,"padding-left")
+    .ant-select-item
+        @include media_query_all(16,null,null,null,null,12,"font-size")
+        font-weight: 400
+        color: #070B0B
+        &:first-child
+            @include media_query_all(0,null,null,null,null,0,"padding-top")
+            @include media_query_all(16,null,null,null,null,12,"padding-right")
+            @include media_query_all(8,null,null,null,null,0,"padding-bottom")
+            @include media_query_all(16,null,null,null,null,12,"padding-left")
+
+    .cdk-virtual-scrollable
+        overflow: visible
+        contain: none
+    .ant-select-item
+        border-bottom: 1px solid #CFE2E3 !important
+
+::ng-deep .category-dropdown-select .ant-select-item-option-active:not(.ant-select-item-option-disabled)
+    background-color: unset
+
+::ng-deep.supplier-modal
+    .ant-modal-body
+        @include media_query_all_im(700,null,null,null,null,719,"max-height")
+        // overflow-y: scroll
+        // scrollbar-width: thin
+        background: #F3F3F3
+        padding-bottom: 0
+:host ::ng-deep.ant-select-arrow .anticon:not(.ant-select-suffix)
+    color: #000
+
+textarea
+    // background: #EBF3F4
+    padding-left: 8px
+    @include media_query_all(8,null,null,0,null,0,"margin-top")
+    @include media_query_all('280px',null,null,'100%',null,'100%',"width")
+    // &::placeholder
+    //     color: #000
+.editable-div
+    border: 1px solid #ccc
+    padding: 10px
+    border-radius: 4px
+    @include media_query_all(100,null,null,null,null,100,"min-height")
+    overflow-y: auto
+    resize: both
+    width: 100%
+.filter
+    display: flex
+    justify-content: end
+.tab-sub-title
+    // @include media_query_all_im(20,null,null,null,null,16,"font-size")
+    // font-weight: 600
+    color: #444646
+    @include media_query_all_im(10,null,null,null,null,10,"padding-bottom")
+.sub-content
+    @include media_query_all_im(10,null,null,null,null,15,"padding-top")
+:host::ng-deep.ant-row .modal_input
+    padding-top: 10px !important
+::ng-deep.Tab-view-mobile
+    height: 100vh
+    display: flex
+
+    padding: var(--space-4, 16px) 10px
+    flex-direction: column
+    // justify-content: center
+    border-radius: var(--space-4, 16px)
+    .ant-modal-body
+        padding: 20px !important
+
+    .ant-modal-content
+        // position: absolute
+        // @include media_query_all(375,null,null,null,null,559,"width")
+        // bottom: 0px
+        // transform: translateY(100%)
+        // animation: bottomToUp 0.3s ease-out forwards
+    .ant-modal-footer
+        display: none
+    // .ant-modal-content
+    //     border-bottom-right-radius: 0
+    //     border-bottom-left-radius: 0
+    // .ant-modal-close-x
+    //     display: none
+    .tabs
+        display: flex
+        padding: var(--space-4, 16px) 24px
+        justify-content: space-between
+        align-items: center
+        border-bottom: 1px solid #5F9EA0
+:host ::ng-deep.ant-form-item
+    margin-bottom: 15px !important
+
+.box
+    @include media_query_all_im(10,null,null,null,null,12,"padding-bottom")
+:host::ng-deep.ant-form-item
+    // @include media_query_all_im(15,15,15,null,null,15,"margin-top")
+    @include media_query_all_im(5,15,15,null,null,20,"margin-bottom")
+    margin-left: 0 !important
+::ng-deep.ant-tabs-top .ant-tabs-nav
+    &::before
+        bottom: unset !important
+
+-webkit-scrollbar
+        display: none

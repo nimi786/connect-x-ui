@@ -1,30 +1,29 @@
 
-@import '../../../../../assets/sass/index'
+@import '../../../../assets/sass/index'
 
-.signup-main
-    @include media_query_all(1200,null,null,null,null,1800,'height')
+.login-main
+    @include media_query_all(1200,null,null,null,null,1000,'height')
     display: flex
     justify-content: center
     position: relative
-    @include media_query_all(20,40,null,null,null,100,'padding-top')
+    @include media_query_all(20,null,100,null,null,100,'padding-top')
     // @include media_query_all(16,null,null,null,null,427,'padding-bottom')
     @include media_query_all(10,null,null,null,null,696,'padding-left')
     @include media_query_all(10,null,null,null,null,693,'padding-right')
     background: #FFD700
-
-.main-body
+.body-main
     display: flex
     flex-direction: column
     align-items: center
     @include media_query_all(22,null,null,null,null,62,'gap')
-    // @include media_query_all(unset,null,null,null,null, absolute,'position')
+    position: absolute
     background: transparent
-    // @include media_query_all(null,null,null,null,null, '5%','top')
-    // @include media_query_all(null,null,null,null,null, ' 50%','left')
+    // top: 45%
+    // left: 50%
     // transform: translate(-50%, -50%)
     z-index: 3
 
-.bg-img
+.bg-im
     width: 100%
     height: 100%
     position: absolute
@@ -32,7 +31,7 @@
     left: 0
     z-index: 1
 
-.overlay
+.overlay2
     width: 100%
     height: 100%
     opacity: 0.97
@@ -42,9 +41,9 @@
     top: 0
     left: 0
     z-index: 2
-.signup-form
+.login-form
     display: flex
-    @include media_query_all(20,null,null,null,null,80,'padding-top')
+    @include media_query_all(30,null,null,null,null,80,'padding-top')
     @include media_query_all(30,null,null,null,null,80,'padding-bottom')
     @include media_query_all(40,null,null,null,null,68,'padding-left')
     @include media_query_all(40,null,null,null,null,68,'padding-right')
@@ -86,30 +85,64 @@
         @include media_query_all(12,null,null,null,null,12,'padding-left')
         @include media_query_all(12,null,null,null,null,12,'padding-right')
         @include media_query_all(410,null,null,null,null,410,'width')
+        @include media_query_all(48,null,null,null,null,48,'height')
 
-.understood
-    color: #000000
+.remember-me
+    color: $primary-color
+    font-family: $font-inter
+    @include media_query_all(12,null,null,null,null,12,'font-size')
+    font-weight: 600
+
+.remember1
+    color: $primary-color
     font-family: $font-inter
     @include media_query_all(12,null,null,null,null,12,'font-size')
     font-weight: 600
     .condition
-        color: $primary-color
+        color: #3F88C5
         font-family: $font-inter
         @include media_query_all(12,null,null,null,null,12,'font-size')
         font-weight: 500
+.remember2
+    color: $primary-color
+    font-family: $font-inter
+    @include media_query_all(12,null,null,null,null,12,'font-size')
+    font-weight: 600
 .pattern
     display: flex
     justify-content: center
     align-items: center
     @include media_query_all(24,null,null,null,null,24,'gap')
+    hr
+        @include media_query_all(140,null,null,null,null,140,'width')
+        @include media_query_all(2,null,null,null,null,2,'height')
+        color: $primary-color
 
     .ptext
         color: $primary-color
-        @include media_query_all(14,null,null,null,null,14,'font-size')
-hr
-    @include media_query_all(140,null,null,null,null,140,'width')
-    @include media_query_all(1,null,null,null,null,1,'height')
-    background-color: $primary-color
+
+.btn
+    border-radius: 8px
+    // background: #5F9EA0
+    background: var(--Primary-3, #6CB3B5)
+    display: flex
+    justify-content: center
+    align-items: center
+    color: white
+    text-align: center
+    @include media_query_all(12,null,null,null,null,16,"font-size")
+    font-weight: 600
+    @include media_query_all(10,null,null,null,null,24,"padding-left")
+    @include media_query_all(10,null,null,null,null,24,"padding-right")
+    @include media_query_all(10,null,null,null,null,10,"padding-top")
+    @include media_query_all(10,null,null,null,null,10,"padding-bottom")
+    @include media_query_all(10,null,null,null,null,10,"gap")
+    // @include media_query_all('none',null,null,null,null,block,"display")
+    border: 1px solid #5F9EA0
+    cursor: pointer
+    @include media_query_all(8,null,null,null,null,15,"margin-bottom")
+    height: 35px
+    @include media_query_all('35px','35px','51px',null,null,'51px',"height")
 
 :host::ng-deep.ant-input-group .ant-input
     border-radius: 5px
@@ -126,6 +159,6 @@ hr
     border: $primary-color
 :host::ng-deep.ant-checkbox-checked .ant-checkbox-inner
     background: none
-:host::ng-deep.ant-checkbox-wrapper.ant-checkbox-wrapper-in-form-item input
-    height: 8px
-    width: 8px
+:host::ng-deep.ant-checkbox-wrapper
+    span
+        font-weight: 600

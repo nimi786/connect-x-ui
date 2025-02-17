@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './layout/pages/main/main.component';
 import { ScrollService } from './services/common/scroll-service.service';
-import { LoginComponent } from './layout/pages/login/login/login.component';
+import { SignUpComponent } from './layout/pages/sign-up/sign-up.component';
+import { LoginComponent } from './layout/pages/login/login.component';
 
 const routes: Routes = [
   {
@@ -24,11 +25,8 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'sign-up',
-        loadChildren: () =>
-          import('./layout/pages/sign-up/sign-up.module').then(
-            (m) => m.SignUpModule
-          ),
+        path: 'signup',
+        component: SignUpComponent,
       },
       {
         path: 'login',

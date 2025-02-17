@@ -17,7 +17,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environment/environment';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
 import { provideAuth, getAuth } from '@angular/fire/auth';
-import { LoginComponent } from './layout/pages/login/login/login.component';
+
+import { FIREBASE_OPTIONS } from '@angular/fire/compat';
+import { LoginComponent } from './layout/pages/login/login.component';
+import { SignUpComponent } from './layout/pages/sign-up/sign-up.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,7 @@ import { LoginComponent } from './layout/pages/login/login/login.component';
     FooterComponent,
     FooterMainComponent,
     LoginComponent,
+    SignUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +45,7 @@ import { LoginComponent } from './layout/pages/login/login/login.component';
   providers: [
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
+    { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
   ],
   bootstrap: [AppComponent],
 })

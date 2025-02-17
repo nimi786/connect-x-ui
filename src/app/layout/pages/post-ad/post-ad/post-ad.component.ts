@@ -108,7 +108,6 @@ export class PostAdComponent {
     return imagelist;
   }
 
-  addSafe() {}
   add() {
     this.isVisible = false;
   }
@@ -125,22 +124,23 @@ export class PostAdComponent {
   //   this.formLabel = 'Name';
   // }
 
-  next() {}
+  postAd() {}
 
   initForm() {
     this.addNewIncomeTransactionForm = this.fb.group({
       mainCategory: [null, [MyValidators.customRequired('Main Category')]],
-      totalVat: [null],
-      totalAmount: [null],
-      paymentType: [null],
-      receivedToo: [null],
-      comments: [null],
-      signature: [null],
-      notifyToo: [null],
-      uploadInvoiceName: [null],
-      uploadAudioName: [null],
-      paymentDueDate: [null],
-      representativeName: [null],
+      subCategory: [null, [MyValidators.customRequired('Sub Category')]],
+      condition: [null, [MyValidators.customRequired('Condition')]],
+      itemName: [null, [MyValidators.customRequired('Item Name')]],
+      price: [null, [MyValidators.customRequired('Price')]],
+      itemDescription: [
+        null,
+        [MyValidators.customRequired('Item Description')],
+      ],
+      contactName: [null, [MyValidators.customRequired('Contact Name')]],
+      mobileNo: [null, [MyValidators.customRequired('Mobile Number')]],
+      city: [null, [MyValidators.customRequired('City')]],
+      email: [null, [MyValidators.customRequired('Email')]],
     });
   }
 }

@@ -9,7 +9,12 @@
       </div>
       <div class="title">Sign Up</div>
       <div class="form-detail">
-        <form>
+        <form
+          nz-form
+          [formGroup]="signUpForm"
+          (ngSubmit)="submitForm()"
+          [nzAutoTips]="autoTips"
+        >
           <div class="input-feild">
             <div nz-row>
               <div nz-col nzLg="24" nzXs="24">
@@ -22,6 +27,7 @@
                         nz-input
                         type="text"
                         class="modal-input"
+                        formControlName="name"
                       />
                     </nz-input-group>
                   </nz-form-control>
@@ -35,10 +41,11 @@
                     <nz-input-group>
                       <label class="form_name">Email Address*</label>
                       <input
-                        placeholder="leaonardocc@gmail.com"
+                        placeholder="Enter Your Email"
                         nz-input
                         type="email"
                         class="modal-input"
+                        formControlName="email"
                       />
                     </nz-input-group>
                   </nz-form-control>
@@ -51,17 +58,24 @@
                 <nz-form-item>
                   <nz-form-control>
                     <nz-input-group
-                      [nzSuffix]="suffixTemplate"
+                      [nzSuffix]="suffixTemplate1"
                       class="modal-input"
                     >
                       <input
-                        type="password"
+                        [type]="passwordVisible ? 'text' : 'password'"
                         nz-input
+                        placeholder="Password"
                         formControlName="password"
                       />
                     </nz-input-group>
-                    <ng-template #suffixTemplate>
-                      <span nz-icon nzType="eye" nzTheme="fill"></span>
+                    <ng-template #suffixTemplate1>
+                      <span
+                        class="cursor-pointer"
+                        nz-icon
+                        nzTheme="outline"
+                        [nzType]="passwordVisible ? 'eye' : 'eye-invisible'"
+                        (click)="passwordVisible = !passwordVisible"
+                      ></span>
                     </ng-template>
                   </nz-form-control>
                 </nz-form-item>
@@ -73,17 +87,28 @@
                 <nz-form-item>
                   <nz-form-control>
                     <nz-input-group
-                      [nzSuffix]="suffixTemplate"
+                      [nzSuffix]="suffixTemplate2"
                       class="modal-input"
                     >
                       <input
-                        type="password"
+                        [type]="confirmPasswordVisible ? 'text' : 'password'"
                         nz-input
-                        formControlName="password"
+                        placeholder="Confirm Password"
+                        formControlName="confirmPassword"
                       />
                     </nz-input-group>
-                    <ng-template #suffixTemplate>
-                      <span nz-icon nzType="eye" nzTheme="fill"></span>
+                    <ng-template #suffixTemplate2>
+                      <span
+                        class="cursor-pointer"
+                        nz-icon
+                        nzTheme="outline"
+                        [nzType]="
+                          confirmPasswordVisible ? 'eye' : 'eye-invisible'
+                        "
+                        (click)="
+                          confirmPasswordVisible = !confirmPasswordVisible
+                        "
+                      ></span>
                     </ng-template>
                   </nz-form-control>
                 </nz-form-item>
@@ -105,7 +130,14 @@
             </div>
           </div>
           <div class="signUp-btn">
-            <button type="submit" class="button sign">Sign Up</button>
+            <button
+              nz-button
+              [nzLoading]="isButtonLoading"
+              type="submit"
+              class="button sign"
+            >
+              Sign Up
+            </button>
           </div>
         </form>
       </div>
@@ -133,7 +165,8 @@
         <span class="sicon"><img src="./assets/icons/facebook.png" /></span>
       </ng-template> -->
       <span class="understood"
-        >Already Registered? <a href=" " class="condition"> Log In</a></span
+        >Already Registered?
+        <a href=" " class="condition" (click)="cancel()"> Log In</a></span
       >
     </div>
     <!-- <div class="rights">

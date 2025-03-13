@@ -3,7 +3,10 @@ import { ImageUploadComponent } from '../../../features/home/image-upload/image-
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MyValidators } from '../../../../_validators/custom-validator';
-
+interface MainCategory {
+  id: string;
+  categoryName: string;
+}
 @Component({
   selector: 'app-post-ad',
   templateUrl: './post-ad.component.html',
@@ -24,11 +27,42 @@ export class PostAdComponent {
   isVisible = false;
   showMainCatDropDown = true;
 
+  categoryTypes: MainCategory[] = [
+    {
+      id: '1',
+      categoryName: 'Electronics',
+    },
+    {
+      id: '2',
+      categoryName: 'Vehicle',
+    },
+    {
+      id: '3',
+      categoryName: 'Property',
+    },
+    {
+      id: '4',
+      categoryName: 'Pets',
+    },
+    {
+      id: '5',
+      categoryName: 'Toys',
+    },
+    {
+      id: '6',
+      categoryName: 'Other',
+    },
+  ];
+
   constructor(private modal: NzModalService, private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.initForm();
   }
+
+  // get mainCategory() {
+  //   return this.addNewIncomeTransactionForm.get('mainCategory');
+  // }
 
   async uploadImage(type: string, openType: string) {
     const modal = this.modal.create({
@@ -80,6 +114,8 @@ export class PostAdComponent {
     // });
   }
 
+  loadCaegoryType() {}
+
   private getBase64URL(img: File): Promise<string> {
     return new Promise((resolve, reject) => {
       const reader = new FileReader();
@@ -108,28 +144,48 @@ export class PostAdComponent {
     return imagelist;
   }
 
-  add() {
-    this.isVisible = false;
+  postAd() {
+    if (!this.addNewIncomeTransactionForm.valid) {
+      this.validateForm();
+    } else {
+      this.SaveAddnewTransaction();
+    }
   }
 
-  addmaincategory() {
-    this.showMainCatDropDown = false;
-    this.modalTitle = 'Add Main Category';
-    this.formLabel = 'Main Category Name';
+  SaveAddnewTransaction() {
+    // let formData = new FormData();
+
+    const formData = {
+      categoryType: this.addNewIncomeTransactionForm.get('categoryType')?.value,
+      condition: this.addNewIncomeTransactionForm.get('condition')?.value,
+      itemName: this.addNewIncomeTransactionForm.get('itemName')?.value,
+      price: this.addNewIncomeTransactionForm.get('price')?.value,
+      itemDescription:
+        this.addNewIncomeTransactionForm.get('itemDescription')?.value,
+      contactName: this.addNewIncomeTransactionForm.get('contactName')?.value,
+      mobileNo: this.addNewIncomeTransactionForm.get('mobileNo')?.value,
+      city: this.addNewIncomeTransactionForm.get('city')?.value,
+      email: this.addNewIncomeTransactionForm.get('email')?.value,
+    };
+
+    console.log('formCheck', formData);
+
+    // this.income.saveTransaction(formData).subscribe({
+    //   next: (res) => {
+    //     this.notificationService.create('success', 'Success', res.message);
+
+    //     this.clear();
+    //     this.isLoading = false;
+    //   },
+    //   error: () => {
+    //     this.isLoading = false;
+    //   },
+    // });
   }
-
-  // addNewSUbCategory() {
-  //   this.showMainCatDropDown = true;
-  //   this.modalTitle = 'Add New';
-  //   this.formLabel = 'Name';
-  // }
-
-  postAd() {}
 
   initForm() {
     this.addNewIncomeTransactionForm = this.fb.group({
-      mainCategory: [null, [MyValidators.customRequired('Main Category')]],
-      subCategory: [null, [MyValidators.customRequired('Sub Category')]],
+      categoryType: [null, [MyValidators.customRequired('Category Type')]],
       condition: [null, [MyValidators.customRequired('Condition')]],
       itemName: [null, [MyValidators.customRequired('Item Name')]],
       price: [null, [MyValidators.customRequired('Price')]],
@@ -142,5 +198,16 @@ export class PostAdComponent {
       city: [null, [MyValidators.customRequired('City')]],
       email: [null, [MyValidators.customRequired('Email')]],
     });
+  }
+
+  validateForm() {
+    Object.values(this.addNewIncomeTransactionForm.controls).forEach(
+      (control) => {
+        if (control.invalid) {
+          control.markAsDirty();
+          control.updateValueAndValidity({ onlySelf: true });
+        }
+      }
+    );
   }
 }

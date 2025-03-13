@@ -22,7 +22,7 @@ export class AuthGuard {
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | UrlTree | boolean {
     if (this.authService.isLoggedIn !== true) {
-      this.router.navigate(['login']);
+      this.router.navigate(['/login']);
     }
     return true;
   }

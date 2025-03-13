@@ -133,7 +133,9 @@ export class LoginComponent implements OnDestroy {
       .then((res: UserCredential) => {
         // this.notificationService.create('success', 'Success', error);
 
-        this.router.navigateByUrl('/');
+        if (res.user.refreshToken) {
+          this.router.navigateByUrl('/');
+        }
         // this.router.navigate(['/']);
         console.log('hello');
       })

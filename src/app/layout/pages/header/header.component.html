@@ -118,11 +118,15 @@
         </div>
 
         <div class="header-profile">
-          <div class="profile">
+          <div class="profile" *ngIf="authService.userData as user">
             <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="profileMenu">
               <nz-avatar
                 nzIcon="user"
-                nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                nzSrc="{{
+                  user.photoURL
+                    ? user.photoURL
+                    : '//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
+                }}"
               ></nz-avatar>
             </a>
             <div class="logout">
@@ -131,7 +135,11 @@
                   <li nz-menu-item [routerLink]="['account-settings']">
                     <span class="content">My Account</span>
                   </li>
-                  <li nz-menu-item><span class="content">Log Out</span></li>
+                  <li nz-menu-item>
+                    <span (click)="authService.SignOut()" class="content"
+                      >Log Out</span
+                    >
+                  </li>
                 </ul>
               </nz-dropdown-menu>
             </div>

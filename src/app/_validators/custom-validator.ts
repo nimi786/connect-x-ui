@@ -13,29 +13,91 @@ export type MyErrorsOptions = { 'zh-cn': string; en: string } & Record<
 export type MyValidationErrors = Record<string, MyErrorsOptions>;
 
 export class MyValidators extends Validators {
-  static override minLength(minLength: number): ValidatorFn {
+  // static override minLength(minLength: number): ValidatorFn {
+  //   return (control: AbstractControl): MyValidationErrors | null => {
+  //     if (Validators.minLength(minLength)(control) === null) {
+  //       return null;
+  //     }
+  //     return {
+  //       minlength: {
+  //         'zh-cn': `最小长度为 ${minLength}`,
+  //         en: `Minimum Length is ${minLength}`,
+  //       },
+  //     };
+  //   };
+  // }
+  static scratchCardMax(max: number, boxNo: number): ValidatorFn {
     return (control: AbstractControl): MyValidationErrors | null => {
-      if (Validators.minLength(minLength)(control) === null) {
+      if (Validators.max(max)(control) === null) {
         return null;
       }
       return {
         minlength: {
-          'zh-cn': `最小长度为 ${minLength}`,
-          en: `Minimum Length is ${minLength}`,
+          'zh-cn': `最小长度为 ${max}`,
+          en: `The number entered exceeds the allowed cards per bundle for Box ${boxNo}. Please enter a valid number within the permitted limit`,
         },
       };
     };
   }
 
-  static override maxLength(maxLength: number): ValidatorFn {
+  static commonLength(
+    minLength: number,
+    maxLength: number,
+    type: string | null = null
+  ): ValidatorFn {
+    return (control: AbstractControl) => {
+      if (control.value) {
+        const length = control.value.toString().length;
+        if (length < minLength || length > maxLength) {
+          if (Validators.maxLength(maxLength)(control) === null) {
+            return null;
+          }
+          if (type == 'a') {
+            return {
+              maxlength: {
+                'zh-cn': `最大长度为 ${maxLength}`,
+                en: `Invalid entry, please enter alphabetic characters between ${minLength} to ${maxLength}`,
+              },
+            };
+          } else if (type == 'n') {
+            return {
+              maxlength: {
+                'zh-cn': `最大长度为 ${maxLength}`,
+                en: `Invalid entry, please enter digits characters between ${minLength} to ${maxLength}`,
+              },
+            };
+          } else if (type == 'an') {
+            return {
+              maxlength: {
+                'zh-cn': `最大长度为 ${maxLength}`,
+                en: `Invalid entry, please enter alphanumeric characters between ${minLength} to ${maxLength}`,
+              },
+            };
+          } else {
+            return {
+              maxlength: {
+                'zh-cn': `最大长度为 ${maxLength}`,
+                en: `Invalid entry, please enter a mix of letters, numbers, and symbols between ${minLength} to ${maxLength}`,
+              },
+            };
+          }
+        }
+      }
+      return null;
+    };
+  }
+
+  static maxLengthPrice(maxLength: number): ValidatorFn {
     return (control: AbstractControl): MyValidationErrors | null => {
       if (Validators.maxLength(maxLength)(control) === null) {
         return null;
       }
       return {
         maxlength: {
-          'zh-cn': `最大长度为 ${maxLength}`,
-          en: `Maximum Length is ${maxLength}`,
+          'zh-cn': `最大长度为 ${maxLength - 1}`,
+          en: `Invalid entry, please enter numeric characters between 1 to ${
+            maxLength - 3
+          }`,
         },
       };
     };
@@ -321,13 +383,17 @@ export class MyValidators extends Validators {
 
   static override email(pattern: any): ValidatorFn {
     return (control: AbstractControl): MyValidationErrors | null => {
-      if (Validators.pattern(pattern)(control) === null) {
+      const updatedPattern =
+        '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\\.[a-zA-Z0-9-]+)+$';
+
+      // Check if the value matches the updated pattern
+      if (Validators.pattern(updatedPattern)(control) === null) {
         return null;
       }
       return {
         pattern: {
-          'zh-cn': `最大长度为 `,
-          en: `Email must be valid`,
+          'zh-cn': '最大长度为', // Chinese error message
+          en: 'Email must be valid', // English error message
         },
       };
     };
@@ -497,7 +563,7 @@ export class MyValidators extends Validators {
           return {
             nicNumberLength: {
               'zh-cn': `NIC号码长度必须为10、12或16字符`,
-              en: `Minimum length Can be ${min} and Maximum length Can be${max}`,
+              en: `Invalid entry, please enter digits between ${min} to ${max}`,
             },
           };
         }
@@ -538,6 +604,122 @@ export class MyValidators extends Validators {
           numValidator: {
             'zh-cn': '请输入有效数字，可以以+号开头',
             en: 'Please enter a valid number, optionally starting with +',
+          },
+        };
+      }
+      return null;
+    };
+  }
+  static timeLimit(startTime: string): ValidatorFn {
+    return (control: AbstractControl) => {
+      if (control.value) {
+        // Ensure the time is in "00:00" format (HH:mm)
+        const time = new Date(control.value).toLocaleTimeString('en-GB', {
+          hour: '2-digit',
+          minute: '2-digit',
+        });
+        const endTime = Number(time.replace(':', ''));
+
+        // Check if time exceeds the max time (12:00)
+        const start = Number(startTime.replace(':', ''));
+
+        // Compare hours first, and then minutes if hours are the same
+        if (start > endTime) {
+          return {
+            timeLimitExceeded: {
+              'zh-cn': `时间不能大于`,
+              en: `End Time Should Be After ${startTime}`,
+            },
+          };
+        }
+      }
+      return null;
+    };
+  }
+  // static doorNoValidator(): ValidatorFn {
+  //   return (control: AbstractControl): MyValidationErrors | null => {
+  //     const value = control.value;
+
+  //     // Regular expression to allow alphanumeric characters, slashes, and hyphens
+  //     const allowedPattern = /^[a-zA-Z0-9/-]*$/;
+
+  //     // Check if the value matches the allowed pattern
+  //     if (!allowedPattern.test(value)) {
+  //       return {
+  //         numValidator: {
+  //           'zh-cn': '请输入有效的字母、数字、斜杠或减号',
+  //           en: 'Please Enter Valid Door Number',
+  //         },
+  //       };
+  //     }
+
+  //     return null;
+  //   };
+  // }
+  static alphaNumericWithSpace(name: string): ValidatorFn {
+    return (control: AbstractControl): { [key: string]: any } | null => {
+      // Define a pattern to allow only alphanumeric characters and spaces
+      const alphaNumericSpacePattern = /^[a-zA-Z0-9 ]*$/;
+
+      // Check if the control value matches the pattern
+      if (control.value && alphaNumericSpacePattern.test(control.value)) {
+        return null; // valid if it matches the pattern
+      }
+
+      // Return an error object with different messages for different languages
+      return {
+        pattern: {
+          'zh-cn': `仅允许字母、数字和空格`,
+          en: `${name} should only contain letters, numbers, and spaces`,
+        },
+      };
+    };
+  }
+
+  static stockOutValidator(qty: number): ValidatorFn {
+    return (control: AbstractControl) => {
+      if (control.value) {
+        const enteredValue = control.value;
+        if (enteredValue > qty) {
+          return {
+            nicNumberLength: {
+              'zh-cn': `NIC号码长度必须为10、12或16字符`,
+              en: `Entered Bundle Quantity Exceeds Available Quantity`,
+            },
+          };
+        }
+      }
+      return null;
+    };
+  }
+  static scratchCardLength(minLength: number, maxLength: number): ValidatorFn {
+    return (control: AbstractControl) => {
+      if (control.value) {
+        const length = control.value.toString().length;
+        if (length < minLength || length > maxLength) {
+          if (Validators.maxLength(maxLength)(control) === null) {
+            return null;
+          }
+          return {
+            maxlength: {
+              'zh-cn': `最大长度为 ${maxLength}`,
+              en: `Invalid entry, please enter numeric characters between ${minLength} to ${maxLength}`,
+            },
+          };
+        }
+      }
+      return null;
+    };
+  }
+  static checkSupplierId(): ValidatorFn {
+    return (control: AbstractControl): MyValidationErrors | null => {
+      // Perform validation logic (e.g., checking against existing IDs)
+      const supplierIdExists = false; // Replace with actual check
+      if (supplierIdExists) {
+        return {
+          required: {
+            'zh-cn': `最大长度为 `,
+            en: `Supplier ID already exists`,
           },
         };
       }

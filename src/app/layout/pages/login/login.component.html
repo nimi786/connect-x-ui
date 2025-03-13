@@ -9,7 +9,12 @@
       </div>
       <div class="title">Login</div>
       <div class="form-detail">
-        <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+        <form
+          [formGroup]="loginForm"
+          nz-form
+          [nzAutoTips]="autoTips"
+          enctype="application/x-www-form-urlencoded"
+        >
           <div class="input-feild">
             <div nz-row>
               <div nz-col [nzSpan]="24">
@@ -72,7 +77,7 @@
           </div>
           <div class="signUp-btn">
             <button
-              type="submit"
+              (click)="submitForm()"
               nz-button
               [nzLoading]="isButtonLoading"
               class="button sign"

@@ -21,6 +21,9 @@ import { DataService } from '../../../services/data.service';
   styleUrl: './login.component.sass',
 })
 export class LoginComponent implements OnDestroy {
+  loginForm!: FormGroup;
+  isButtonLoading = false;
+
   autoTips: Record<string, Record<string, string>> = {
     en: {},
     default: {},
@@ -43,51 +46,39 @@ export class LoginComponent implements OnDestroy {
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
-  loginForm!: FormGroup;
-  isButtonLoading = false;
 
   ngOnInit() {
-    this.inInItForm();
+    this.initForm();
     this.user$.subscribe((res) => {
       console.log('res', res);
     });
   }
 
-  inInItForm() {
-    const {
-      required,
-      customRequired,
-      maxLength,
-      minLength,
-      customEmail,
-      pattern,
-      email,
-    } = MyValidators;
-
+  initForm() {
     this.loginForm = this.fb.group({
       userName: [
         '',
         [
-          pattern(''),
-          customRequired('Email'),
-          email(
-            '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$'
-          ),
+          // MyValidators.pattern(''),
+          MyValidators.customRequired('Email'),
+          // MyValidators.email(
+          //   '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$'
+          // ),
         ],
       ],
       password: [
         '',
         [
-          customRequired('Password'),
-          pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,}).*$'),
-          minLength(8),
+          MyValidators.customRequired('Password'),
+          // MyValidators.pattern(
+          //   '^(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,}).*$'
+          // ),
+          // MyValidators.minLength(4),
+          // MyValidators.maxLength(12),
         ],
       ],
       grantType: 'customer',
     });
-    // this.store.select(selectLoginLoadingStatus).subscribe((data) => {
-    //   this.isLoading = data;
-    // });
   }
 
   navigateToSignUp() {
@@ -143,6 +134,8 @@ export class LoginComponent implements OnDestroy {
         // this.notificationService.create('success', 'Success', error);
 
         this.router.navigateByUrl('/');
+        // this.router.navigate(['/']);
+        console.log('hello');
       })
       .catch((error) =>
         this.notificationService.create('error', 'Error', error)

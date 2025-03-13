@@ -5,10 +5,25 @@ import { ScrollService } from './services/common/scroll-service.service';
 import { SignUpComponent } from './layout/pages/sign-up/sign-up.component';
 import { LoginComponent } from './layout/pages/login/login.component';
 
+// route guard
+import { AuthGuard } from './guard/auth.guard';
+
 const routes: Routes = [
+  {
+    path: 'signup',
+    component: SignUpComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+
+  // { path: '', redirectTo: '/login', pathMatch: 'full' },
+
   {
     path: '',
     component: MainComponent,
+    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -24,13 +39,13 @@ const routes: Routes = [
             (m) => m.PostAdModule
           ),
       },
+
       {
-        path: 'signup',
-        component: SignUpComponent,
-      },
-      {
-        path: 'login',
-        component: LoginComponent,
+        path: 'account-settings',
+        loadChildren: () =>
+          import(
+            './layout/features/account-settings/account-settings.module'
+          ).then((m) => m.AccountSettingsModule),
       },
     ],
   },

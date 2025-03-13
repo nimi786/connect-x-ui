@@ -4,6 +4,11 @@ import {
   provideClientHydration,
 } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+
+import { NZ_I18N } from 'ng-zorro-antd/i18n';
+import { en_US } from 'ng-zorro-antd/i18n';
+import en from '@angular/common/locales/en';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './_shared/shared.module';
@@ -21,6 +26,13 @@ import { provideAuth, getAuth } from '@angular/fire/auth';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { LoginComponent } from './layout/pages/login/login.component';
 import { SignUpComponent } from './layout/pages/sign-up/sign-up.component';
+
+// service
+import { AuthenticationService } from './services/auth/authentication.service';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { registerLocaleData } from '@angular/common';
+
+registerLocaleData(en);
 
 @NgModule({
   declarations: [
@@ -43,8 +55,11 @@ import { SignUpComponent } from './layout/pages/sign-up/sign-up.component';
     BrowserAnimationsModule,
   ],
   providers: [
+    { provide: NZ_I18N, useValue: en_US },
+    AuthenticationService,
     provideFirebaseApp(() => initializeApp(environment.firebase)),
     provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
     { provide: FIREBASE_OPTIONS, useValue: environment.firebase },
   ],
   bootstrap: [AppComponent],

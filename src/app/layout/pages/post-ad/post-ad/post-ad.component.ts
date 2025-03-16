@@ -3,29 +3,37 @@ import { ImageUploadComponent } from '../../../features/home/image-upload/image-
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MyValidators } from '../../../../_validators/custom-validator';
+import { DataService } from '../../../../services/data.service';
+import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { format } from 'date-fns';
+import { DatePipe, formatDate } from '@angular/common';
+import { map } from 'rxjs/operators';
+import { FirebasePostResponse, Post } from '../../../../model/addPostResponse';
+
+import {
+  Storage,
+  ref,
+  uploadBytes,
+  getDownloadURL,
+  getStorage,
+} from '@angular/fire/storage';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
+import { finalize } from 'rxjs/operators';
+
 interface MainCategory {
   id: string;
   categoryName: string;
 }
+
 @Component({
   selector: 'app-post-ad',
   templateUrl: './post-ad.component.html',
   styleUrl: './post-ad.component.sass',
 })
 export class PostAdComponent {
-  addNewIncomeTransactionForm!: FormGroup;
+  postForm!: FormGroup;
 
-  radioValue = 'A';
-  isHideContact = false;
-  isVisibleContact = false;
-  isHidePrimary = false;
-  isVisiblePrimary = false;
-  isHideBank = false;
-  isVisibleBank = false;
-  modalTitle!: string;
-  formLabel!: string;
-  isVisible = false;
-  showMainCatDropDown = true;
+  posts: Post[] = [];
 
   categoryTypes: MainCategory[] = [
     {
@@ -54,17 +62,41 @@ export class PostAdComponent {
     },
   ];
 
-  constructor(private modal: NzModalService, private fb: FormBuilder) {}
+  constructor(
+    private modal: NzModalService,
+    private fb: FormBuilder,
+    private dataService: DataService,
+    private notificationService: NzNotificationService,
+    private datePipe: DatePipe,
+    private storage: AngularFireStorage
+  ) {}
 
   ngOnInit(): void {
     this.initForm();
+    this.loadItems();
   }
 
-  // get mainCategory() {
-  //   return this.addNewIncomeTransactionForm.get('mainCategory');
-  // }
+  initForm() {
+    this.postForm = this.fb.group({
+      categoryType: [null, [MyValidators.customRequired('Category Type')]],
+      condition: [null, [MyValidators.customRequired('Condition')]],
+      itemName: [null, [MyValidators.customRequired('Item Name')]],
+      uploadImageName: [null],
+      imageList: [null],
+      dateTime: [new Date()],
+      price: [null, [MyValidators.customRequired('Price')]],
+      itemDescription: [
+        null,
+        [MyValidators.customRequired('Item Description')],
+      ],
+      contactName: [null, [MyValidators.customRequired('Contact Name')]],
+      mobileNo: [null, [MyValidators.customRequired('Mobile Number')]],
+      city: [null, [MyValidators.customRequired('City')]],
+      email: [null, [MyValidators.customRequired('Email')]],
+    });
+  }
 
-  async uploadImage(type: string, openType: string) {
+  async uploadImage(openType: string) {
     const modal = this.modal.create({
       nzTitle: 'Upload Images',
       nzContent: ImageUploadComponent,
@@ -76,12 +108,13 @@ export class PostAdComponent {
       nzClassName: 'supporting-img-model',
     });
 
-    modal.componentInstance!.uploadType = type;
     modal.componentInstance!.addType = openType;
 
-    const loadedImages = await this.loadImages();
-    if (loadedImages) {
-      modal.componentInstance!.list = loadedImages;
+    // Load previously uploaded images
+    const loadedImages = this.postForm.get('imageList')?.value || [];
+
+    if (loadedImages.length > 0) {
+      modal.componentInstance!.list = loadedImages; // Ensure images are set in the modal
     }
 
     modal.afterClose.subscribe(
@@ -90,42 +123,62 @@ export class PostAdComponent {
       ) => {
         console.log('res', res);
         if (res && res.length > 0) {
-          const imagelist = res.map((x) => x.file);
-          this.addNewIncomeTransactionForm
-            .get('uploadInvoice')
-            ?.setValue(imagelist);
-          this.addNewIncomeTransactionForm
-            .get('uploadInvoiceName')
-            ?.setValue('Image Uploaded');
+          const existingImages = this.postForm.get('imageList')?.value || [];
+          const updatedImages = [...existingImages, ...res.map((x) => x.file)];
+
+          this.postForm.get('imageList')?.setValue(updatedImages);
+          this.postForm.get('uploadImageName')?.setValue('Image Uploaded');
         }
         console.log(
-          'sgs',
-          this.addNewIncomeTransactionForm.get('uploadInvoice')?.value
+          'Updated Image List:',
+          this.postForm.get('imageList')?.value
         );
       }
     );
-    // modal.componentInstance.
-    // modal.afterClose.subscribe((res) => {
-    //   if (res?.imageList) {
-    //     this.addNewIncomeTransactionForm
-    //       .get('uploadInvoice')
-    //       ?.setValue(res.imageList);
-    //   }
-    // });
   }
 
-  loadCaegoryType() {}
+  private async uploadImagesToFirebase(files: any[]): Promise<string[]> {
+    const uploadPromises = files.map((file) => {
+      return new Promise<string>((resolve, reject) => {
+        // ✅ Ignore URLs (only upload real File objects)
+        if (!(file instanceof File)) {
+          console.warn('Skipping non-file object:', file);
+          resolve(file); // Just return the URL without uploading again
+          return;
+        }
 
-  private getBase64URL(img: File): Promise<string> {
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result!.toString());
-      reader.onerror = (error) => reject(error);
-      reader.readAsDataURL(img);
+        const fileName = `${Date.now()}_${file.name}`;
+        const filePath = `uploads/${fileName}`;
+        const fileRef = this.storage.ref(filePath);
+        const task = this.storage.upload(filePath, file, {
+          contentType: file.type, // Ensure correct MIME type
+        });
+
+        task
+          .snapshotChanges()
+          .pipe(
+            finalize(() => {
+              fileRef.getDownloadURL().subscribe(
+                (url) => {
+                  console.log('Uploaded file URL:', url);
+                  resolve(url); // Return the correct download URL
+                },
+                (error) => {
+                  console.error('Error getting download URL:', error);
+                  reject(error);
+                }
+              );
+            })
+          )
+          .subscribe();
+      });
     });
+
+    return Promise.all(uploadPromises);
   }
+
   async loadImages() {
-    const files = this.addNewIncomeTransactionForm.get('uploadInvoice')?.value;
+    const files = this.postForm.get('imageList')?.value;
 
     if (!files) return null;
 
@@ -144,70 +197,90 @@ export class PostAdComponent {
     return imagelist;
   }
 
+  private getBase64URL(img: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result!.toString());
+      reader.onerror = (error) => reject(error);
+      reader.readAsDataURL(img);
+    });
+  }
+
   postAd() {
-    if (!this.addNewIncomeTransactionForm.valid) {
+    if (!this.postForm.valid) {
       this.validateForm();
     } else {
-      this.SaveAddnewTransaction();
+      this.addPost();
     }
   }
 
-  SaveAddnewTransaction() {
-    // let formData = new FormData();
-
-    const formData = {
-      categoryType: this.addNewIncomeTransactionForm.get('categoryType')?.value,
-      condition: this.addNewIncomeTransactionForm.get('condition')?.value,
-      itemName: this.addNewIncomeTransactionForm.get('itemName')?.value,
-      price: this.addNewIncomeTransactionForm.get('price')?.value,
-      itemDescription:
-        this.addNewIncomeTransactionForm.get('itemDescription')?.value,
-      contactName: this.addNewIncomeTransactionForm.get('contactName')?.value,
-      mobileNo: this.addNewIncomeTransactionForm.get('mobileNo')?.value,
-      city: this.addNewIncomeTransactionForm.get('city')?.value,
-      email: this.addNewIncomeTransactionForm.get('email')?.value,
-    };
-
-    console.log('formCheck', formData);
-
-    // this.income.saveTransaction(formData).subscribe({
-    //   next: (res) => {
-    //     this.notificationService.create('success', 'Success', res.message);
-
-    //     this.clear();
-    //     this.isLoading = false;
-    //   },
-    //   error: () => {
-    //     this.isLoading = false;
-    //   },
-    // });
+  cancel() {
+    this.postForm.reset();
   }
 
-  initForm() {
-    this.addNewIncomeTransactionForm = this.fb.group({
-      categoryType: [null, [MyValidators.customRequired('Category Type')]],
-      condition: [null, [MyValidators.customRequired('Condition')]],
-      itemName: [null, [MyValidators.customRequired('Item Name')]],
-      price: [null, [MyValidators.customRequired('Price')]],
-      itemDescription: [
-        null,
-        [MyValidators.customRequired('Item Description')],
-      ],
-      contactName: [null, [MyValidators.customRequired('Contact Name')]],
-      mobileNo: [null, [MyValidators.customRequired('Mobile Number')]],
-      city: [null, [MyValidators.customRequired('City')]],
-      email: [null, [MyValidators.customRequired('Email')]],
+  async addPost() {
+    const currentDateAndTime = this.datePipe.transform(
+      new Date(),
+      'yyyy-MM-dd HH:mm:ss'
+    );
+
+    const formData: any = {
+      categoryType: this.postForm.get('categoryType')?.value || '',
+      condition: this.postForm.get('condition')?.value || '',
+      itemName: this.postForm.get('itemName')?.value || '',
+      price: this.postForm.get('price')?.value || '',
+      itemDescription: this.postForm.get('itemDescription')?.value || '',
+      contactName: this.postForm.get('contactName')?.value || '',
+      mobileNo: this.postForm.get('mobileNo')?.value || '',
+      city: this.postForm.get('city')?.value || '',
+      email: this.postForm.get('email')?.value || '',
+      dateTime: currentDateAndTime || '',
+      imageList: [],
+    };
+
+    console.log('Post Data Before Upload:', formData);
+
+    const files = this.postForm.get('imageList')?.value;
+
+    if (files && files.length > 0) {
+      try {
+        const imageUrls = await this.uploadImagesToFirebase(files); // ✅ Upload new images, keep URLs
+        formData.imageList = imageUrls.map((url) => ({ url })); // ✅ Save only URLs to DB
+
+        console.log('Post Data After Appending Images:', formData);
+
+        this.dataService
+          .savePost(formData)
+          .then(() => {
+            console.log('Post saved successfully!');
+            alert('Post saved successfully!');
+            this.postForm.reset();
+          })
+          .catch((error) => {
+            console.error('Failed to save post:', error);
+            alert('Failed to save post. Please try again.');
+          });
+      } catch (error) {
+        console.error('Image Upload Failed:', error);
+      }
+    } else {
+      console.warn('No images found for upload.');
+    }
+  }
+
+  loadItems() {
+    this.dataService.getItemsByCategory('1').then((posts) => {
+      this.posts = posts; // Assuming each post has an `imageUrl`
+      console.log('+++++++++', this.posts);
     });
   }
 
   validateForm() {
-    Object.values(this.addNewIncomeTransactionForm.controls).forEach(
-      (control) => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
+    Object.values(this.postForm.controls).forEach((control) => {
+      if (control.invalid) {
+        control.markAsDirty();
+        control.updateValueAndValidity({ onlySelf: true });
       }
-    );
+    });
   }
 }

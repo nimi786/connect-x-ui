@@ -43,6 +43,7 @@ import { NzTagModule } from 'ng-zorro-antd/tag';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzFlexModule } from 'ng-zorro-antd/flex';
 import { HttpClientModule } from '@angular/common/http';
+import { NZ_DATE_CONFIG } from 'ng-zorro-antd/i18n';
 
 @NgModule({
   declarations: [],

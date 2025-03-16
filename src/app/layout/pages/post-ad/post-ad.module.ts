@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { PostAdRoutingModule } from './post-ad-routing.module';
 import { PostAdComponent } from './post-ad/post-ad.component';
 import { SharedModule } from '../../../_shared/shared.module';

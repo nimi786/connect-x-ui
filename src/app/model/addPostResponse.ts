@@ -1,4 +1,4 @@
-export interface Image {
+export interface imageData {
   name?: string;
   size?: number;
   type?: string;
@@ -12,11 +12,12 @@ export interface Post {
   contactName: string;
   dateTime: string;
   email: string;
-  imageList: Image[]; // Array of image objects
+  imageList: imageData[]; // Array of image objects
   itemDescription: string;
   itemName: string;
   mobileNo: string;
   price: string;
+  userId: string;
 }
 
 export interface FirebasePostResponse {

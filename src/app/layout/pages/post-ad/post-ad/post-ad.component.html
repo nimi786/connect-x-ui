@@ -14,7 +14,7 @@
               <nz-form-control>
                 <nz-select formControlName="categoryType">
                   <nz-option
-                    *ngFor="let type of categoryTypes"
+                    *ngFor="let type of categoryList"
                     [nzValue]="type.id"
                     [nzLabel]="type.categoryName"
                   ></nz-option>
@@ -179,6 +179,7 @@
               </nz-form-item>
             </div>
           </div>
+
           <div nz-row>
             <div nz-col nzMd="7" nzXs="24">
               <nz-form-item>

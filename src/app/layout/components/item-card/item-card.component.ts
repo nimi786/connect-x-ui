@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Input, input } from '@angular/core';
 import { Router } from '@angular/router';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { ViewDetailsCardComponent } from '../view-details-card/view-details-card.component';
+import { Post } from '../../../model/addPostResponse';
 
 @Component({
   selector: 'app-item-card',
@@ -9,14 +10,14 @@ import { ViewDetailsCardComponent } from '../view-details-card/view-details-card
   styleUrl: './item-card.component.sass',
 })
 export class ItemCardComponent {
-  constructor(private router: Router, private modalService: NzModalService) {}
-  ngOnInit(): void {}
+  @Input() itemList!: Post;
 
-  gotoProperty() {
-    this.router.navigate(['property/2424242']);
+  constructor(private router: Router, private modalService: NzModalService) {}
+  ngOnInit(): void {
+    console.log('yyyyyyyyyyyyyyyy', this.itemList);
   }
 
-  showMoreDetails() {
+  showMoreDetails(receiveData: Post, viewType: string) {
     const modalRef = this.modalService.create({
       nzTitle: 'Show Details',
       nzContent: ViewDetailsCardComponent,
@@ -27,6 +28,8 @@ export class ItemCardComponent {
       nzClassName: 'view-card-modal',
     });
 
+    modalRef.componentInstance!.openType = viewType;
+    modalRef.componentInstance!.singleItemData = receiveData;
     modalRef.afterClose.subscribe((res) => {});
   }
 }

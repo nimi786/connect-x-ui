@@ -19,11 +19,8 @@ import {
 } from '@angular/fire/storage';
 import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
-
-interface MainCategory {
-  id: string;
-  categoryName: string;
-}
+import { AuthenticationService } from '../../../../services/auth/authentication.service';
+import { mainCategory } from '../../../../model/categoryTypes';
 
 @Component({
   selector: 'app-post-ad',
@@ -35,32 +32,7 @@ export class PostAdComponent {
 
   posts: Post[] = [];
 
-  categoryTypes: MainCategory[] = [
-    {
-      id: '1',
-      categoryName: 'Electronics',
-    },
-    {
-      id: '2',
-      categoryName: 'Vehicle',
-    },
-    {
-      id: '3',
-      categoryName: 'Property',
-    },
-    {
-      id: '4',
-      categoryName: 'Pets',
-    },
-    {
-      id: '5',
-      categoryName: 'Toys',
-    },
-    {
-      id: '6',
-      categoryName: 'Other',
-    },
-  ];
+  categoryList: mainCategory[] = [];
 
   constructor(
     private modal: NzModalService,
@@ -68,12 +40,16 @@ export class PostAdComponent {
     private dataService: DataService,
     private notificationService: NzNotificationService,
     private datePipe: DatePipe,
-    private storage: AngularFireStorage
+    private storage: AngularFireStorage,
+    private authService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
     this.initForm();
-    this.loadItems();
+    this.loadCategories();
+    setTimeout(() => {
+      // this.loadUser();
+    }, 1000);
   }
 
   initForm() {
@@ -93,8 +69,11 @@ export class PostAdComponent {
       mobileNo: [null, [MyValidators.customRequired('Mobile Number')]],
       city: [null, [MyValidators.customRequired('City')]],
       email: [null, [MyValidators.customRequired('Email')]],
+      userId: [null],
     });
   }
+
+  getAllCategoryList() {}
 
   async uploadImage(openType: string) {
     const modal = this.modal.create({
@@ -224,6 +203,8 @@ export class PostAdComponent {
       'yyyy-MM-dd HH:mm:ss'
     );
 
+    const currentUserId = this.authService.userData.uid;
+
     const formData: any = {
       categoryType: this.postForm.get('categoryType')?.value || '',
       condition: this.postForm.get('condition')?.value || '',
@@ -236,6 +217,7 @@ export class PostAdComponent {
       email: this.postForm.get('email')?.value || '',
       dateTime: currentDateAndTime || '',
       imageList: [],
+      userId: currentUserId,
     };
 
     console.log('Post Data Before Upload:', formData);
@@ -268,10 +250,14 @@ export class PostAdComponent {
     }
   }
 
-  loadItems() {
-    this.dataService.getItemsByCategory('1').then((posts) => {
-      this.posts = posts; // Assuming each post has an `imageUrl`
-      console.log('+++++++++', this.posts);
+  // loadUser() {
+  //   console.log('ssssssssssss', this.authService.userData.uid);
+  // }
+
+  async loadCategories() {
+    this.dataService.getAllCategories().then((category) => {
+      this.categoryList = category;
+      console.log('Fetched categories', this.categoryList);
     });
   }
 

@@ -135,10 +135,11 @@
                   <li nz-menu-item [routerLink]="['account-settings']">
                     <span class="content">My Account</span>
                   </li>
-                  <li nz-menu-item>
-                    <span (click)="authService.SignOut()" class="content"
-                      >Log Out</span
-                    >
+                  <li nz-menu-item [routerLink]="['account-settings/user-add']">
+                    <span class="content">MY adds</span>
+                  </li>
+                  <li (click)="authService.SignOut()" nz-menu-item>
+                    <span class="content">Log Out</span>
                   </li>
                 </ul>
               </nz-dropdown-menu>

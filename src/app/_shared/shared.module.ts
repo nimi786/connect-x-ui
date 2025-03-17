@@ -44,6 +44,7 @@ import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzFlexModule } from 'ng-zorro-antd/flex';
 import { HttpClientModule } from '@angular/common/http';
 import { NZ_DATE_CONFIG } from 'ng-zorro-antd/i18n';
+import { NzImageModule } from 'ng-zorro-antd/image';
 
 @NgModule({
   declarations: [],
@@ -92,7 +93,9 @@ import { NZ_DATE_CONFIG } from 'ng-zorro-antd/i18n';
     NzRateModule,
     NzTagModule,
     NzCarouselModule,
+    NzImageModule,
     NzFlexModule,
+
     HttpClientModule,
   ],
   providers: [],

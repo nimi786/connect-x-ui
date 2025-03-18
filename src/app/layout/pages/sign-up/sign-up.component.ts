@@ -35,10 +35,10 @@ export class SignUpComponent {
   ) {}
 
   ngOnInit(): void {
-    this.inInItForm();
+    this.initForm();
   }
 
-  inInItForm() {
+  initForm() {
     const {
       maxLength,
       minLength,
@@ -51,12 +51,12 @@ export class SignUpComponent {
 
     this.signUpForm = this.fb.group(
       {
-        name: ['', [customRequired('Your Name')]],
-        email: ['', [customRequired('Email Address')]],
+        name: [null, [MyValidators.customRequired('Your Name')]],
+        email: [null, [MyValidators.customRequired('Email Address')]],
         password: [
           null,
           [
-            customRequired('Password'),
+            MyValidators.customRequired('Password'),
             pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,}).*$'),
             minLength(8),
           ],
@@ -64,19 +64,15 @@ export class SignUpComponent {
         confirmPassword: [
           null,
           [
-            customConfirmPasswordRequired('Password'),
+            MyValidators.customConfirmPasswordRequired('Password'),
             pattern('^(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,}).*$'),
             minLength(8),
           ],
         ],
-        terms: [false, Validators.requiredTrue],
       },
 
       { validator: this.checkPasswords }
     );
-    // this.store.select(selectLoginLoadingStatus).subscribe((data) => {
-    //   this.isLoading = data;
-    // });
   }
 
   checkPasswords(group: FormGroup) {
@@ -90,18 +86,11 @@ export class SignUpComponent {
         });
   }
 
-  validateAllFormFields(formGroup: FormGroup) {
-    Object.keys(formGroup.controls).forEach((field) => {
-      const control = formGroup.get(field);
-      if (control instanceof FormControl) {
-        if (control!.value && control!.errors) {
-          control!.markAsDirty();
-          control!.updateValueAndValidity();
-        } else {
-          // this.isFieldValid(field);
-        }
-      } else if (control instanceof FormGroup) {
-        this.validateAllFormFields(control);
+  validateForm() {
+    Object.values(this.signUpForm.controls).forEach((control) => {
+      if (control.invalid) {
+        control.markAsDirty();
+        control.updateValueAndValidity({ onlySelf: true });
       }
     });
   }
@@ -110,29 +99,20 @@ export class SignUpComponent {
     console.log('this.signUpForm', this.signUpForm);
 
     if (!this.signUpForm.valid) {
-      this.validateAllFormFields(this.signUpForm);
+      this.validateForm();
+      return;
       this.checkPasswords(this.signUpForm);
       return;
     } else {
       this.isButtonLoading = true;
-      const formData = {
-        password: this.signUpForm.get('password')?.value,
-        userDto: {
-          customerName: this.signUpForm.get('name')?.value,
-          email: this.signUpForm.get('email')?.value,
-          userType: 'customer',
-        },
-      };
-      // this.authenticationService.signUp(formData).subscribe({
-      //   next: (res:any) => {
-      //     this.isButtonLoading = false;
-      //     this.notificationService.create('success', 'Success', res.message);
-      //     this.cancel();
+      // const formData = {
+      //   password: this.signUpForm.get('password')?.value,
+      //   userDto: {
+      //     customerName: this.signUpForm.get('name')?.value,
+      //     email: this.signUpForm.get('email')?.value,
+      //     userType: 'customer',
       //   },
-      //   error: () => {
-      //     this.isButtonLoading = false;
-      //   },
-      // });
+      // };
     }
   }
 

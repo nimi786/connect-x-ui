@@ -7,6 +7,10 @@ import { AuthenticationService } from '../../../../services/auth/authentication.
   styleUrl: './profile-info.component.sass',
 })
 export class ProfileInfoComponent {
+  userData: any;
   constructor(public authService: AuthenticationService) {}
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.userData = this.authService.userData;
+    console.log('+++++++++++', this.userData);
+  }
 }

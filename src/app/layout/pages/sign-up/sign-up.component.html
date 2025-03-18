@@ -1,10 +1,7 @@
 <div class="signup-main">
-  <!-- <img class="bg-img" src="./assets/images/sign-up.png" /> -->
-  <!-- <div class="overlay"></div> -->
   <div class="main-body">
     <div class="signup-form">
       <div class="icon">
-        <!-- <img src="./assets/images/remax.png" /> -->
         <span>Connect-X</span>
       </div>
       <div class="title">Sign Up</div>
@@ -12,8 +9,8 @@
         <form
           nz-form
           [formGroup]="signUpForm"
-          (ngSubmit)="submitForm()"
           [nzAutoTips]="autoTips"
+          enctype="application/x-www-form-urlencoded"
         >
           <div class="input-feild">
             <div nz-row>
@@ -21,7 +18,7 @@
                 <nz-form-item>
                   <nz-form-control>
                     <nz-input-group>
-                      <label class="form_name">Your Name*</label>
+                      <label class="form_name">Your Name</label>
                       <input
                         placeholder="Enter your Name"
                         nz-input
@@ -39,7 +36,7 @@
                 <nz-form-item>
                   <nz-form-control>
                     <nz-input-group>
-                      <label class="form_name">Email Address*</label>
+                      <label class="form_name">Email Address</label>
                       <input
                         placeholder="Enter Your Email"
                         nz-input
@@ -54,7 +51,7 @@
             </div>
             <div nz-row>
               <div nz-col nzLg="24" nzXs="24">
-                <span class="form_name">Password*</span>
+                <span class="form_name">Password</span>
                 <nz-form-item>
                   <nz-form-control>
                     <nz-input-group
@@ -83,7 +80,7 @@
             </div>
             <div nz-row>
               <div nz-col nzLg="24" nzXs="24">
-                <span class="form_name">Confirm Password*</span>
+                <span class="form_name">Confirm Password</span>
                 <nz-form-item>
                   <nz-form-control>
                     <nz-input-group
@@ -114,32 +111,18 @@
                 </nz-form-item>
               </div>
             </div>
-            <div nz-col nzLg="24" nzXs="24">
-              <nz-form-control>
-                <nz-form-item>
-                  <label nz-checkbox>
-                    <span class="understood"
-                      >I have read and understood
-                      <a href=" " class="condition"
-                        >Terms And Conditions</a
-                      ></span
-                    >
-                  </label>
-                </nz-form-item>
-              </nz-form-control>
-            </div>
-          </div>
-          <div class="signUp-btn">
-            <button
-              nz-button
-              [nzLoading]="isButtonLoading"
-              type="submit"
-              class="button sign"
-            >
-              Sign Up
-            </button>
           </div>
         </form>
+        <div class="signUp-btn">
+          <button
+            nz-button
+            [nzLoading]="isButtonLoading"
+            class="button sign"
+            (click)="submitForm()"
+          >
+            Sign Up
+          </button>
+        </div>
       </div>
       <div class="pattern">
         <div><hr /></div>

@@ -1,34 +1,24 @@
-<main class="container">
-  <!-- <div class="card" *ngIf="authService.userData as user"> -->
-  <div class="profile-img">
-    <img
-      src="https://res.cloudinary.com/alexandracaulea/image/upload/v1582179610/user_fckc9f.jpg"
-      alt="User image"
-      class="card__image"
-    />
+<div class="main">
+  <div class="card">
+    <div class="img-container">
+      <div class="skewed">
+        <img
+          id="img"
+          [src]="userData.photoURL"
+          alt="User image"
+          class="card__image"
+        />
+      </div>
+    </div>
+    <div class="content">
+      <h2>{{ userData.displayName }}</h2>
+      <p>{{ userData.email }}</p>
+      <div class="links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+      </div>
+    </div>
   </div>
-  <div class="card__text">
-    <!-- <h2>{{ user.displayName }}</h2>
-      <p>{{ user.email }}</p>
-      <p>{{ user.id }}</p> -->
-  </div>
-  <ul class="card__info">
-    <li>
-      <span class="card__info__stats">172</span>
-      <span>posts</span>
-    </li>
-    <li>
-      <span class="card__info__stats">47</span>
-      <span>followers</span>
-    </li>
-    <li>
-      <span class="card__info__stats">20</span>
-      <span>following</span>
-    </li>
-  </ul>
-  <div class="card__action">
-    <button class="card__action__button card__action--follow">follow</button>
-    <button class="card__action__button card__action--message">message</button>
-  </div>
-  <!-- </div> -->
-</main>
+</div>

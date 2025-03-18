@@ -28,6 +28,7 @@ import { mainCategory } from '../../../../model/categoryTypes';
   styleUrl: './post-ad.component.sass',
 })
 export class PostAdComponent {
+  isLoading = false;
   postForm!: FormGroup;
 
   posts: Post[] = [];
@@ -189,7 +190,7 @@ export class PostAdComponent {
     if (!this.postForm.valid) {
       this.validateForm();
     } else {
-      this.addPost();
+      this.savePost();
     }
   }
 
@@ -197,7 +198,8 @@ export class PostAdComponent {
     this.postForm.reset();
   }
 
-  async addPost() {
+  async savePost() {
+    this.isLoading = true;
     const currentDateAndTime = this.datePipe.transform(
       new Date(),
       'yyyy-MM-dd HH:mm:ss'
@@ -237,6 +239,7 @@ export class PostAdComponent {
             console.log('Post saved successfully!');
             alert('Post saved successfully!');
             this.postForm.reset();
+            this.isLoading = false;
           })
           .catch((error) => {
             console.error('Failed to save post:', error);
@@ -244,6 +247,7 @@ export class PostAdComponent {
           });
       } catch (error) {
         console.error('Image Upload Failed:', error);
+        this.isLoading = false;
       }
     } else {
       console.warn('No images found for upload.');

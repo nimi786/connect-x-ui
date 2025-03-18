@@ -1,5 +1,5 @@
 @import '../../../../assets/sass/index'
-.property-card-main
+.item-card-main
     background: #fff
     border-radius: 8px
     border: 0.5px solid var(--Gray-5, #E0E0E0)
@@ -9,15 +9,16 @@
         position: relative
         border-radius: 8px
         overflow: hidden
-
-        img
-            width: 100%
-            transition: 0.7s
-            cursor: pointer
-            object-fit: cover
-            &:hover
-                transform: scale(1.2)
+        .item-image
+            height: 251px
+            img
+                width: 100%
                 transition: 0.7s
+                cursor: pointer
+                object-fit: cover
+                &:hover
+                    transform: scale(1.2)
+                    transition: 0.7s
         .status
             position: absolute
             display: flex
@@ -74,7 +75,7 @@
                 font-weight: 600
                 line-height: normal
 
-    .property-details
+    .item-details
         color: #4A545D
         font-family: $font-hind
         @include media_query_all(5,null,null,null,null,5,"padding-top")
@@ -129,7 +130,7 @@
                 i
                     @include media_query_all(24,null,null,null,null,24,"font-size")
 
-        .property-type
+        .item-type
             display: flex
             @include media_query_all(8,null,null,null,null,8,"gap")
             @include media_query_all(12,null,null,null,null,12,"font-size")

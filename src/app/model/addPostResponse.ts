@@ -6,6 +6,7 @@ export interface imageData {
 }
 
 export interface Post {
+  id: string;
   categoryType: string;
   city: string;
   condition: string;

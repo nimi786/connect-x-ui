@@ -27,7 +27,7 @@ export class ItemCategoryComponent {
   }
 
   loadItems() {
-    this.dataService.getItemsByCategory('1').then((electronics) => {
+    this.dataService.getItemsByCategory('0').then((electronics) => {
       this.elcectonicsList = electronics; // Assuming each post has an `imageUrl`
       console.log('electronics', this.elcectonicsList);
     });

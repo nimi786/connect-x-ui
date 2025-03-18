@@ -215,6 +215,8 @@
   </div>
   <div class="btns">
     <button class="previous" (click)="cancel()">Cancel</button>
-    <button class="next" (click)="postAd()">Post Ad</button>
+    <button class="next" [nzLoading]="isLoading" nz-button (click)="postAd()">
+      Post Ad
+    </button>
   </div>
 </form>

@@ -1,13 +1,13 @@
-<div class="property-card-main">
+<div class="item-card-main">
   <div class="image-container">
     <span class="status">Active</span>
 
-    <div class="img">
+    <div class="item-image">
       <img [src]="itemList.imageList[0].url" alt="image" />
     </div>
   </div>
 
-  <div class="property-details">
+  <div class="item-details">
     <div class="id-details">
       <span>{{ itemList.city }}</span>
       <span>Western Province</span>
@@ -18,7 +18,7 @@
       <span>{{ itemList.price }}</span>
     </div>
 
-    <div class="property-type">
+    <div class="item-type">
       <span (click)="showMoreDetails(itemList, 'customer')" class="type-detail"
         >Show More Details</span
       >

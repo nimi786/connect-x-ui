@@ -1,15 +1,18 @@
-<div class="property-category-main">
+<div class="item-category-main">
   <div class="main-title">
     <span>Electronics</span>
   </div>
 
-  <div class="property-main">
+  <div class="item-main">
     @if (elcectonicsList.length > 0) {
-    <div class="properties" *ngFor="let data of elcectonicsList">
+    <div
+      class="items"
+      *ngFor="let data of elcectonicsList.slice(0, 4).reverse()"
+    >
       <app-item-card [itemList]="data"></app-item-card>
     </div>
     } @else {
-    <div class="properties" *ngFor="let data of skeletonList">
+    <div class="items" *ngFor="let data of skeletonList">
       <app-skeleton-loader></app-skeleton-loader>
     </div>
     }
@@ -21,17 +24,17 @@
 
 <!---------------------------------------------------------------------------------------------------------->
 
-<div class="property-category-main">
+<div class="item-category-main">
   <div class="main-title">
     <span>Vehicle</span>
   </div>
-  <div class="property-main">
+  <div class="item-main">
     @if (homeList.length > 0) {
-    <div class="properties" *ngFor="let data of homeList">
+    <div class="items" *ngFor="let data of homeList">
       <app-item-card></app-item-card>
     </div>
     } @else {
-    <div class="properties" *ngFor="let data of skeletonList">
+    <div class="items" *ngFor="let data of skeletonList">
       <app-skeleton-loader></app-skeleton-loader>
     </div>
     }
@@ -44,24 +47,24 @@
 
 <!---------------------------------------------------------------------------------------------------------->
 
-<div class="property-category-main">
+<div class="item-category-main">
   <div class="main-title">
-    <span>Property</span>
+    <span>item</span>
   </div>
 
-  <div class="property-main">
+  <div class="item-main">
     @if (homeList.length > 0) {
-    <div class="properties" *ngFor="let data of homeList">
+    <div class="items" *ngFor="let data of homeList">
       <app-item-card></app-item-card>
     </div>
     } @else {
-    <div class="properties" *ngFor="let data of skeletonList">
+    <div class="items" *ngFor="let data of skeletonList">
       <app-skeleton-loader></app-skeleton-loader>
     </div>
     }
   </div>
 
   <div class="see-more">
-    <sapn [routerLink]="['/property']">See More</sapn>
+    <sapn [routerLink]="['/item']">See More</sapn>
   </div>
 </div>

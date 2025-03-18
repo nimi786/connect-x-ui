@@ -189,9 +189,16 @@
       </div>
     </div>
 
-    <div class="btns">
+    <div class="btns" *ngIf="openType == 'owner'">
       <button class="previous">Cancel</button>
-      <button class="next" (click)="updateAd()">Edit Ad</button>
+      <button
+        nz-button
+        [nzLoading]="buttonLoading"
+        class="next"
+        (click)="updateAd()"
+      >
+        Update Ad
+      </button>
     </div>
   </div>
 </form>

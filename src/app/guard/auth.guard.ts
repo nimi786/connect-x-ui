@@ -23,6 +23,7 @@ export class AuthGuard {
   ): Observable<boolean> | Promise<boolean> | UrlTree | boolean {
     if (this.authService.isLoggedIn !== true) {
       this.router.navigate(['/login']);
+      alert('You Need to login First');
     }
     return true;
   }

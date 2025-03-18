@@ -23,7 +23,6 @@ const routes: Routes = [
   {
     path: '',
     component: MainComponent,
-    canActivate: [AuthGuard],
     children: [
       {
         path: '',
@@ -34,6 +33,7 @@ const routes: Routes = [
       },
       {
         path: 'post-ad',
+        canActivate: [AuthGuard],
         loadChildren: () =>
           import('./layout/pages/post-ad/post-ad.module').then(
             (m) => m.PostAdModule
@@ -42,6 +42,7 @@ const routes: Routes = [
 
       {
         path: 'account-settings',
+        canActivate: [AuthGuard],
         loadChildren: () =>
           import(
             './layout/features/account-settings/account-settings.module'

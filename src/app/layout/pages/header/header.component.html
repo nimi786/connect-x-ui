@@ -115,6 +115,16 @@
           >
             POST YOUR AD
           </button>
+
+          <button
+            *ngIf="!authService.userData as user"
+            class="button"
+            routerLink="signup"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            Signup
+          </button>
         </div>
 
         <div class="header-profile">

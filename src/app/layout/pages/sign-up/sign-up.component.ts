@@ -136,8 +136,7 @@ export class SignUpComponent {
     }
   }
 
-  cancel() {
-    this.signUpForm.reset();
-    this.router.navigateByUrl('/login');
+  goLogin() {
+    this.router.navigate(['login']);
   }
 }

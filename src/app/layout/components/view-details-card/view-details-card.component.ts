@@ -98,10 +98,10 @@ export class ViewDetailsCardComponent {
 
   async updateItemById() {
     this.buttonLoading = true;
-    const currentDateAndTime = this.datePipe.transform(
-      new Date(),
-      'yyyy-MM-dd HH:mm:ss'
-    );
+    // const currentDateAndTime = this.datePipe.transform(
+    //   new Date(),
+    //   'yyyy-MM-dd HH:mm:ss'
+    // );
 
     const currentUserId = this.authService.userData.uid;
 
@@ -116,7 +116,7 @@ export class ViewDetailsCardComponent {
       mobileNo: this.viewDetailsForm.get('mobileNo')?.value || '',
       city: this.viewDetailsForm.get('city')?.value || '',
       email: this.viewDetailsForm.get('email')?.value || '',
-      dateTime: currentDateAndTime || '',
+      dateTime: this.viewDetailsForm.get('dateTime')?.value || '',
       imageList: this.viewDetailsForm.get('imageList')?.value || [],
       userId: currentUserId,
     };

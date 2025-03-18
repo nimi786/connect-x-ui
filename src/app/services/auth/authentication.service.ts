@@ -17,6 +17,7 @@ import { Router } from '@angular/router';
 export class AuthenticationService {
   // userData: Observable<firebase.User> | undefined;
   userData: any; // Save logged in user data
+  isUserAuthenticated = false;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -90,6 +91,7 @@ export class AuthenticationService {
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
+
     return user !== null && user.emailVerified !== false ? true : false;
   }
 
@@ -97,7 +99,9 @@ export class AuthenticationService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['login']);
+      this.router.navigateByUrl('/');
+      window.location.reload();
+      alert('You have been logged out');
     });
   }
 }

@@ -146,27 +146,9 @@
         <div class="ptext">Or</div>
         <div><hr /></div>
       </div>
-      <!-- <nz-input-group [nzSuffix]="suffixIcon1">
-        <input type="text" nz-input placeholder="Continue With Google" />
-      </nz-input-group>
-      <ng-template #suffixIcon1>
-        <span class="sicon"><img src="./assets/icons/google.png" /></span>
-      </ng-template>
-      <nz-input-group [nzSuffix]="suffixIcon2">
-        <input type="text" nz-input placeholder="Continue With Apple" />
-      </nz-input-group>
-      <ng-template #suffixIcon2>
-        <span class="sicon"><img src="./assets/icons/apple.png" /></span>
-      </ng-template>
-      <nz-input-group [nzSuffix]="suffixIcon3">
-        <input type="text" nz-input placeholder="Continue With Facebook" />
-      </nz-input-group>
-      <ng-template #suffixIcon3>
-        <span class="sicon"><img src="./assets/icons/facebook.png" /></span>
-      </ng-template> -->
-      <span class="understood"
-        >Already Registered?
-        <a href=" " class="condition" (click)="cancel()"> Log In</a></span
+
+      <span (click)="goLogin()" class="understood"
+        >Already Registered? Log In</span
       >
     </div>
     <!-- <div class="rights">

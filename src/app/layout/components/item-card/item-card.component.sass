@@ -4,6 +4,8 @@
     border-radius: 8px
     border: 0.5px solid var(--Gray-5, #E0E0E0)
     box-shadow: 2.659px 49.929px 150px 0px rgba(4, 50, 104, 0.10)
+    height: 100%
+    position: relative
 
     .image-container
         position: relative
@@ -102,6 +104,7 @@
                 font-family: $font-hind
                 font-weight: 600
                 @include media_query_all(17,null,null,null,null,17,"font-size")
+                word-break: break-word
 
         .address-main
             display: flex
@@ -136,7 +139,6 @@
             @include media_query_all(12,null,null,null,null,12,"font-size")
             cursor: pointer
             .type-detail
-
                 @include media_query_all(4,null,null,null,null,4,"padding-top")
                 @include media_query_all(4,null,null,null,null,4,"padding-bottom")
                 // @include media_query_all(8,null,null,null,null,8,"padding-left")
@@ -144,6 +146,8 @@
                 display: flex
                 justify-content: center
                 align-items: center
+                position: absolute
+                bottom: 12px
 
     .room-details
         display: flex

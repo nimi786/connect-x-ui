@@ -20,7 +20,7 @@ import { DataService } from '../../../services/data.service';
   templateUrl: './login.component.html',
   styleUrl: './login.component.sass',
 })
-export class LoginComponent implements OnDestroy {
+export class LoginComponent {
   loginForm!: FormGroup;
   isButtonLoading = false;
 
@@ -43,9 +43,10 @@ export class LoginComponent implements OnDestroy {
   ) {
     this.user$ = authState(this.auth);
   }
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
+
+  // ngOnDestroy(): void {
+  //   this.subscription.unsubscribe();
+  // }
 
   ngOnInit() {
     this.initForm();
@@ -79,10 +80,6 @@ export class LoginComponent implements OnDestroy {
       ],
       grantType: 'customer',
     });
-  }
-
-  navigateToSignUp() {
-    this.router.navigateByUrl('/signup');
   }
 
   validateForm() {
@@ -142,5 +139,9 @@ export class LoginComponent implements OnDestroy {
       .catch((error) =>
         this.notificationService.create('error', 'Error', error)
       );
+  }
+
+  goSignup() {
+    this.router.navigate(['/signup']);
   }
 }

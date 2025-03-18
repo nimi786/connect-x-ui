@@ -1,72 +1,70 @@
-
-  
-  
-  <div class="property-category-main">
-    <div class="main-title">
-      <span>Electronics</span>
-    </div>
-  
-    <div class="property-main">
-      @if (homeList.length > 0) {
-      <div class="properties" *ngFor="let data of homeList">
-      <app-item-card></app-item-card>
-      </div>
-      } @else {
-      <div class="properties" *ngFor="let data of skeletonList">
-        <app-skeleton-loader></app-skeleton-loader>
-      </div>
-      }
-    </div>
-    <div class="see-more">
-      <sapn [routerLink]="['/electronics']">See More</sapn>
-    </div>
+<div class="item-category-main">
+  <div class="main-title">
+    <span>Electronics</span>
   </div>
+
+  <div class="item-main">
+    @if (elcectonicsList.length > 0) {
+    <div
+      class="items"
+      *ngFor="let data of elcectonicsList.reverse().slice(0, 4)"
+    >
+      <app-item-card [itemList]="data"></app-item-card>
+    </div>
+    } @else {
+    <div class="items" *ngFor="let data of skeletonList">
+      <app-skeleton-loader></app-skeleton-loader>
+    </div>
+    }
+  </div>
+  <div class="see-more">
+    <sapn [routerLink]="['/electronics']">See More</sapn>
+  </div>
+</div>
 
 <!---------------------------------------------------------------------------------------------------------->
 
-  
-  <div class="property-category-main">
-    <div class="main-title">
-      <span>Vehicle</span>
+<div class="item-category-main">
+  <div class="main-title">
+    <span>Vehicle</span>
+  </div>
+  <div class="item-main">
+    @if (homeList.length > 0) {
+    <div class="items" *ngFor="let data of homeList">
+      <app-item-card></app-item-card>
     </div>
-    <div class="property-main">
-      @if (homeList.length > 0) {
-      <div class="properties" *ngFor="let data of homeList">
-        <app-item-card></app-item-card>
-      </div>
-      } @else {
-      <div class="properties" *ngFor="let data of skeletonList">
-        <app-skeleton-loader></app-skeleton-loader>
-      </div>
-      }
+    } @else {
+    <div class="items" *ngFor="let data of skeletonList">
+      <app-skeleton-loader></app-skeleton-loader>
     </div>
-  
-    <div class="see-more">
-      <sapn [routerLink]="['/vehicle']">See More</sapn>
-    </div>
+    }
   </div>
 
-  <!---------------------------------------------------------------------------------------------------------->
-
-  <div class="property-category-main">
-    <div class="main-title">
-      <span>Property</span>
-    </div>
-  
-    <div class="property-main">
-      @if (homeList.length > 0) {
-      <div class="properties" *ngFor="let data of homeList">
-        <app-item-card></app-item-card>
-      </div>
-      } @else {
-      <div class="properties" *ngFor="let data of skeletonList">
-        <app-skeleton-loader></app-skeleton-loader>
-      </div>
-      }
-    </div>
-  
-    <div class="see-more">
-      <sapn [routerLink]="['/property']">See More</sapn>
-    </div>
+  <div class="see-more">
+    <sapn [routerLink]="['/vehicle']">See More</sapn>
   </div>
-  
+</div>
+
+<!---------------------------------------------------------------------------------------------------------->
+
+<div class="item-category-main">
+  <div class="main-title">
+    <span>Properties</span>
+  </div>
+
+  <div class="item-main">
+    @if (homeList.length > 0) {
+    <div class="items" *ngFor="let data of homeList">
+      <app-item-card></app-item-card>
+    </div>
+    } @else {
+    <div class="items" *ngFor="let data of skeletonList">
+      <app-skeleton-loader></app-skeleton-loader>
+    </div>
+    }
+  </div>
+
+  <div class="see-more">
+    <sapn [routerLink]="['/item']">See More</sapn>
+  </div>
+</div>

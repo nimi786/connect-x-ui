@@ -1,0 +1,113 @@
+<div class="login-main">
+  <div class="body-main">
+    <div class="login-form">
+      <div class="icon">
+        <span>Connect-X</span>
+      </div>
+      <div class="title">Login</div>
+      <div class="form-detail">
+        <form
+          [formGroup]="loginForm"
+          nz-form
+          [nzAutoTips]="autoTips"
+          enctype="application/x-www-form-urlencoded"
+        >
+          <div class="input-feild">
+            <div nz-row>
+              <div nz-col [nzSpan]="24">
+                <nz-form-item>
+                  <nz-form-control>
+                    <nz-input-group>
+                      <label class="form_name">Email Address*</label>
+                      <input
+                        placeholder="user@connect-x.com"
+                        nz-input
+                        type="email"
+                        class="modal-input"
+                        formControlName="userName"
+                      />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <div nz-row>
+              <div nz-col [nzSpan]="24">
+                <span class="form_name">Password*</span>
+                <nz-form-item>
+                  <nz-form-control>
+                    <nz-input-group
+                      [nzSuffix]="suffixTemplate"
+                      class="modal-input"
+                    >
+                      <input
+                        [type]="passwordVisible ? 'text' : 'password'"
+                        nz-input
+                        placeholder="Password"
+                        autocomplete="new-password"
+                        formControlName="password"
+                      />
+                    </nz-input-group>
+                    <ng-template #suffixTemplate>
+                      <span
+                        class="cursor-pointer"
+                        nz-icon
+                        nzTheme="outline"
+                        [nzType]="passwordVisible ? 'eye' : 'eye-invisible'"
+                        (click)="passwordVisible = !passwordVisible"
+                      ></span>
+                    </ng-template>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+
+            <div nz-col [nzSpan]="24">
+              <nz-form-control>
+                <nz-form-item>
+                  <label nz-checkbox>
+                    <span class="remember-me">Remember me</span>
+                  </label>
+                </nz-form-item>
+              </nz-form-control>
+            </div>
+          </div>
+          <div class="signUp-btn">
+            <button
+              (click)="submitForm()"
+              nz-button
+              [nzLoading]="isButtonLoading"
+              class="button sign"
+            >
+              Log In
+            </button>
+          </div>
+        </form>
+      </div>
+      <span class="remember1" (click)="goSignup()"
+        >Don’t Have an account? Sign Up</span
+      >
+      <div class="pattern">
+        <div><hr /></div>
+        <div class="ptext">Or</div>
+        <div><hr /></div>
+      </div>
+
+      <button nz-button (click)="loginWithGoogle()">
+        <span> Continue With google </span>
+        <img src="./assets/icons/google.png" />
+      </button>
+
+      <!-- <nz-input-group [nzSuffix]="suffixIcon3">
+            <input type="text" nz-input placeholder="Continue With Facebook" />
+          </nz-input-group>
+          <ng-template #suffixIcon3>
+            <span class="sicon"><img src="./assets/icons/facebook.png"></span>
+          </ng-template> -->
+      <a class="remember2">Forgot Password?</a>
+    </div>
+    <!-- <div class="rights">
+        <app-copy-right></app-copy-right>
+      </div> -->
+  </div>
+</div>

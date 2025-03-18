@@ -1,0 +1,220 @@
+<form nz-form nzLayout="vertical" [formGroup]="viewDetailsForm">
+  <div class="supplier-main">
+    <div nz-row class="category-details">
+      <div class="box category-inner" nz-col nzMd="24">
+        <div nz-row>
+          <div nz-col nzMd="8" nzXs="24">
+            <nz-form-item>
+              <nz-form-label>Category Type</nz-form-label>
+            </nz-form-item>
+          </div>
+          <!-- <div nz-col nzMd="2"></div> -->
+          <div nz-col nzMd="16" nzXs="24">
+            <nz-form-item>
+              <nz-form-control>
+                <nz-select formControlName="categoryType">
+                  <nz-option
+                    *ngFor="let type of categoryList"
+                    [nzValue]="type.id"
+                    [nzLabel]="type.categoryName"
+                  ></nz-option>
+                </nz-select>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+
+        <div nz-row>
+          <div nz-col nzMd="8" nzXs="24">
+            <nz-form-item>
+              <nz-form-label>Product Name</nz-form-label>
+            </nz-form-item>
+          </div>
+          <!-- <div nz-col nzMd="2"></div> -->
+          <div nz-col nzMd="16" nzXs="24">
+            <nz-form-item>
+              <nz-form-control>
+                <input formControlName="itemName" nz-input />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+
+        <div nz-row>
+          <div nz-col nzMd="8" nzXs="24">
+            <nz-form-item>
+              <nz-form-label>Price (Rs.)</nz-form-label>
+            </nz-form-item>
+          </div>
+          <!-- <div nz-col nzMd="2"></div> -->
+          <div nz-col nzMd="16" nzXs="24">
+            <nz-form-item>
+              <nz-form-control>
+                <input formControlName="price" nz-input />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+
+        <div nz-row>
+          <div nz-col nzMd="8" nzXs="24">
+            <nz-form-item>
+              <nz-form-label>Date Time</nz-form-label>
+            </nz-form-item>
+          </div>
+          <!-- <div nz-col nzMd="2"></div> -->
+          <div nz-col nzMd="16" nzXs="24">
+            <nz-form-item>
+              <nz-form-control>
+                <input formControlName="dateTime" nz-input />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+
+        <div class="checklist">
+          <div nz-row>
+            <div nz-col nzMd="8" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>Condition</nz-form-label>
+              </nz-form-item>
+            </div>
+            <!-- <div nz-col nzMd="2"></div> -->
+            <div nz-col nzMd="16" nzXs="24" class="radiogrp">
+              <nz-radio-group formControlName="condition">
+                <label nz-radio nzValue="new">New</label>
+                <label nz-radio nzValue="used">Used</label>
+              </nz-radio-group>
+            </div>
+          </div>
+        </div>
+
+        <div nz-row>
+          <div nz-col nzMd="8" nzXs="24" class="form_label">
+            <nz-form-item>
+              <nz-form-label>Product Description</nz-form-label>
+            </nz-form-item>
+          </div>
+          <div nz-col nzMd="16" nzXs="24">
+            <nz-form-item>
+              <nz-form-control>
+                <textarea
+                  nz-input
+                  class="editable-div"
+                  formControlName="itemDescription"
+                  placeholder="Brand Model Feature or Specification"
+                ></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+
+        <div nz-row nzAlign="middle">
+          <div nz-col nzSm="7" nzMd="7" nzXs="12">
+            <nz-form-item>
+              <nz-form-label
+                >Upload Invoice <br />
+                (Ensure Clear Picture Quality)
+              </nz-form-label>
+            </nz-form-item>
+          </div>
+          <div nz-col nzSm="16" nzMd="16" nzXs="22" class="imggrp">
+            <img
+              *ngFor="let data of singleItemData.imageList"
+              class="img-mgr"
+              nz-image
+              [nzSrc]="data.url"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="checklist"></div>
+      <div class="box">
+        <div nz-row class="tille">
+          <div nz-col nzMd="8" nzXs="22">
+            <div class="tab-sub-title">
+              <span>Contact Details</span>
+            </div>
+          </div>
+        </div>
+        <div class="sub-content">
+          <div nz-row>
+            <div nz-col nzMd="7" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>Contact Name</nz-form-label>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="17" nzXs="24">
+              <nz-form-item>
+                <nz-form-control>
+                  <input formControlName="contactName" nz-input />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+          <div nz-row>
+            <div nz-col nzMd="7" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>Mobile Number</nz-form-label>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="17" nzXs="24">
+              <nz-form-item>
+                <nz-form-control>
+                  <input formControlName="mobileNo" nz-input />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+          <div nz-row>
+            <div nz-col nzMd="7" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>City / Town</nz-form-label>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="17" nzXs="24">
+              <nz-form-item>
+                <nz-form-control>
+                  <input formControlName="city" nz-input />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+
+          <div nz-row>
+            <div nz-col nzMd="7" nzXs="24">
+              <nz-form-item>
+                <nz-form-label>Email Address</nz-form-label>
+              </nz-form-item>
+            </div>
+            <div nz-col nzMd="17" nzXs="24">
+              <nz-form-item>
+                <nz-form-control>
+                  <input formControlName="email" nz-input />
+                </nz-form-control>
+              </nz-form-item>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="btns" *ngIf="openType == 'owner'">
+      <button class="previous">Cancel</button>
+      <button
+        nz-button
+        [nzLoading]="buttonLoading"
+        class="next"
+        (click)="updateAd()"
+      >
+        Update Ad
+      </button>
+    </div>
+  </div>
+</form>

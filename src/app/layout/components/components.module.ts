@@ -7,7 +7,7 @@ import { SkeletonLoaderComponent } from './skeleton-loader/skeleton-loader.compo
 import { HammerModule } from '@angular/platform-browser';
 import { ItemCardComponent } from './item-card/item-card.component';
 import { ReadyToWorkComponent } from './ready-to-work/ready-to-work.component';
-import { PostYourAddComponent } from './post-your-add/post-your-add.component';
+import { ViewDetailsCardComponent } from './view-details-card/view-details-card.component';
 
 @NgModule({
   declarations: [
@@ -16,18 +16,13 @@ import { PostYourAddComponent } from './post-your-add/post-your-add.component';
     CopyRightComponent,
     ItemCardComponent,
     SkeletonLoaderComponent,
-    PostYourAddComponent,
+    ViewDetailsCardComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    HammerModule,
-  ],
+  imports: [CommonModule, SharedModule, HammerModule],
   exports: [
     SearchFilterComponent,
     CopyRightComponent,
     SkeletonLoaderComponent,
-    PostYourAddComponent,
     ReadyToWorkComponent,
     ItemCardComponent,
   ],

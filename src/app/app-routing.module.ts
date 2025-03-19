@@ -48,6 +48,14 @@ const routes: Routes = [
             './layout/features/account-settings/account-settings.module'
           ).then((m) => m.AccountSettingsModule),
       },
+
+      {
+        path: 'category',
+        loadChildren: () =>
+          import(
+            './layout/features/single-category/single-category.module'
+          ).then((m) => m.SingleCategoryModule),
+      },
     ],
   },
 ];

@@ -8,6 +8,7 @@ import { HammerModule } from '@angular/platform-browser';
 import { ItemCardComponent } from './item-card/item-card.component';
 import { ReadyToWorkComponent } from './ready-to-work/ready-to-work.component';
 import { ViewDetailsCardComponent } from './view-details-card/view-details-card.component';
+import { ItemCategoryComponent } from './item-category/item-category.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ViewDetailsCardComponent } from './view-details-card/view-details-card.
     ItemCardComponent,
     SkeletonLoaderComponent,
     ViewDetailsCardComponent,
+    ItemCategoryComponent,
   ],
   imports: [CommonModule, SharedModule, HammerModule],
   exports: [
@@ -25,6 +27,7 @@ import { ViewDetailsCardComponent } from './view-details-card/view-details-card.
     SkeletonLoaderComponent,
     ReadyToWorkComponent,
     ItemCardComponent,
+    ItemCategoryComponent,
   ],
 })
 export class ComponentsModule {}

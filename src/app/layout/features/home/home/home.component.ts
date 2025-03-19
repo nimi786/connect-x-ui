@@ -7,6 +7,14 @@ import { Component } from '@angular/core';
 })
 export class HomeComponent {
   effect = 'scrollx';
+  subCategories = [
+    'electronics',
+    'vehicle',
+    'property',
+    'pets',
+    'toys',
+    'others',
+  ];
   carouselImage = [
     {
       img: './assets/images/carousel-img.png',

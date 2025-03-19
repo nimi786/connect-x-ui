@@ -35,7 +35,7 @@ const routes: Routes = [
         path: 'post-ad',
         canActivate: [AuthGuard],
         loadChildren: () =>
-          import('./layout/pages/post-ad/post-ad.module').then(
+          import('./layout/components/post-ad/post-ad.module').then(
             (m) => m.PostAdModule
           ),
       },

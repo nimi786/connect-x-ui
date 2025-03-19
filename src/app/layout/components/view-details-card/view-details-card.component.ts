@@ -37,7 +37,7 @@ export class ViewDetailsCardComponent {
   ngOnInit(): void {
     this.initForm();
 
-    console.log('WWWWWWWWWWWWWWWWWWWWW', this.singleItemData);
+    console.log('WWWWWWWWWWWWWWWWWWWWWwwwwwwwwwwww', this.singleItemData);
     this.getItemById();
     this.loadCategories();
   }
@@ -45,7 +45,7 @@ export class ViewDetailsCardComponent {
   async loadCategories() {
     this.dataService.getAllCategories().then((category) => {
       this.categoryList = category;
-      console.log('Fetched categories', this.categoryList);
+      console.log('Fetched categoriesssssssssssssssssss', this.categoryList);
     });
   }
 
@@ -121,18 +121,27 @@ export class ViewDetailsCardComponent {
       userId: currentUserId,
     };
 
-    console.log('Post Data Before Upload:', formData);
+    console.log(
+      'Post Data Before bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb',
+      formData
+    );
 
     this.dataService
       .updatePost(formData)
       .then(() => {
-        console.log('Post update successfully!');
+        console.log(
+          'Post update successssssssssssssssssssssssssssssssssssssssssssssssss'
+        );
         alert('Post update successfully!');
         this.buttonLoading = false;
+        window.location.reload();
         this.modaRef.close('update-item');
       })
       .catch((error) => {
-        console.error('Failed to update post:', error);
+        console.error(
+          'Failed to update post fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff:',
+          error
+        );
         alert('Failed to update post. Please try again.');
         this.buttonLoading = false;
       });

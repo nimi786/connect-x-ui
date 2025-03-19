@@ -9,7 +9,7 @@ import {
   Subject,
   Subscription,
 } from 'rxjs';
-import { EventTriggerService } from '../../../../services/event-trigger.service';
+import { EventTriggerService } from '../../../services/event-trigger.service';
 import { NzModalRef } from 'ng-zorro-antd/modal';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 

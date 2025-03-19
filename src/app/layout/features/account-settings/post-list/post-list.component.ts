@@ -24,9 +24,8 @@ export class PostListComponent {
   ngOnInit(): void {
     setTimeout(() => {
       this.itemList;
-    }, 1000);
-
-    this.loadAllItemsByUserId();
+      this.loadAllItemsByUserId();
+    }, 500);
   }
 
   updatePost(receiveData: Post, viewType: string) {
@@ -47,14 +46,20 @@ export class PostListComponent {
 
   deleteItem(itemId: Post) {
     this.dataService.deletePostById(itemId).then(() => {
-      console.log('Item deleted successfully');
+      console.log(
+        'Item deleted successfullyiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii'
+      );
       alert('Item deleted successfully!');
+      window.location.reload();
     });
   }
 
   async loadAllItemsByUserId() {
     const userId = this.authService.userData.uid;
     this.userPosts = await this.dataService.getPostsByUserId(userId);
-    console.log('User Posts:', this.userPosts);
+    console.log(
+      'User Posts+++++++++++++++++++++++++++++++++++++++++++++++++++++++=:',
+      this.userPosts
+    );
   }
 }

@@ -13,23 +13,20 @@ import { Post } from '../../../../model/addPostResponse';
 export class ItemCategoryComponent {
   homeList: any[] = [];
   skeletonList: any[] = [1, 2, 3, 4];
-
   elcectonicsList: Post[] = [];
 
-  constructor(private dataService: DataService) {
-    // setTimeout(() => {
-    //   this.elcectonicsList = [];
-    // }, 1000);
-  }
+  constructor(private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.loadItems();
+    setTimeout(() => {
+      this.loadItems();
+    }, 500);
   }
 
   loadItems() {
     this.dataService.getItemsByCategory('0').then((electronics) => {
       this.elcectonicsList = electronics; // Assuming each post has an `imageUrl`
-      console.log('electronics', this.elcectonicsList);
+      console.log('electronicssssssssssssssssssssssss', this.elcectonicsList);
     });
   }
 }

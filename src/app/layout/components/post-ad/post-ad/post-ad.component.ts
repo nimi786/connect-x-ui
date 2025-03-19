@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { ImageUploadComponent } from '../../../features/home/image-upload/image-upload.component';
 import { NzModalService } from 'ng-zorro-antd/modal';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MyValidators } from '../../../../_validators/custom-validator';
@@ -21,6 +20,7 @@ import { AngularFireStorage } from '@angular/fire/compat/storage';
 import { finalize } from 'rxjs/operators';
 import { AuthenticationService } from '../../../../services/auth/authentication.service';
 import { mainCategory } from '../../../../model/categoryTypes';
+import { ImageUploadComponent } from '../../../components/image-upload/image-upload.component';
 
 @Component({
   selector: 'app-post-ad',
@@ -91,7 +91,7 @@ export class PostAdComponent {
     modal.componentInstance!.addType = openType;
 
     // Load previously uploaded images
-    const loadedImages = this.postForm.get('imageList')?.value || [];
+    const loadedImages = this.postForm.get('imageList+++++++++')?.value || [];
 
     if (loadedImages.length > 0) {
       modal.componentInstance!.list = loadedImages; // Ensure images are set in the modal
@@ -110,7 +110,7 @@ export class PostAdComponent {
           this.postForm.get('uploadImageName')?.setValue('Image Uploaded');
         }
         console.log(
-          'Updated Image List:',
+          'Updated Image List:++++++++++++++++++++++++++++++++++++++++++',
           this.postForm.get('imageList')?.value
         );
       }
@@ -222,7 +222,7 @@ export class PostAdComponent {
       userId: currentUserId,
     };
 
-    console.log('Post Data Before Upload:', formData);
+    console.log('Post Data Before Uploadddddddddddddddddddddd:', formData);
 
     const files = this.postForm.get('imageList')?.value;
 
@@ -236,13 +236,16 @@ export class PostAdComponent {
         this.dataService
           .savePost(formData)
           .then(() => {
-            console.log('Post saved successfully!');
+            console.log('Post saved successfullysssssssssssssssssssssssssss!');
             alert('Post saved successfully!');
             this.postForm.reset();
             this.isLoading = false;
           })
           .catch((error) => {
-            console.error('Failed to save post:', error);
+            console.error(
+              'Failed to save postfffffffffffffffffffffffffffffffffff:',
+              error
+            );
             alert('Failed to save post. Please try again.');
           });
       } catch (error) {
@@ -261,7 +264,7 @@ export class PostAdComponent {
   async loadCategories() {
     this.dataService.getAllCategories().then((category) => {
       this.categoryList = category;
-      console.log('Fetched categories', this.categoryList);
+      console.log('Fetched categoriesssssssssssssssss', this.categoryList);
     });
   }
 

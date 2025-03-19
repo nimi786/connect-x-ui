@@ -1,0 +1,69 @@
+@if(subCategory=='electronics'){
+<div class="item-category-main">
+  <div class="main-title">
+    <span>Electronics</span>
+  </div>
+
+  <div class="item-main">
+    @if (elcectonicsList.length > 0) {
+    <div class="items" *ngFor="let data of elcectonicsList">
+      <app-item-card [itemList]="data"></app-item-card>
+    </div>
+    } @else {
+    <div class="items" *ngFor="let data of skeletonList">
+      <app-skeleton-loader></app-skeleton-loader>
+    </div>
+    }
+  </div>
+  <div class="see-more" *ngIf="!isShowAll">
+    <span (click)="open('electronics')">See More</span>
+  </div>
+</div>
+
+} @if(subCategory=='vehicle'){
+<div class="item-category-main">
+  <div class="main-title">
+    <span>Vehicle</span>
+  </div>
+  <div class="item-main">
+    @if (vehiclesList.length > 0) {
+    <div class="items" *ngFor="let data of vehiclesList">
+      <app-item-card [itemList]="data"></app-item-card>
+    </div>
+    } @else {
+    <div class="items" *ngFor="let data of skeletonList">
+      <app-skeleton-loader></app-skeleton-loader>
+    </div>
+    }
+  </div>
+
+  <div class="see-more" *ngIf="!isShowAll">
+    <span (click)="open('vehicle')">See More</span>
+  </div>
+</div>
+
+} @if(subCategory=='property'){
+<div class="item-category-main">
+  <div class="main-title">
+    <span>Properties</span>
+  </div>
+
+  <div class="item-main">
+    @if (propertiesList.length > 0) {
+    <div class="items" *ngFor="let data of propertiesList">
+      <app-item-card [itemList]="data"></app-item-card>
+    </div>
+    } @else {
+    <div class="items" *ngFor="let data of skeletonList">
+      <app-skeleton-loader></app-skeleton-loader>
+    </div>
+    }
+  </div>
+
+  <div class="see-more" *ngIf="!isShowAll">
+    <span (click)="open('item')">See More</span>
+  </div>
+</div>
+
+} @if(subCategory=='pets'){ } @if(subCategory=='toys'){ }
+@if(subCategory=='others'){ }

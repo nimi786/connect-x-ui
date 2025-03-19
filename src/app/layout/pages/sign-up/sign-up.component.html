@@ -1,0 +1,141 @@
+<div class="signup-main">
+  <div class="main-body">
+    <div class="signup-form">
+      <div class="icon">
+        <span>Connect-Me</span>
+      </div>
+      <div class="title">Sign Up</div>
+      <div class="form-detail">
+        <form
+          nz-form
+          [formGroup]="signUpForm"
+          [nzAutoTips]="autoTips"
+          enctype="application/x-www-form-urlencoded"
+        >
+          <div class="input-feild">
+            <div nz-row>
+              <div nz-col nzLg="24" nzXs="24">
+                <nz-form-item>
+                  <nz-form-control>
+                    <nz-input-group>
+                      <label class="form_name">Your Name</label>
+                      <input
+                        placeholder="Enter your Name"
+                        nz-input
+                        type="text"
+                        class="modal-input"
+                        formControlName="name"
+                      />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <div nz-row>
+              <div nz-col nzLg="24" nzXs="24">
+                <nz-form-item>
+                  <nz-form-control>
+                    <nz-input-group>
+                      <label class="form_name">Email Address</label>
+                      <input
+                        placeholder="Enter Your Email"
+                        nz-input
+                        type="email"
+                        class="modal-input"
+                        formControlName="email"
+                      />
+                    </nz-input-group>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <div nz-row>
+              <div nz-col nzLg="24" nzXs="24">
+                <span class="form_name">Password</span>
+                <nz-form-item>
+                  <nz-form-control>
+                    <nz-input-group
+                      [nzSuffix]="suffixTemplate1"
+                      class="modal-input"
+                    >
+                      <input
+                        [type]="passwordVisible ? 'text' : 'password'"
+                        nz-input
+                        placeholder="Password"
+                        formControlName="password"
+                      />
+                    </nz-input-group>
+                    <ng-template #suffixTemplate1>
+                      <span
+                        class="cursor-pointer"
+                        nz-icon
+                        nzTheme="outline"
+                        [nzType]="passwordVisible ? 'eye' : 'eye-invisible'"
+                        (click)="passwordVisible = !passwordVisible"
+                      ></span>
+                    </ng-template>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+            <div nz-row>
+              <div nz-col nzLg="24" nzXs="24">
+                <span class="form_name">Confirm Password</span>
+                <nz-form-item>
+                  <nz-form-control>
+                    <nz-input-group
+                      [nzSuffix]="suffixTemplate2"
+                      class="modal-input"
+                    >
+                      <input
+                        [type]="confirmPasswordVisible ? 'text' : 'password'"
+                        nz-input
+                        placeholder="Confirm Password"
+                        formControlName="confirmPassword"
+                      />
+                    </nz-input-group>
+                    <ng-template #suffixTemplate2>
+                      <span
+                        class="cursor-pointer"
+                        nz-icon
+                        nzTheme="outline"
+                        [nzType]="
+                          confirmPasswordVisible ? 'eye' : 'eye-invisible'
+                        "
+                        (click)="
+                          confirmPasswordVisible = !confirmPasswordVisible
+                        "
+                      ></span>
+                    </ng-template>
+                  </nz-form-control>
+                </nz-form-item>
+              </div>
+            </div>
+          </div>
+        </form>
+        <div class="signUp-btn">
+          <button
+            nz-button
+            [nzLoading]="isButtonLoading"
+            class="button sign"
+            (click)="saveUser()"
+          >
+            Sign Up
+          </button>
+        </div>
+      </div>
+      <div class="pattern">
+        <div><hr /></div>
+        <div class="ptext">Or</div>
+        <div><hr /></div>
+      </div>
+
+      <span (click)="goLogin()" class="understood"
+        >Already Registered? Log In</span
+      >
+    </div>
+    <!-- <div class="rights">
+      <app-copy-right></app-copy-right>
+    </div> -->
+  </div>
+</div>

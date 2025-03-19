@@ -5,7 +5,7 @@
       routerLink=""
       routerLinkActive="active"
       [routerLinkActiveOptions]="{ exact: true }"
-      ><span class="connectx">Connect-X</span></a
+      ><span class="connectx">Connect-Me</span></a
     >
     <button
       class="navbar-toggler"
@@ -32,7 +32,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="electronics"
+            routerLink="category/electronics"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Electronics</a
@@ -41,7 +41,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="vehicle"
+            routerLink="category/vehicle"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Vehicle</a
@@ -51,7 +51,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="property"
+            routerLink="category/property"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Property</a
@@ -60,7 +60,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="pets"
+            routerLink="category/pets"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Pets</a
@@ -69,7 +69,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="toys"
+            routerLink="category/toys"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Toys</a
@@ -79,7 +79,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="others"
+            routerLink="category/others"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Other</a
@@ -109,20 +109,34 @@
         <div class="header-btn">
           <button
             class="button"
-            routerLink="sell-with-us"
+            routerLink="post-ad"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
           >
             POST YOUR AD
           </button>
+
+          <button
+            *ngIf="!authService.userData as user"
+            class="button"
+            routerLink="login"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            Login
+          </button>
         </div>
 
         <div class="header-profile">
-          <div class="profile">
+          <div class="profile" *ngIf="authService.userData as user">
             <a nz-dropdown nzTrigger="click" [nzDropdownMenu]="profileMenu">
               <nz-avatar
                 nzIcon="user"
-                nzSrc="//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png"
+                nzSrc="{{
+                  user.photoURL
+                    ? user.photoURL
+                    : '//zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png'
+                }}"
               ></nz-avatar>
             </a>
             <div class="logout">
@@ -131,7 +145,12 @@
                   <li nz-menu-item [routerLink]="['account-settings']">
                     <span class="content">My Account</span>
                   </li>
-                  <li nz-menu-item><span class="content">Log Out</span></li>
+                  <li nz-menu-item [routerLink]="['account-settings/user-add']">
+                    <span class="content">MY adds</span>
+                  </li>
+                  <li (click)="authService.SignOut()" nz-menu-item>
+                    <span class="content">Log Out</span>
+                  </li>
                 </ul>
               </nz-dropdown-menu>
             </div>

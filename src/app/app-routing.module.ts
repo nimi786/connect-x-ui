@@ -2,8 +2,24 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MainComponent } from './layout/pages/main/main.component';
 import { ScrollService } from './services/common/scroll-service.service';
+import { SignUpComponent } from './layout/pages/sign-up/sign-up.component';
+import { LoginComponent } from './layout/pages/login/login.component';
+
+// route guard
+import { AuthGuard } from './guard/auth.guard';
 
 const routes: Routes = [
+  {
+    path: 'signup',
+    component: SignUpComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+
+  // { path: '', redirectTo: '/login', pathMatch: 'full' },
+
   {
     path: '',
     component: MainComponent,
@@ -16,18 +32,29 @@ const routes: Routes = [
           ),
       },
       {
-        path: 'sign-up',
+        path: 'post-ad',
+        canActivate: [AuthGuard],
         loadChildren: () =>
-          import('./layout/pages/sign-up/sign-up.module').then(
-            (m) => m.SignUpModule
+          import('./layout/components/post-ad/post-ad.module').then(
+            (m) => m.PostAdModule
           ),
       },
+
       {
-        path: 'login',
+        path: 'account-settings',
+        canActivate: [AuthGuard],
         loadChildren: () =>
-          import('./layout/pages/login/login.module').then(
-            (m) => m.LoginModule
-          ),
+          import(
+            './layout/features/account-settings/account-settings.module'
+          ).then((m) => m.AccountSettingsModule),
+      },
+
+      {
+        path: 'category',
+        loadChildren: () =>
+          import(
+            './layout/features/single-category/single-category.module'
+          ).then((m) => m.SingleCategoryModule),
       },
     ],
   },

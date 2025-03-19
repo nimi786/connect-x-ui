@@ -1,0 +1,24 @@
+<div class="main">
+  <div class="card">
+    <div class="img-container">
+      <div class="skewed">
+        <img
+          id="img"
+          [src]="userData.photoURL"
+          alt="User image"
+          class="card__image"
+        />
+      </div>
+    </div>
+    <div class="content">
+      <h2>{{ userData.displayName }}</h2>
+      <p>{{ userData.email }}</p>
+      <div class="links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-pinterest"></i></a>
+        <a href="#"><i class="fab fa-telegram"></i></a>
+      </div>
+    </div>
+  </div>
+</div>

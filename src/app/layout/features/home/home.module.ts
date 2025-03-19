@@ -4,10 +4,10 @@ import { HomeRoutingModule } from './home-routing.module';
 import { ComponentsModule } from '../../components/components.module';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from '../../../_shared/shared.module';
-import { ItemCategoryComponent } from './item-category/item-category.component';
+import { ImageUploadComponent } from '../../components/image-upload/image-upload.component';
 
 @NgModule({
-  declarations: [HomeComponent, ItemCategoryComponent],
+  declarations: [HomeComponent, ImageUploadComponent],
   imports: [CommonModule, HomeRoutingModule, ComponentsModule, SharedModule],
 })
 export class HomeModule {}

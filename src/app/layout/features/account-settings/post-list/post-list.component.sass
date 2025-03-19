@@ -1,0 +1,78 @@
+@import ../../../../../assets/sass/index
+
+.table-main
+    width: 100%
+    display: flex
+    justify-content: center
+    align-items: center
+    flex-direction: column
+    .title
+        margin-top: 30px
+        span
+            color: #000
+            font-size: 30px
+    .table
+        width: 900px
+        margin-top: 60px
+        height: 50vh
+
+.table-data
+    display: flex
+    word-break: break-word
+    justify-content: center
+    align-items: center
+    min-height: inherit
+
+    @media screen and (min-width: 320px)
+        font-size: 16px
+        height: 77px
+    @media screen and (min-width: 768px)
+        font-size: 12px
+        height: 77px
+    @media screen and (min-width: 1200px)
+        font-size: lgPx(14)
+        height: 35px
+    @media screen and (min-width: 1900px)
+        font-size: 14px
+        height: 35px
+    @media screen and ( device-width:1106px ) and (device-height: 820px) and (orientation: landscape)
+        font-size: 10px
+    @media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape)
+        font-size: 10px
+    @media all and (device-width: 1180px) and (device-height: 820px) and (orientation:landscape)
+        font-size: 10px
+
+    .imgspace
+        display: flex
+        gap: 8px
+        span
+            @media screen and (min-width: 320px)
+                height: 28px
+                width: 28px
+            @media screen and (min-width: 481px)
+                height: 28px
+                width: 28px
+            @media screen and (min-width: 641px)
+                height: 58px
+                width: 58px
+            @media screen and (min-width: 753px)
+                height: 38px
+                width: 28px
+            @media screen and (min-width: 961px)
+                height: 38px
+                width: 28px
+            @media all and (device-width: 768px) and (device-height: 1024px)
+                height: 24px
+                width: 24px
+            @media screen and (min-width: 1200px)
+                height: lgPx(30)
+                width: lgPx(30)
+            @media screen and (min-width: 1900px)
+                height: 30px
+                width: 30px
+            @media all and (device-width: 1024px) and (device-height: 768px) and (orientation:landscape)
+                height: 30px
+                width: 30px
+            @media all and (device-width: 1180px) and (device-height: 820px) and (orientation:landscape)
+                height: 30px
+                width: 30px

@@ -3,7 +3,10 @@
     <span class="status">Active</span>
 
     <div class="item-image">
-      <img [src]="itemList.imageList[0].url" alt="image" />
+      <img
+        [src]="itemList.imageList ? itemList.imageList[0].url : ''"
+        alt="image"
+      />
     </div>
   </div>
 

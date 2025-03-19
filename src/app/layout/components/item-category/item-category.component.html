@@ -28,7 +28,7 @@
   <div class="item-main">
     @if (vehiclesList.length > 0) {
     <div class="items" *ngFor="let data of vehiclesList">
-      <app-item-card></app-item-card>
+      <app-item-card [itemList]="data"></app-item-card>
     </div>
     } @else {
     <div class="items" *ngFor="let data of skeletonList">
@@ -51,7 +51,7 @@
   <div class="item-main">
     @if (propertiesList.length > 0) {
     <div class="items" *ngFor="let data of propertiesList">
-      <app-item-card></app-item-card>
+      <app-item-card [itemList]="data"></app-item-card>
     </div>
     } @else {
     <div class="items" *ngFor="let data of skeletonList">

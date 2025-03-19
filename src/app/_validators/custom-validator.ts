@@ -237,7 +237,7 @@ export class MyValidators extends Validators {
       return {
         pattern: {
           'zh-cn': `最大长度为 `,
-          en: `Please confirm ${name}`,
+          en: `Please Input confirm ${name}`,
         },
       };
     };

@@ -8,6 +8,8 @@ import {
 import { Router } from '@angular/router';
 import { MyValidators } from '../../../_validators/custom-validator';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
+import { DataService } from '../../../services/data.service';
+import { AuthenticationService } from '../../../services/auth/authentication.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -31,7 +33,8 @@ export class SignUpComponent {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private notificationService: NzNotificationService
+    private notificationService: NzNotificationService,
+    public authService: AuthenticationService
   ) {}
 
   ngOnInit(): void {
@@ -76,10 +79,10 @@ export class SignUpComponent {
   }
 
   checkPasswords(group: FormGroup) {
-    const pass = group.controls['password']?.value;
+    const password = group.controls['password']?.value;
     const confirmPass = group.controls['confirmPassword']?.value;
 
-    return pass === confirmPass
+    return password === confirmPass
       ? null
       : group.controls['confirmPassword'].setErrors({
           confirmPassword: true,
@@ -95,24 +98,30 @@ export class SignUpComponent {
     });
   }
 
-  submitForm() {
+  saveUser() {
     console.log('this.signUpForm', this.signUpForm);
-
     if (!this.signUpForm.valid) {
       this.validateForm();
       return;
-      this.checkPasswords(this.signUpForm);
-      return;
     } else {
       this.isButtonLoading = true;
-      // const formData = {
-      //   password: this.signUpForm.get('password')?.value,
-      //   userDto: {
-      //     customerName: this.signUpForm.get('name')?.value,
-      //     email: this.signUpForm.get('email')?.value,
-      //     userType: 'customer',
-      //   },
-      // };
+      const formData = {
+        name: this.signUpForm.get('name')?.value,
+        email: this.signUpForm.get('email')?.value,
+        password: this.signUpForm.get('password')?.value,
+      };
+
+      this.authService
+        .signUp(formData.email, formData.password)
+        .then((res) => {
+          alert('Your account has been created, Now You can login');
+          this.signUpForm.reset(); // Reset form after successful registration
+          this.isButtonLoading = false;
+        })
+        .catch((err) => {
+          alert('Something went wrong: ' + err.message);
+          this.isButtonLoading = false;
+        });
     }
   }
 

@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 export class AuthenticationService {
   // userData: Observable<firebase.User> | undefined;
   userData: any; // Save logged in user data
-  isUserAuthenticated = false;
+  emailLogin = false;
 
   constructor(
     private afAuth: AngularFireAuth,
@@ -39,14 +39,6 @@ export class AuthenticationService {
     });
   }
 
-  // signInWithGoogle() {
-  //   return this.afs.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  // }
-
-  // registerWithEmailAndPassword(user: { email: string; password: string }) {
-  //   return this.afs.createUserWithEmailAndPassword(user.email, user.password);
-  // }
-
   login(email: string, password: string) {
     this.afAuth
       .signInWithEmailAndPassword(email, password)
@@ -58,15 +50,8 @@ export class AuthenticationService {
       });
   }
 
-  signup(email: string, password: string) {
-    this.afAuth
-      .createUserWithEmailAndPassword(email, password)
-      .then((value) => {
-        console.log('Success!', value);
-      })
-      .catch((err) => {
-        console.log('Something went wrong:', err.message);
-      });
+  async signUp(email: string, password: string): Promise<any> {
+    return this.afAuth.createUserWithEmailAndPassword(email, password);
   }
 
   /* Setting up user data when sign in with username/password, 
@@ -91,8 +76,8 @@ export class AuthenticationService {
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
-
-    return user !== null && user.emailVerified !== false ? true : false;
+    // return (user !== null && user.emailVerified) !== false ? true : false;
+    return (user !== null) !== false ? true : false;
   }
 
   // Sign out

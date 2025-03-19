@@ -14,6 +14,7 @@ import { Observable, Subscription } from 'rxjs';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { NzNotificationService } from 'ng-zorro-antd/notification';
 import { DataService } from '../../../services/data.service';
+import { AuthenticationService } from '../../../services/auth/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -39,7 +40,9 @@ export class LoginComponent {
     private auth: Auth,
     public dataService: DataService,
     private afAuth: AngularFireAuth,
-    private notificationService: NzNotificationService
+    private notificationService: NzNotificationService,
+
+    private authService: AuthenticationService
   ) {
     this.user$ = authState(this.auth);
   }
@@ -98,9 +101,11 @@ export class LoginComponent {
     return this.loginForm.get('password');
   }
 
-  submitForm() {
+  login() {
+    this.isButtonLoading = true;
     if (!this.loginForm.valid) {
       this.validateForm();
+      this.isButtonLoading = false;
       return;
     } else {
       this.dataService.loggedInUser = this.userName?.value;
@@ -116,7 +121,18 @@ export class LoginComponent {
         .signInWithEmailAndPassword(formData.username, formData.password)
         .then((userCredential) => {
           // Handle successful sign in
-          // this.notificationService.create('success', 'Success', userCredential);
+
+          if (userCredential) {
+            this.isButtonLoading = false;
+            this.router.navigateByUrl('/');
+
+            this.notificationService.create(
+              'success',
+              'Logged in Successfully',
+              ''
+            );
+          } else {
+          }
         })
         .catch((error) => {
           this.notificationService.create('error', 'Error', error);
@@ -125,16 +141,20 @@ export class LoginComponent {
   }
 
   loginWithGoogle() {
+    this.isButtonLoading = true;
     const provider = new GoogleAuthProvider();
     signInWithPopup(this.auth, provider)
       .then((res: UserCredential) => {
-        // this.notificationService.create('success', 'Success', error);
-
         if (res.user.refreshToken) {
+          this.isButtonLoading = false;
+
           this.router.navigateByUrl('/');
+          this.notificationService.create(
+            'success',
+            'Logged in Successfully',
+            ''
+          );
         }
-        // this.router.navigate(['/']);
-        console.log('hello');
       })
       .catch((error) =>
         this.notificationService.create('error', 'Error', error)

@@ -1,5 +1,10 @@
 
 @import '../../../../../assets/sass/index'
+
+.main
+    display: flex
+    flex-direction: column
+    justify-content: center
 .post-card-main
     display: flex
     flex-direction: column
@@ -404,6 +409,10 @@ textarea
 .image-upload
     height: 26px
     width: 20px
+    cursor: pointer
+
+:host ::ng-deep.ant-input-affix-wrapper-disabled .ant-input[disabled]
+    color: #000
 
 .box
     @include media_query_all_im(10,null,null,null,null,12,"padding-bottom")

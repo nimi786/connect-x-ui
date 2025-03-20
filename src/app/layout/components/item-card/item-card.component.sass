@@ -12,8 +12,21 @@
         border-radius: 8px
         overflow: hidden
         .item-image
+            @media screen and (min-width: 320px)
+                min-height: 450px
+            @media screen and (min-width: 481px)
+                min-height: 180px
+            @media screen and (min-width: 641px)
+                min-height: 300px
+            @media screen and (min-width: 768px)
+                min-height: 114px
+            @media screen and (min-width: 961px)
+                min-height: 204px
+            @media screen and (min-width: 1200px)
+                min-height: 179px
+            @media screen and (min-width: 1900px)
+                min-height: 206px
 
-            @include media_query_all(450,180,300,290,370,251,"height")
             img
                 width: 100%
                 transition: 0.7s

@@ -52,6 +52,16 @@
     //     color: #444646
     //     @include media_query_all_im(20,null,null,null,null,14,"font-size")
     //     font-weight: 400
+
+:host ::ng-deep.ant-input[disabled]
+    color: #000
+
+:host ::ng-deep.ant-select-disabled.ant-select:not(.ant-select-customize-input) .ant-select-selector
+    color: #000
+
+:host ::ng-deep.ant-radio-disabled + span
+    color: #000
+
 .checklist
     display: flex
     flex-direction: column
@@ -63,8 +73,6 @@
 :host::ng-deep.ant-form-item-label
     font-weight: 500
     @include media_query_all_im(14,null,null,null,null,14,"font-size")
-
-.title
 
 .box
     display: flex

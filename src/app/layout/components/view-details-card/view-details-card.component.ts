@@ -36,7 +36,7 @@ export class ViewDetailsCardComponent {
 
   ngOnInit(): void {
     this.initForm();
-
+    this.formEditByUserType();
     console.log('WWWWWWWWWWWWWWWWWWWWWwwwwwwwwwwww', this.singleItemData);
     this.getItemById();
     this.loadCategories();
@@ -93,6 +93,14 @@ export class ViewDetailsCardComponent {
       this.validateForm();
     } else {
       this.updateItemById();
+    }
+  }
+
+  formEditByUserType() {
+    if (this.openType === 'customer') {
+      this.viewDetailsForm.disable();
+    } else {
+      this.viewDetailsForm.enable();
     }
   }
 

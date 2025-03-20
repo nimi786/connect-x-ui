@@ -17,11 +17,24 @@
         text-transform: uppercase
     .item-main
         display: flex
-
-        @include media_query_all(15,null,null,null,null,35,"gap")
-        @include media_query_all('center',null,null,null,null,'flex-start',"justify-content")
-        flex-wrap: wrap
-
+        @include media_query_all('center','center','center','center','center','center',"justify-content")
+        @include media_query_all('wrap','nowrap',nowrap,nowrap,nowrap,'nowrap',"flex-wrap")
+        @media screen and (min-width: 320px)
+            gap: 15px
+        @media screen and (min-width: 481px)
+            gap: 15px
+        @media screen and (min-width: 641px)
+            gap: 50px
+        @media screen and (min-width: 768px)
+            gap: 50px
+        @media screen and (min-width: 961px)
+            gap: 50px
+        @media screen and (min-width: 1200px)
+            gap: 35px
+        @media screen and (min-width: 1490px)
+            gap: 68px
+        @media screen and (min-width: 1900px)
+            gap: 35px
         .items
             @include media_query_all('100%',null,null,null,null,268,"width")
 

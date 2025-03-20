@@ -2,21 +2,24 @@
 @import '../../../../assets/sass/index'
 
 .login-main
-    @include media_query_all(1200,null,null,null,null,1000,'height')
+    // @include media_query_all(1200,null,null,null,null,1000,'height')
     display: flex
     justify-content: center
-    position: relative
-    @include media_query_all(20,null,100,null,null,100,'padding-top')
+    height: max-content
+    @include media_query_all(120,110,null,null,null,120,'padding-top')
+    @include media_query_all(120,120,null,null,null,120,'padding-bottom')
     // @include media_query_all(16,null,null,null,null,427,'padding-bottom')
-    @include media_query_all(10,null,null,null,null,696,'padding-left')
-    @include media_query_all(10,null,null,null,null,693,'padding-right')
+    @include media_query_all(10,null,null,null,null,20,'padding-left')
+    @include media_query_all(10,null,null,null,null,20,'padding-right')
     background: #f5f5f5
+    width: 100%
+    margin: auto
 .body-main
     display: flex
     flex-direction: column
     align-items: center
     @include media_query_all(22,null,null,null,null,62,'gap')
-    position: absolute
+    // position: absolute
     background: transparent
     // top: 45%
     // left: 50%
@@ -55,16 +58,18 @@
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08)
 
     .icon
-        @include media_query_all(198,null,null,null,null,198,'width')
-        @include media_query_all(77,null,null,null,null,77,'height')
+        // @include media_query_all(198,null,null,null,null,198,'width')
+        // @include media_query_all(77,null,null,null,null,77,'height')
+        display: flex
+        justify-content: center
         span
-            @include media_query_all(32,null,null,null,null,35,'font-size')
+            @include media_query_all(32,null,27,null,null,35,'font-size')
             font-weight: 600
 
     .title
         color: $primary-color
         font-family: $font-inter
-        @include media_query_all(32,null,null,null,null,32,'font-size')
+        @include media_query_all(32,null,null,29,null,32,'font-size')
         font-weight: 600
 
 .sicon
@@ -95,11 +100,12 @@
     @include media_query_all(12,null,null,null,null,12,'font-size')
     font-weight: 600
 
-.remember1
+.dont-acc
     color: $primary-color
     font-family: $font-inter
     @include media_query_all(12,null,null,null,null,12,'font-size')
     font-weight: 600
+    cursor: pointer
     .condition
         color: #3F88C5
         font-family: $font-inter

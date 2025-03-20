@@ -1,15 +1,15 @@
 <form nz-form nzLayout="vertical" [formGroup]="viewDetailsForm">
-  <div class="supplier-main">
+  <div class="view-main">
     <div nz-row class="category-details">
-      <div class="box category-inner" nz-col nzMd="24">
+      <div class="box" nz-col nzSm="24" nzMd="24" nzLg="24" nzXs="24">
         <div nz-row>
-          <div nz-col nzMd="8" nzXs="24">
+          <div nz-col nzMd="8" nzXs="24" nzLg="8">
             <nz-form-item>
               <nz-form-label>Category Type</nz-form-label>
             </nz-form-item>
           </div>
           <!-- <div nz-col nzMd="2"></div> -->
-          <div nz-col nzMd="16" nzXs="24">
+          <div nz-col nzMd="16" nzXs="24" nzLg="16">
             <nz-form-item>
               <nz-form-control>
                 <nz-select formControlName="categoryType">
@@ -56,22 +56,6 @@
           </div>
         </div>
 
-        <div nz-row>
-          <div nz-col nzMd="8" nzXs="24">
-            <nz-form-item>
-              <nz-form-label>Date Time</nz-form-label>
-            </nz-form-item>
-          </div>
-          <!-- <div nz-col nzMd="2"></div> -->
-          <div nz-col nzMd="16" nzXs="24">
-            <nz-form-item>
-              <nz-form-control>
-                <input formControlName="dateTime" nz-input />
-              </nz-form-control>
-            </nz-form-item>
-          </div>
-        </div>
-
         <div class="checklist">
           <div nz-row>
             <div nz-col nzMd="8" nzXs="24">
@@ -110,7 +94,7 @@
         </div>
 
         <div nz-row nzAlign="middle">
-          <div nz-col nzSm="7" nzMd="7" nzXs="12">
+          <div nz-col nzSm="24" nzMd="7" nzXs="24">
             <nz-form-item>
               <nz-form-label
                 >Upload Invoice <br />
@@ -129,11 +113,8 @@
           </div>
         </div>
       </div>
-    </div>
 
-    <div>
-      <div class="checklist"></div>
-      <div class="box">
+      <div class="box" nz-col nzMd="24" nzSm="24" nzLg="24" nzXs="24">
         <div nz-row class="tille">
           <div nz-col nzMd="8" nzXs="22">
             <div class="tab-sub-title">

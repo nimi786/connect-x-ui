@@ -2,20 +2,23 @@
 @import '../../../../assets/sass/index'
 
 .signup-main
-    @include media_query_all(1200,null,null,null,null,1800,'height')
+    // @include media_query_all(1200,null,null,null,null,1800,'height')
     display: flex
     justify-content: center
-    position: relative
-    @include media_query_all(20,40,null,null,null,100,'padding-top')
+    @include media_query_all(120,110,null,null,null,120,'padding-top')
+    @include media_query_all(120,120,null,null,null,120,'padding-bottom')
     // @include media_query_all(16,null,null,null,null,427,'padding-bottom')
     @include media_query_all(10,null,null,null,null,696,'padding-left')
     @include media_query_all(10,null,null,null,null,693,'padding-right')
     background: #f5f5f5
+    width: 100%
+    margin: auto
 
 .main-body
     display: flex
     flex-direction: column
     align-items: center
+    max-width: 350px
     @include media_query_all(22,null,null,null,null,62,'gap')
     // @include media_query_all(unset,null,null,null,null, absolute,'position')
     background: transparent
@@ -55,10 +58,12 @@
     background: #FFF
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08)
     .icon
-        @include media_query_all(198,null,null,null,null,198,'width')
-        @include media_query_all(77,null,null,null,null,77,'height')
+        // @include media_query_all(198,null,null,null,null,198,'width')
+        // @include media_query_all(77,null,null,null,null,77,'height')
+        display: flex
+        justify-content: center
         span
-            @include media_query_all(32,null,null,null,null,35,'font-size')
+            @include media_query_all(32,null,null,29,null,35,'font-size')
             font-weight: 600
 
     .title
@@ -89,7 +94,8 @@
         @include media_query_all(410,null,null,null,null,410,'width')
         @include media_query_all(48,null,null,null,null,48,'height')
 
-.understood
+.dont-acc
+    cursor: pointer
     color: #000000
     font-family: $font-inter
     @include media_query_all(12,null,null,null,null,12,'font-size')

@@ -98,7 +98,7 @@ export class SignUpComponent {
     });
   }
 
-  saveUser() {
+  signUp() {
     console.log('this.signUpForm', this.signUpForm);
     if (!this.signUpForm.valid) {
       this.validateForm();

@@ -105,7 +105,7 @@ export class ViewDetailsCardComponent {
 
     const currentUserId = this.authService.userData.uid;
 
-    const formData: any = {
+    const formData: Post = {
       id: this.viewDetailsForm.get('id')?.value || '',
       categoryType: this.viewDetailsForm.get('categoryType')?.value || '',
       condition: this.viewDetailsForm.get('condition')?.value || '',

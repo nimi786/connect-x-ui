@@ -3,6 +3,8 @@
     position: sticky
     top: 100%
 .inner-content
-    height: auto
-    overflow: auto
-    @include media_query_all(120,null,null,90,null,90,"margin-top")
+    padding-bottom: 40px
+    padding-top: 90px
+    min-height: 100vh
+    @media screen and ( max-width: 992px )
+        padding-top: 80px

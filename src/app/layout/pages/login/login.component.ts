@@ -132,10 +132,12 @@ export class LoginComponent {
               ''
             );
           } else {
+            this.isButtonLoading = false;
           }
         })
         .catch((error) => {
           this.notificationService.create('error', 'Error', error);
+          this.isButtonLoading = false;
         });
     }
   }

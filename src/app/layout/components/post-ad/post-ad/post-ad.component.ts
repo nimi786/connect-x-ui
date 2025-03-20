@@ -28,13 +28,11 @@ import { ImageUploadComponent } from '../../../components/image-upload/image-upl
   styleUrl: './post-ad.component.sass',
 })
 export class PostAdComponent {
+  isDisabled = true;
   isLoading = false;
   postForm!: FormGroup;
-
   posts: Post[] = [];
-
   categoryList: mainCategory[] = [];
-
   constructor(
     private modal: NzModalService,
     private fb: FormBuilder,
@@ -58,7 +56,7 @@ export class PostAdComponent {
       categoryType: [null, [MyValidators.customRequired('Category Type')]],
       condition: [null, [MyValidators.customRequired('Condition')]],
       itemName: [null, [MyValidators.customRequired('Item Name')]],
-      uploadImageName: [null],
+      uploadImageName: [null, [MyValidators.customRequired('Upload images')]],
       imageList: [null],
       dateTime: [new Date()],
       price: [null, [MyValidators.customRequired('Price')]],
@@ -73,8 +71,6 @@ export class PostAdComponent {
       userId: [null],
     });
   }
-
-  getAllCategoryList() {}
 
   async uploadImage(openType: string) {
     const modal = this.modal.create({
@@ -120,10 +116,9 @@ export class PostAdComponent {
   private async uploadImagesToFirebase(files: any[]): Promise<string[]> {
     const uploadPromises = files.map((file) => {
       return new Promise<string>((resolve, reject) => {
-        // ✅ Ignore URLs (only upload real File objects)
         if (!(file instanceof File)) {
           console.warn('Skipping non-file object:', file);
-          resolve(file); // Just return the URL without uploading again
+          resolve(file);
           return;
         }
 
@@ -131,7 +126,7 @@ export class PostAdComponent {
         const filePath = `uploads/${fileName}`;
         const fileRef = this.storage.ref(filePath);
         const task = this.storage.upload(filePath, file, {
-          contentType: file.type, // Ensure correct MIME type
+          contentType: file.type,
         });
 
         task
@@ -141,7 +136,7 @@ export class PostAdComponent {
               fileRef.getDownloadURL().subscribe(
                 (url) => {
                   console.log('Uploaded file URL:', url);
-                  resolve(url); // Return the correct download URL
+                  resolve(url);
                 },
                 (error) => {
                   console.error('Error getting download URL:', error);
@@ -228,8 +223,8 @@ export class PostAdComponent {
 
     if (files && files.length > 0) {
       try {
-        const imageUrls = await this.uploadImagesToFirebase(files); // ✅ Upload new images, keep URLs
-        formData.imageList = imageUrls.map((url) => ({ url })); // ✅ Save only URLs to DB
+        const imageUrls = await this.uploadImagesToFirebase(files);
+        formData.imageList = imageUrls.map((url) => ({ url }));
 
         console.log('Post Data After Appending Images:', formData);
 

@@ -10,7 +10,9 @@ export class ProfileInfoComponent {
   userData: any;
   constructor(public authService: AuthenticationService) {}
   ngOnInit(): void {
-    this.userData = this.authService.userData;
-    console.log('++++++++++++++++++++++++++++++++++++++++', this.userData);
+    setTimeout(() => {
+      this.userData = this.authService.userData;
+      console.log('++++++++++++++++++++++++++++++++++++++++', this.userData);
+    }, 500);
   }
 }

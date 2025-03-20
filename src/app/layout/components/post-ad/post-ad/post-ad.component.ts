@@ -21,6 +21,7 @@ import { finalize } from 'rxjs/operators';
 import { AuthenticationService } from '../../../../services/auth/authentication.service';
 import { mainCategory } from '../../../../model/categoryTypes';
 import { ImageUploadComponent } from '../../../components/image-upload/image-upload.component';
+import { get } from 'firebase/database';
 
 @Component({
   selector: 'app-post-ad',
@@ -30,6 +31,9 @@ import { ImageUploadComponent } from '../../../components/image-upload/image-upl
 export class PostAdComponent {
   isDisabled = true;
   isLoading = false;
+  isSubscrib = false;
+  label: string = '';
+  step = true;
   postForm!: FormGroup;
   posts: Post[] = [];
   categoryList: mainCategory[] = [];
@@ -49,6 +53,16 @@ export class PostAdComponent {
     setTimeout(() => {
       // this.loadUser();
     }, 1000);
+    this.postForm.get('uploadImageName')?.disable();
+  }
+
+  onChange() {
+    this.isSubscrib = !this.isSubscrib;
+    if (this.isSubscrib) {
+      this.label = 'Subscrib';
+    } else {
+      this.label = 'Un subscrib';
+    }
   }
 
   initForm() {

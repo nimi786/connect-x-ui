@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="signup-main">
   <div class="main-body">
     <div class="signup-form">
@@ -14,7 +15,7 @@
         >
           <div class="input-feild">
             <div nz-row>
-              <div nz-col nzLg="24" nzXs="24">
+              <div nz-col [nzSpan]="24">
                 <nz-form-item>
                   <nz-form-control>
                     <nz-input-group>
@@ -32,7 +33,7 @@
               </div>
             </div>
             <div nz-row>
-              <div nz-col nzLg="24" nzXs="24">
+              <div nz-col [nzSpan]="24">
                 <nz-form-item>
                   <nz-form-control>
                     <nz-input-group>
@@ -50,7 +51,7 @@
               </div>
             </div>
             <div nz-row>
-              <div nz-col nzLg="24" nzXs="24">
+              <div nz-col [nzSpan]="24">
                 <span class="form_name">Password</span>
                 <nz-form-item>
                   <nz-form-control>
@@ -79,7 +80,7 @@
               </div>
             </div>
             <div nz-row>
-              <div nz-col nzLg="24" nzXs="24">
+              <div nz-col [nzSpan]="24">
                 <span class="form_name">Confirm Password</span>
                 <nz-form-item>
                   <nz-form-control>
@@ -118,7 +119,7 @@
             nz-button
             [nzLoading]="isButtonLoading"
             class="button sign"
-            (click)="saveUser()"
+            (click)="signUp()"
           >
             Sign Up
           </button>
@@ -130,7 +131,7 @@
         <div><hr /></div>
       </div>
 
-      <span (click)="goLogin()" class="understood"
+      <span (click)="goLogin()" class="dont-acc"
         >Already Registered? Log In</span
       >
     </div>
@@ -139,3 +140,4 @@
     </div> -->
   </div>
 </div>
+<app-footer></app-footer>

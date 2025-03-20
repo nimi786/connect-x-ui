@@ -32,7 +32,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="category/electronics"
+            routerLink="/category/electronics"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Electronics</a
@@ -41,7 +41,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="category/vehicle"
+            routerLink="/category/vehicle"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Vehicle</a
@@ -51,7 +51,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="category/property"
+            routerLink="/category/property"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Property</a
@@ -60,7 +60,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="category/pets"
+            routerLink="/category/pets"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Pets</a
@@ -69,7 +69,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="category/toys"
+            routerLink="/category/toys"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Toys</a
@@ -79,7 +79,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="category/others"
+            routerLink="/category/others"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Other</a
@@ -88,7 +88,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="about-us"
+            routerLink="/about-us"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >About Us</a
@@ -97,7 +97,7 @@
         <li class="nav-item">
           <a
             class="nav-link"
-            routerLink="contact-us"
+            routerLink="/contact-us"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Contact Us</a
@@ -109,7 +109,7 @@
         <div class="header-btn">
           <button
             class="button"
-            routerLink="post-ad"
+            routerLink="/post-ad"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
           >
@@ -119,7 +119,7 @@
           <button
             *ngIf="!authService.userData as user"
             class="button"
-            routerLink="login"
+            routerLink="/login"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
           >
@@ -146,7 +146,7 @@
                     <span class="content">My Account</span>
                   </li>
                   <li nz-menu-item [routerLink]="['account-settings/user-add']">
-                    <span class="content">MY adds</span>
+                    <span class="content">My ads</span>
                   </li>
                   <li (click)="authService.SignOut()" nz-menu-item>
                     <span class="content">Log Out</span>

@@ -17,7 +17,6 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { MainComponent } from './layout/pages/main/main.component';
 import { HeaderComponent } from './layout/pages/header/header.component';
 import { FooterComponent } from './layout/pages/footer/footer.component';
-import { FooterMainComponent } from './layout/pages/footer-main/footer-main.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { environment } from '../environment/environment';
 import { provideFirebaseApp, initializeApp } from '@angular/fire/app';
@@ -45,7 +44,6 @@ registerLocaleData(en);
     MainComponent,
     HeaderComponent,
     FooterComponent,
-    FooterMainComponent,
     LoginComponent,
     SignUpComponent,
   ],

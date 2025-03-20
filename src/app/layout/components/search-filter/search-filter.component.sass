@@ -31,9 +31,23 @@
         @include media_query_all(20,null,null,null,null,20,"padding-right")
         @include media_query_all(24,null,null,null,null,24,"padding-top")
         // @include media_query_all(24,null,null,null,null,24,"padding-bottom")
-        @include media_query_all("100%",null,null,null,null,1072,"width")
         @include media_query_all(8,null,null,null,null,8,"border-radius")
         // border-top-left-radius: 0 !important
+        @media screen and (min-width: 320px)
+            width: 100%
+        @media screen and (min-width: 481px)
+            width: 400px
+        @media screen and (min-width: 641px)
+            width: 520px
+        @media screen and (min-width: 768px)
+            width: 620px
+        @media screen and (min-width: 961px)
+            width: 820px
+        @media screen and (min-width: 1200px)
+            width: 1000px
+        @media screen and (min-width: 1900px)
+            width: 1000px
+
         .search
             .button
                 width: 100%

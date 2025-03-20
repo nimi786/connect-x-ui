@@ -95,7 +95,6 @@ import { NzImageModule } from 'ng-zorro-antd/image';
     NzCarouselModule,
     NzImageModule,
     NzFlexModule,
-
     HttpClientModule,
   ],
   providers: [],

@@ -1,12 +1,11 @@
 @import '../../../../assets/sass/index'
-.supplier-main
+.view-main
     display: flex
     flex-direction: column
     @include media_query_all(16,null,null,null,null,24,"padding-top")
     @include media_query_all(16,null,null,null,null,16,"padding-bottom")
     @include media_query_all(16,null,null,null,null,25,"padding-left")
     @include media_query_all(16,null,null,null,null,25,"padding-right")
-
     @include media_query_all_im(10,null,null,null,null,10,"gap")
     @include media_query_all_im(null,null,null,null,null,700,"height")
     border-bottom-right-radius: 16px
@@ -20,7 +19,8 @@
         border-radius: 5px
     .category-details
         display: flex
-        justify-content: space-between
+        flex-direction: row
+        gap: 30px
         .category-inner
             @include media_query_all(16,null,null,null,null,16,"padding-top")
             @include media_query_all(16,null,null,null,null,16,"padding-bottom")

@@ -3,45 +3,58 @@
     <span>Your Posted Adds</span>
   </div>
   <div class="table">
-    <nz-table #adsTable nzSize="middle" [nzData]="userPosts">
-      <thead>
-        <tr>
-          <th>Item Name</th>
-          <th>Contact Name</th>
-          <th>Mobile No</th>
-          <th>Email</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (data of adsTable.data; track data) {
-        <tr>
-          <td>{{ data.itemName }} {{ data.id }}</td>
-          <td>{{ data.contactName }}</td>
-          <td>{{ data.mobileNo }}</td>
-          <td>{{ data.email }}</td>
+    <div class="scroll_table_layout">
+      <nz-table
+        [nzScroll]="{ x: '700px' }"
+        nzTableLayout="fixed"
+        #adsTable
+        nzSize="middle"
+        [nzData]="userPosts"
+        [nzPageSize]="userPosts.length"
+        nzBordered
+        [nzTemplateMode]="true"
+        nzBordered="true"
+        [nzLoading]="isTableLoading"
+      >
+        <thead>
+          <tr>
+            <th>Item Name</th>
+            <th>Contact Name</th>
+            <th>Mobile No</th>
+            <th>Email</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (data of adsTable.data; track data) {
+          <tr>
+            <td>{{ data.itemName }}</td>
+            <td>{{ data.contactName }}</td>
+            <td>{{ data.mobileNo }}</td>
+            <td>{{ data.email }}</td>
 
-          <td>
-            <div class="table-data">
-              <div class="imgspace">
-                <span
-                  (click)="updatePost(data, 'owner')"
-                  nz-icon
-                  nzType="edit"
-                  nzTheme="outline"
-                ></span>
-                <span
-                  (click)="deleteItem(data)"
-                  nz-icon
-                  nzType="delete"
-                  nzTheme="outline"
-                ></span>
+            <td>
+              <div class="table-data">
+                <div class="imgspace">
+                  <span
+                    (click)="updatePost(data, 'owner')"
+                    nz-icon
+                    nzType="edit"
+                    nzTheme="outline"
+                  ></span>
+                  <span
+                    (click)="deleteItem(data)"
+                    nz-icon
+                    nzType="delete"
+                    nzTheme="outline"
+                  ></span>
+                </div>
               </div>
-            </div>
-          </td>
-        </tr>
-        }
-      </tbody>
-    </nz-table>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </nz-table>
+    </div>
   </div>
 </div>

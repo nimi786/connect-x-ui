@@ -12,9 +12,11 @@
             color: #000
             font-size: 30px
     .table
-        width: 900px
+        // width: 900px
         margin-top: 60px
-        height: 50vh
+        // height: 50vh
+        .scroll_table_layout
+            @include media_query_all('auto',null,null,null,null,unset,"overflow-x")
 
 // :host ::ng-deep .ant-table-thead > tr > th
 //     background: red

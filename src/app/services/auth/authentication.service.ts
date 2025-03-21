@@ -25,8 +25,6 @@ export class AuthenticationService {
     public ngZone: NgZone,
     public router: Router
   ) {
-    /* Saving user data in localstorage when 
-    logged in and setting up null when logged out */
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
@@ -54,9 +52,6 @@ export class AuthenticationService {
     return this.afAuth.createUserWithEmailAndPassword(email, password);
   }
 
-  /* Setting up user data when sign in with username/password, 
-  sign up with username/password and sign in with social auth  
-  provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
   SetUserData(user: any) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
@@ -73,7 +68,6 @@ export class AuthenticationService {
     });
   }
 
-  // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
     // return (user !== null && user.emailVerified) !== false ? true : false;

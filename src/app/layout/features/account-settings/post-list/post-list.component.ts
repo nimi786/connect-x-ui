@@ -12,6 +12,7 @@ import { ViewDetailsCardComponent } from '../../../components/view-details-card/
   styleUrl: './post-list.component.sass',
 })
 export class PostListComponent {
+  isTableLoading = true;
   @Input() itemList!: Post;
   userPosts: Post[] = [];
 
@@ -25,7 +26,7 @@ export class PostListComponent {
     setTimeout(() => {
       this.itemList;
       this.loadAllItemsByUserId();
-    }, 500);
+    }, 1000);
   }
 
   updatePost(receiveData: Post, viewType: string) {
@@ -57,6 +58,9 @@ export class PostListComponent {
   async loadAllItemsByUserId() {
     const userId = this.authService.userData.uid;
     this.userPosts = await this.dataService.getPostsByUserId(userId);
+    if (this.userPosts.length > 0) {
+      this.isTableLoading = false;
+    }
     console.log(
       'User Posts+++++++++++++++++++++++++++++++++++++++++++++++++++++++=:',
       this.userPosts

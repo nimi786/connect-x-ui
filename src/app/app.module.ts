@@ -26,7 +26,6 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { provideDatabase, getDatabase } from '@angular/fire/database';
-
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { LoginComponent } from './layout/pages/login/login.component';
 import { SignUpComponent } from './layout/pages/sign-up/sign-up.component';

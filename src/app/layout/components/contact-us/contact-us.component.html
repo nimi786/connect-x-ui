@@ -1,0 +1,97 @@
+<app-header></app-header>
+
+<div class="main">
+  <div nz-row>
+    <div class="image-content" nz-col nzMd="12" nzXs="12" nz>
+      <img src="../../../../assets/images/contact.svg" alt="" />
+    </div>
+    <div class="form" nz-col nzMd="12" nzXs="24">
+      <div class="title">SEND MESSAGE</div>
+      <div class="content">
+        Please fill out the form below to contact us with any questions or
+        comments you might have and sometimes will get back to you as soon as
+        possible
+      </div>
+      <form nz-form [formGroup]="contactUsForm">
+        <div nz-row [nzGutter]="10">
+          <div nz-col nzLg="24" nzXs="24">
+            <nz-form-item>
+              <nz-form-control>
+                <input
+                  nz-input
+                  placeholder="Your Name*"
+                  type="text"
+                  formControlName="name"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+
+        <div nz-row [nzGutter]="10">
+          <div nz-col nzLg="24" nzXs="24">
+            <nz-form-item>
+              <nz-form-control>
+                <input
+                  nz-input
+                  placeholder="Email*"
+                  type="text"
+                  formControlName="email"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row [nzGutter]="10">
+          <div nz-col nzLg="24" nzXs="24">
+            <nz-form-item>
+              <nz-form-control>
+                <input
+                  nz-input
+                  placeholder="Phone*"
+                  type="text"
+                  formControlName="phone"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+        <div nz-row [nzGutter]="10">
+          <div nz-col nzLg="24" nzXs="24">
+            <nz-form-item>
+              <nz-form-control>
+                <input
+                  nz-input
+                  placeholder="City*"
+                  type="text"
+                  formControlName="city"
+                />
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+
+        <div nz-row [nzGutter]="10">
+          <div nz-col nzLg="24" nzXs="24">
+            <nz-form-item>
+              <nz-form-control>
+                <textarea
+                  class="message"
+                  rows="8"
+                  formControlName="comment"
+                  PlaceHolder="Your Message*"
+                  nz-input
+                ></textarea>
+              </nz-form-control>
+            </nz-form-item>
+          </div>
+        </div>
+      </form>
+      <div class="src-btn2">
+        <button class="button-primary large" nz-button>SEND MESSAGE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

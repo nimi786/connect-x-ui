@@ -6,27 +6,77 @@
     </div>
     <span>
       "Connect-Me has the widest selection of items all over Sri Lanka and
-      across more than 50 different categories. Whether you're looking for a
-      car, mobile phone, house, computer or pet, you will find the best deal on
-      Connect-Me. "
+      across by different categories. Whether you're looking for a car, mobile
+      phone, house, computer or pet, you will find the best deal on Connect-Me."
     </span>
   </div>
 
   <div class="services">
     <span>Navigation</span>
-    <span>Home</span>
-    <span>Electronics</span>
-    <span>Vehicle</span>
-    <span>Fashion & Beauty</span>
-    <span>Property</span>
-    <span>Pets</span>
-    <span>Other</span>
+    <span
+      routerLink="/"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Home</span
+    >
+    <span
+      class="nav-link"
+      routerLink="/category/electronics"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Electronics</span
+    >
+
+    <span
+      routerLink="/category/vehicle"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Vehicle</span
+    >
+
+    <span
+      routerLink="/category/fashion"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Fashion & Beauty</span
+    >
+
+    <span
+      routerLink="/category/property"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Property</span
+    >
+
+    <span
+      routerLink="/category/pets"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Pets</span
+    >
+
+    <span
+      routerLink="/category/others"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Other</span
+    >
   </div>
 
   <div class="services">
     <span>Support</span>
-    <span>About Us</span>
-    <span>Contact Us</span>
+    <span
+      routerLink="/aboutus"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >About Us</span
+    >
+    <span
+      routerLink="/contactus"
+      routerLinkActive="active"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Contact Us</span
+    >
     <span>Terms & Conditions</span>
     <span>Privacy & Security</span>
   </div>

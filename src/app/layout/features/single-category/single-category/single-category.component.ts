@@ -54,6 +54,18 @@ export class SingleCategoryComponent {
         this.postData = pets.reverse();
       });
     }
+
+    if (this.subCategory == 'fashion') {
+      this.dataService.getItemsByCategory('4').then((properties) => {
+        this.postData = properties.reverse();
+      });
+    }
+
+    if (this.subCategory == 'others') {
+      this.dataService.getItemsByCategory('4').then((properties) => {
+        this.postData = properties.reverse();
+      });
+    }
   }
 
   searchProduct(product: string) {

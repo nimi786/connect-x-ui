@@ -1,0 +1,75 @@
+@import '../../../../assets/sass/index'
+.main
+    @include media_query_all(20,20,null,null,null,200,"padding-left")
+    @include media_query_all(20,20,null,null,null,200,"padding-right")
+    @include media_query_all(20,20,null,null,null,20,"padding-bottom")
+    @include media_query_all(20,20,null,null,null,150,"padding-top")
+    .image-content
+        img
+            width: 100%
+            height: max-content
+
+.form
+    // border: 1px solid #D9D9D9
+    background: #FFF
+    @include media_query_all(10,10,null,null,null,20,"padding-left")
+    @include media_query_all(10,10,null,null,null,20,"padding-right")
+    @include media_query_all(10,10,null,null,null,20,"padding-top")
+    @include media_query_all(10,10,null,null,null,100,"padding-bottom")
+    .title
+        color: #000
+        font-family: $font-hind
+        @include media_query_all(18,null,null,null,null,18,"font-size")
+        font-weight: 600
+        margin-bottom: 20px
+
+    .content
+        color: #000
+        font-family: $font-hind
+        @include media_query_all(18,null,null,null,null,18,"font-size")
+        font-weight: 500
+        margin-bottom: 20px
+:host::ng-deep.ant-input
+    background-color: #F2F2F2
+    border-radius: 5px
+    border: none
+    height: 42px
+
+.src-btn2
+    display: flex
+    // justify-content: end
+    @include media_query_all(center,null,end,null,null,end,"justify-content")
+    margin-top: 20px
+    .button-primary.large
+        @include media_query_all(324,null,237,null,null,237,"width")
+        background: $primary-color
+        color: #FFF
+
+:host::ng-deep.ant-select-selection-placeholder
+    font-size: 14px
+    padding-top: 12px
+:host::ng-deep.ant-select-single.ant-select-show-arrow .ant-select-selection-placeholder
+    padding-top: 14px
+
+.chk
+    color: #000
+    font-family: $font-hind
+    @include media_query_all(18,null,null,null,null,18,"font-size")
+    font-weight: 400
+.message
+    @include media_query_all(277,null,null,null,null,277,"height")
+.flag
+    @include media_query_all(20,null,null,null,null,20,"padding")
+.map
+    width: 100%
+    background: #fff
+    @include media_query_all(1000,null,1410,null,null,1485,"height")
+::ng-deep iframe
+    width: 100%
+    height: 100%
+:host ::ng-deep .ant-input-status-error:not(.ant-input-disabled):not(.ant-input-borderless).ant-input
+    background: #F2F2F2
+:host ::ng-deep .ant-select-status-error.ant-select:not(.ant-select-disabled):not(.ant-select-customize-input) .ant-select-selector
+    background: #F2F2F2
+:host ::ng-deep .ant-select-single .ant-select-selector .ant-select-selection-item
+    line-height: 58px

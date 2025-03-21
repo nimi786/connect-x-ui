@@ -1,6 +1,8 @@
 <div class="item-category-main">
   <div class="main-title">
-    <span>{{ subCategory }}</span>
+    <span>{{
+      subCategory === "fashion" ? "Fashion & Beauty" : subCategory
+    }}</span>
   </div>
 
   <div class="item-main" nz-row [nzGutter]="[30, 20]">

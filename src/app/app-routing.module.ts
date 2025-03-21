@@ -7,6 +7,8 @@ import { LoginComponent } from './layout/pages/login/login.component';
 
 // route guard
 import { AuthGuard } from './guard/auth.guard';
+import { AboutUsComponent } from './layout/components/about-us/about-us.component';
+import { ContactUsComponent } from './layout/components/contact-us/contact-us.component';
 
 const routes: Routes = [
   {
@@ -16,6 +18,15 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'aboutus',
+    component: AboutUsComponent,
+  },
+
+  {
+    path: 'contactus',
+    component: ContactUsComponent,
   },
 
   // { path: '', redirectTo: '/login', pathMatch: 'full' },

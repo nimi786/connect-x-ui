@@ -6,14 +6,12 @@ import { CopyRightComponent } from './copy-right/copy-right.component';
 import { SkeletonLoaderComponent } from './skeleton-loader/skeleton-loader.component';
 import { HammerModule } from '@angular/platform-browser';
 import { ItemCardComponent } from './item-card/item-card.component';
-import { ReadyToWorkComponent } from './ready-to-work/ready-to-work.component';
 import { ViewDetailsCardComponent } from './view-details-card/view-details-card.component';
 import { ItemCategoryComponent } from './item-category/item-category.component';
 
 @NgModule({
   declarations: [
     SearchFilterComponent,
-    ReadyToWorkComponent,
     CopyRightComponent,
     ItemCardComponent,
     SkeletonLoaderComponent,
@@ -24,9 +22,9 @@ import { ItemCategoryComponent } from './item-category/item-category.component';
   exports: [
     SearchFilterComponent,
     CopyRightComponent,
-    SkeletonLoaderComponent,
-    ReadyToWorkComponent,
     ItemCardComponent,
+    SkeletonLoaderComponent,
+    ViewDetailsCardComponent,
     ItemCategoryComponent,
   ],
 })

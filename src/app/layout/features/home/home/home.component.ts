@@ -14,7 +14,7 @@ export class HomeComponent {
   subCategories = [
     'electronics',
     'vehicle',
-    'fashion & beauty',
+    'fashion',
     'property',
     'pets',
     'others',

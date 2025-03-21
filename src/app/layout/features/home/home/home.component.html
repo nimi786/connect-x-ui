@@ -8,38 +8,42 @@
   </div>
 </div>
 
+@if (elcectonicsList.length > 0) {
 <app-item-category
   [subCategory]="subCategories[0]"
   [isShowAll]="false"
   [postData]="elcectonicsList"
 >
 </app-item-category>
+} @if (vehiclesList.length > 0) {
 <app-item-category
   [subCategory]="subCategories[1]"
   [isShowAll]="false"
   [postData]="vehiclesList"
 ></app-item-category>
-
+} @if (fashionList.length > 0) {
 <app-item-category
   [subCategory]="subCategories[2]"
   [isShowAll]="false"
   [postData]="fashionList"
 ></app-item-category>
-
+} @if (propertiesList.length > 0) {
 <app-item-category
   [subCategory]="subCategories[3]"
   [isShowAll]="false"
   [postData]="propertiesList"
 ></app-item-category>
-
+} @if (petsList.length > 0) {
 <app-item-category
   [subCategory]="subCategories[4]"
   [isShowAll]="false"
   [postData]="petsList"
 ></app-item-category>
+} @if (othersList.length > 0) {
 
 <app-item-category
   [subCategory]="subCategories[5]"
   [isShowAll]="false"
   [postData]="othersList"
 ></app-item-category>
+}

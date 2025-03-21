@@ -34,6 +34,8 @@ import { SignUpComponent } from './layout/pages/sign-up/sign-up.component';
 import { AuthenticationService } from './services/auth/authentication.service';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { DatePipe, registerLocaleData } from '@angular/common';
+import { AboutUsComponent } from './layout/components/about-us/about-us.component';
+import { ContactUsComponent } from './layout/components/contact-us/contact-us.component';
 
 registerLocaleData(en);
 
@@ -45,6 +47,8 @@ registerLocaleData(en);
     FooterComponent,
     LoginComponent,
     SignUpComponent,
+    AboutUsComponent,
+    ContactUsComponent,
   ],
   imports: [
     BrowserModule,

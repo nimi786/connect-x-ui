@@ -1,0 +1,160 @@
+@import '../../../../assets/sass/index'
+.landing-main
+    background: #EDEDED
+    position: relative
+    height: 100dvh
+    width: 100%
+    background-image: url('/assets/icons/landing/landing.svg')
+    background-blend-mode: screen
+    background-position: bottom
+    background-repeat: no-repeat
+    background-size: cover
+    .logo
+        position: absolute
+        top: lgpx(26)
+        left: lgpx(60)
+
+        @media( max-width: 1900px  )
+            top: 26px
+            left: 60px
+        @media ( max-width:576px  )
+            left: unset
+            display: flex
+            justify-content: center
+            width: 100%
+        img
+            width: lgpx(155.462)
+            height: lgpx(47)
+            @media screen and ( min-width: 1900px  )
+                width: 155.462px
+                height: 47px
+    .inner-content
+        display: flex
+        justify-content: center
+        .content
+            display: flex
+            flex-direction: column
+            gap: lgpx(32)
+            width: lgpx(1021)
+            padding-top: 130px
+            align-items: center
+            @media all and (device-width: 1366px) and (device-height: 1024px) and (orientation:landscape)
+                padding-top: 24dvh
+            @media all and (device-width: 1368px) and (device-height: 912px) and (orientation:landscape)
+                padding-top: 19dvh
+            @media all and (device-width: 1180px) and (device-height: 820px) and (orientation:landscape)
+                padding-top: 20dvh
+            @media all and (max-width: 1024px)
+                padding-top: 31dvh
+            @media screen and ( max-width: 1024px ) and (orientation: landscape)
+                padding-top: 24dvh
+            @media ( max-width:768px  )
+                padding-top: 33dvh
+            @media screen and ( max-width: 768px ) and (orientation: landscape)
+                padding-top: 21dvh
+            @media ( max-width:576px  )
+                padding-top: 13dvh
+                width: 333.7px
+
+            @media( min-width: 1900px  )
+                width: 60vw
+                gap: 32px
+                padding-top: 115px
+
+        .title
+            color: #10161C
+            text-align: center
+            font-size: lgpx(96)
+            font-style: normal
+            font-weight: 400
+            line-height: 110%
+            @media ( max-width:1200px  )
+                font-size: 60px
+            @media ( max-width:576px  )
+                font-size: 52px
+            @media ( min-width: 1900px  )
+                font-size: 5vw
+        .sub-txt
+            color: #314254
+            text-align: center
+            font-family: Inter
+            font-size: lgpx(23)
+            font-style: normal
+            font-weight: 400
+            line-height: lgpx(34)
+            @media ( max-width:576px  )
+                font-size: 14px
+            @media screen and ( min-width: 1900px  )
+                line-height: 34px
+                font-size: 23px
+        button
+            display: flex
+            padding: 30px 40px
+            justify-content: center
+            align-items: center
+            gap: lgpx(19.2)
+            border-radius: 9.6px
+            background: $primary-color
+            color: #FFF
+            text-align: center
+            font-size: lgpx(24)
+            font-style: normal
+            font-weight: 600
+            line-height: normal
+            letter-spacing: 0.48px
+            text-transform: capitalize
+            border: none
+            @media ( max-width:576px  )
+                gap: 16px
+                padding: 28px 40px
+                font-size: 16px
+            @media screen and ( min-width: 1900px  )
+                gap: 19.2px
+                padding: 33.6px 48px
+                font-size: 24px
+.bottom-container
+    display: flex
+    width: 100%
+    justify-content: center
+    .bottom
+        position: absolute
+        bottom: 0
+        // width: lgpx(1322.039)
+        object-fit: contain
+        padding-left: 5%
+        height: 36dvh
+
+        @media all and (max-width: 1024px) and (orientation:portrait)
+            display: block
+            padding-left: 7%
+            height: 17dvh
+        @media all and (max-width: 1024px) and (orientation:landscape)
+            display: none
+        @media screen and ( max-width:768px  ) and (orientation:portrait)
+            display: block
+            // left: 12%
+            height: 17dvh
+        @media all and (device-width: 1366px) and (device-height: 1024px) and (orientation:landscape)
+            height: 21dvh
+        @media all and (device-width: 1368px) and (device-height: 912px) and (orientation:landscape)
+            // left: 10%
+        @media screen and ( max-width:576px  )
+            display: none
+        @media screen and ( min-width: 1900px  )
+            // width: 1322.039px
+            height: 36dvh
+    .bottom-mobile
+        position: absolute
+        bottom: 0
+        // width: lgpx(1322.039)
+        object-fit: cover
+        left: 0
+        right: 0
+        width: 100vw
+        height: 20dvh
+        object-position: top
+        display: none
+        @media screen and ( max-width:576px  )
+            display: block
+        @media screen and ( min-width:1200px  )
+            display: none

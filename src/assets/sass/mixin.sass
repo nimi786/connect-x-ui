@@ -70,6 +70,12 @@
 @function rem($pixel)
     @return calc($pixel/16)*1rem
 
+@function lgpx($pixel)
+    @return calc($pixel/10)*7px
+
+@function lgPx($pixel)
+    @return calc($pixel/10)*7px
+
 @mixin img-contain-center
     object-fit: contain
     object-position: center

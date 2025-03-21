@@ -14,9 +14,9 @@ export class HomeComponent {
   subCategories = [
     'electronics',
     'vehicle',
+    'fashion & beauty',
     'property',
     'pets',
-    'toys',
     'others',
   ];
   carouselImage = [
@@ -36,9 +36,9 @@ export class HomeComponent {
 
   elcectonicsList: Post[] = [];
   vehiclesList: Post[] = [];
+  fashionList: Post[] = [];
   propertiesList: Post[] = [];
   petsList: Post[] = [];
-  toysList: Post[] = [];
   othersList: Post[] = [];
 
   constructor(private dataService: DataService) {}
@@ -64,6 +64,10 @@ export class HomeComponent {
 
     this.dataService.getItemsByCategory('3').then((pets) => {
       this.petsList = pets.reverse().slice(0, 4);
+    });
+
+    this.dataService.getItemsByCategory('4').then((fashion) => {
+      this.fashionList = fashion.reverse().slice(0, 4);
     });
   }
 }

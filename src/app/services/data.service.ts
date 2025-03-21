@@ -78,17 +78,17 @@ export class DataService {
     const itemRef = ref(
       this.db,
       `${this.postPath}/${itemId.categoryType}/${itemId.id}`
-    ); // Reference to the specific item
+    );
     return remove(itemRef);
   }
 
   async getAllCategories(): Promise<mainCategory[]> {
     const categoryPath = `${this.categoryPath}`;
     const dbRef = ref(this.db);
-    const snapshot = await get(child(dbRef, categoryPath)); // Fetch data
+    const snapshot = await get(child(dbRef, categoryPath));
 
     if (snapshot.exists()) {
-      return Object.values(snapshot.val()); // Convert object to array
+      return Object.values(snapshot.val());
     } else {
       return [];
     }
@@ -102,7 +102,6 @@ export class DataService {
       const postsData = snapshot.val();
       const filteredPosts = [];
 
-      // Loop through each post category
       for (const categoryKey in postsData) {
         for (const postId in postsData[categoryKey]) {
           if (postsData[categoryKey][postId].userId === userId) {
@@ -126,11 +125,11 @@ export class DataService {
     const snapshot = await get(child(dbRef, categoryPath));
 
     if (snapshot.exists()) {
-      const data = snapshot.val(); // Firebase response is an object
-      // Convert object to array
+      const data = snapshot.val();
+
       return Object.keys(data).map((key) => ({
-        id: key, // Add Firebase key as 'id'
-        ...data[key], // Spread the rest of the post data
+        id: key,
+        ...data[key],
       })) as Post[];
     } else {
       return [];

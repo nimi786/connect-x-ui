@@ -29,6 +29,7 @@
             >Home</a
           >
         </li>
+
         <li class="nav-item">
           <a
             class="nav-link"
@@ -38,6 +39,7 @@
             >Electronics</a
           >
         </li>
+
         <li class="nav-item">
           <a
             class="nav-link"
@@ -51,12 +53,23 @@
         <li class="nav-item">
           <a
             class="nav-link"
+            routerLink="/category/fashion"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+            >Fashion & Beauty</a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a
+            class="nav-link"
             routerLink="/category/property"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Property</a
           >
         </li>
+
         <li class="nav-item">
           <a
             class="nav-link"
@@ -64,15 +77,6 @@
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
             >Pets</a
-          >
-        </li>
-        <li class="nav-item">
-          <a
-            class="nav-link"
-            routerLink="/category/toys"
-            routerLinkActive="active"
-            [routerLinkActiveOptions]="{ exact: true }"
-            >Toys</a
           >
         </li>
 
@@ -85,6 +89,7 @@
             >Other</a
           >
         </li>
+
         <li class="nav-item">
           <a
             class="nav-link"
@@ -94,6 +99,7 @@
             >About Us</a
           >
         </li>
+
         <li class="nav-item">
           <a
             class="nav-link"

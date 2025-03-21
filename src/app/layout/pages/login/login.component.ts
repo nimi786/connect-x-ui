@@ -60,25 +60,16 @@ export class LoginComponent {
 
   initForm() {
     this.loginForm = this.fb.group({
-      userName: [
-        '',
-        [
-          // MyValidators.pattern(''),
-          MyValidators.customRequired('Email'),
-          // MyValidators.email(
-          //   '^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$'
-          // ),
-        ],
-      ],
+      email: [null, [MyValidators.customRequired('Email Address')]],
       password: [
         '',
         [
           MyValidators.customRequired('Password'),
-          // MyValidators.pattern(
-          //   '^(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,}).*$'
-          // ),
-          // MyValidators.minLength(4),
-          // MyValidators.maxLength(12),
+          MyValidators.pattern(
+            '^(?=.*[A-Z])(?=.*[0-9])(?=.*[^A-Za-z0-9])(?=.{8,}).*$'
+          ),
+          MyValidators.minLength(8),
+          MyValidators.maxLength(12),
         ],
       ],
       grantType: 'customer',

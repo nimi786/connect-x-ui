@@ -18,6 +18,7 @@
     display: flex
     flex-direction: column
     align-items: center
+    max-width: 350px
     @include media_query_all(22,null,null,null,null,62,'gap')
     // position: absolute
     background: transparent
@@ -62,7 +63,7 @@
         // @include media_query_all(77,null,null,null,null,77,'height')
         display: flex
         justify-content: center
-        span
+        img
             @include media_query_all(32,null,27,null,null,35,'font-size')
             font-weight: 600
 
@@ -101,16 +102,20 @@
     font-weight: 600
 
 .dont-acc
+    display: flex
+    gap: 8px
+    align-items: center
     color: $primary-color
     font-family: $font-inter
-    @include media_query_all(12,null,null,null,null,12,'font-size')
+    @include media_query_all(16,null,null,null,null,14,'font-size')
     font-weight: 600
     cursor: pointer
-    .condition
+    p
         color: #3F88C5
         font-family: $font-inter
-        @include media_query_all(12,null,null,null,null,12,'font-size')
+        @include media_query_all(14,null,null,null,null,12,'font-size')
         font-weight: 500
+        margin: 0 !important
 .remember2
     color: $primary-color
     font-family: $font-inter

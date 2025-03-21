@@ -19,7 +19,7 @@
                 <nz-form-item>
                   <nz-form-control>
                     <nz-input-group>
-                      <label class="form_name">Your Name</label>
+                      <label class="form_name">Your Name*</label>
                       <input
                         placeholder="Enter your Name"
                         nz-input
@@ -37,7 +37,7 @@
                 <nz-form-item>
                   <nz-form-control>
                     <nz-input-group>
-                      <label class="form_name">Email Address</label>
+                      <label class="form_name">Email Address*</label>
                       <input
                         placeholder="Enter Your Email"
                         nz-input
@@ -52,7 +52,7 @@
             </div>
             <div nz-row>
               <div nz-col [nzSpan]="24">
-                <span class="form_name">Password</span>
+                <span class="form_name">Password*</span>
                 <nz-form-item>
                   <nz-form-control>
                     <nz-input-group
@@ -81,7 +81,7 @@
             </div>
             <div nz-row>
               <div nz-col [nzSpan]="24">
-                <span class="form_name">Confirm Password</span>
+                <span class="form_name">Confirm Password*</span>
                 <nz-form-item>
                   <nz-form-control>
                     <nz-input-group
@@ -131,9 +131,10 @@
         <div><hr /></div>
       </div>
 
-      <span (click)="goLogin()" class="dont-acc"
-        >Already Registered? Log In</span
-      >
+      <span (click)="goLogin()" class="dont-acc">
+        Already Registered?
+        <p>Log In</p>
+      </span>
     </div>
     <!-- <div class="rights">
       <app-copy-right></app-copy-right>

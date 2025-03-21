@@ -95,16 +95,20 @@
         @include media_query_all(48,null,null,null,null,48,'height')
 
 .dont-acc
-    cursor: pointer
-    color: #000000
+    display: flex
+    gap: 8px
+    align-items: center
+    color: $primary-color
     font-family: $font-inter
-    @include media_query_all(12,null,null,null,null,12,'font-size')
+    @include media_query_all(16,null,null,null,null,14,'font-size')
     font-weight: 600
-    .condition
-        color: $primary-color
+    cursor: pointer
+    p
+        color: #3F88C5
         font-family: $font-inter
-        @include media_query_all(12,null,null,null,null,12,'font-size')
+        @include media_query_all(14,null,null,null,null,12,'font-size')
         font-weight: 500
+        margin: 0
 .pattern
     display: flex
     justify-content: center
